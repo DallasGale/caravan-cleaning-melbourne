@@ -18,8 +18,8 @@ import {
   dataset,
   previewSecretId,
   projectId,
-} from '~/lib/sanity.api'
-import { schema } from '~/schemas'
+} from './src/lib/sanity.api'
+import { schema } from './src/schemas'
 
 const iframeOptions = {
   url: defineUrlResolver({
@@ -32,8 +32,8 @@ const iframeOptions = {
 
 export default defineConfig({
   basePath: '/studio',
-  name: 'project-name',
-  title: 'Project Name',
+  name: 'caravan-cleaning-melbourne',
+  title: 'Caravan Cleaning Melbourne Studio',
   projectId,
   dataset,
   //edit schemas in './src/schemas'

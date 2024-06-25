@@ -14,6 +14,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@next/env": "^14.2.4",
     "@portabletext/react": "3.0.11",
     "@sanity/client": "6.12.3",
     "@sanity/demo": "1.0.2",
@@ -25,7 +26,8 @@
     "react-dom": "18.2.0",
     "sanity": "3.28.0",
     "sanity-plugin-iframe-pane": "2.6.1",
-    "styled-components": "6.1.8"
+    "styled-components": "6.1.8",
+    "vite": "^5.3.1"
   },
   "devDependencies": {
     "@types/react": "18.2.55",
