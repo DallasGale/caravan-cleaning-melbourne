@@ -3,8 +3,11 @@ lockfileVersion: 5.4
 specifiers:
   '@next/env': ^14.2.4
   '@portabletext/react': 3.0.11
+  '@portabletext/types': ^2.0.13
   '@sanity/client': 6.12.3
   '@sanity/demo': 1.0.2
+  '@sanity/image-url': ^1.0.2
+  '@sanity/types': ^3.47.1
   '@sanity/vision': 3.28.0
   '@tailwindcss/typography': 0.5.10
   '@types/react': 18.2.55
@@ -12,6 +15,7 @@ specifiers:
   eslint: 8.56.0
   eslint-config-next: 14.1.0
   eslint-plugin-simple-import-sort: 10.0.0
+  groq: ^3.47.1
   next: 14.1.0
   next-sanity: 5.5.11
   postcss: 8.4.35
@@ -30,12 +34,16 @@ specifiers:
 dependencies:
   '@next/env': 14.2.4
   '@portabletext/react': 3.0.11_react@18.2.0
+  '@portabletext/types': 2.0.13
   '@sanity/client': 6.12.3
   '@sanity/demo': 1.0.2_tailwindcss@3.4.1
+  '@sanity/image-url': 1.0.2
+  '@sanity/types': 3.47.1
   '@sanity/vision': 3.28.0_unymcpxz7r7pf6ojhcppboh42y
   '@tailwindcss/typography': 0.5.10_tailwindcss@3.4.1
+  groq: 3.47.1
   next: 14.1.0_biqbaboplfbrettd7655fr4n2y
-  next-sanity: 5.5.11_63fkpxtibyncshlgzlaaspi6fy
+  next-sanity: 5.5.11_lhibey5mevcxy2w2flvmdgmg3a
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   sanity: 3.28.0_jina7jr6az6gi7uw3rwisva6c4
@@ -5354,7 +5362,7 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-sanity/5.5.11_63fkpxtibyncshlgzlaaspi6fy:
+  /next-sanity/5.5.11_lhibey5mevcxy2w2flvmdgmg3a:
     resolution: {integrity: sha512-KPie0vjxjzbj9CZ2jYhUPdWy3X/lZwjty8ZtOt7rrSBtyoxMwjFpmcN17F8tvls4a018k8eMy85tDqJ7wzBvEA==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -5369,6 +5377,7 @@ packages:
     dependencies:
       '@sanity/client': 6.12.3
       '@sanity/preview-kit': 3.2.12_vixbcng4w5wcyowwhld7pshw4a
+      '@sanity/types': 3.47.1
       '@sanity/webhook': 3.0.1
       groq: 3.47.1
       next: 14.1.0_biqbaboplfbrettd7655fr4n2y
