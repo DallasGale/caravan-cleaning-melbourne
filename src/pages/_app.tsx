@@ -5,7 +5,7 @@ import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 import { lazy } from 'react'
 
 export interface SharedPageProps {
-  draftMode: boolean
+  preview: boolean
   token: string
 }
 
@@ -34,7 +34,7 @@ export default function App({
   Component,
   pageProps,
 }: AppProps<SharedPageProps>) {
-  const { draftMode, token } = pageProps
+  const { preview, token } = pageProps
   return (
     <>
       <style jsx global>
@@ -46,7 +46,7 @@ export default function App({
           }
         `}
       </style>
-      {draftMode ? (
+      {preview ? (
         <PreviewProvider token={token}>
           <Component {...pageProps} />
         </PreviewProvider>
