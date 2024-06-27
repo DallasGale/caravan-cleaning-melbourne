@@ -1,0 +1,22 @@
+@import './theme.scss';
+@import './sizes.scss';
+@import './fonts.scss';
+@import './layout.scss';
+@import './typography.scss';
+@import './cta/';
+@import './card/';
+@import './pages/homepage.scss';
+@import './global/header.scss';
+@import './global/nav.scss';
+
+html {
+  background-color: var(--white);
+  font-family: $font-family-regular;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}

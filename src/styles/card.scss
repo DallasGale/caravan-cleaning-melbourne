@@ -1,0 +1,30 @@
+.card {
+  background-color: $navy;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: $space-2;
+  min-height: 382px;
+  padding: $space-5;
+  border: 4px solid transparent;
+  transition: all 0.05s ease;
+  text-decoration: none;
+  &:hover {
+    transition: all 0.25s ease;
+    transform: translateY(-8px);
+  }
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 0;
+  flex-direction: row;
+}
+
+.card-grid__item {
+  list-style: none;
+}

@@ -1,0 +1,19 @@
+.cta__root {
+  height: $space-6;
+}
+
+.cta__primary {
+  background-color: $lime;
+  color: $navy;
+  border: 2px solid transparent;
+  &:hover {
+    background-color: $navy;
+    color: $lime;
+    border-color: $lime;
+  }
+}
+
+.cta__label {
+  font-family: var(--font-family-bold);
+  font-size: $font-size-2;
+}

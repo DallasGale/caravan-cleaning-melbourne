@@ -1,0 +1,47 @@
+.heading-1 {
+  font-size: $font-size-9;
+  font-family: var(--font-family-extra-bold);
+  line-height: 1;
+  margin: 0;
+}
+
+.heading-2 {
+  font-size: $font-size-6;
+  font-family: var(--font-family-semi-bold);
+  font-weight: 900;
+  line-height: $line-height-7;
+  margin: 0;
+}
+.heading-3 {
+  font-size: $font-size-4;
+  font-family: var(--font-family-medium);
+  line-height: $line-height-5;
+  &.hero {
+    color: $teal;
+    strong {
+      font-family: var(--font-family-bold);
+      color: $white;
+    }
+  }
+}
+
+.paragraph {
+  font-size: $font-size-1;
+  font-family: var(--font-family-regular);
+  line-height: $line-height-2;
+  margin: 0;
+}
+
+// COLORS
+
+.color-white {
+  color: $white;
+}
+
+.color-teal {
+  color: $teal;
+}
+
+.weight-bold {
+  font-family: var(--font-family-bold);
+}

@@ -1,7 +1,10 @@
-import '~/styles/global.css'
+import '@mantine/core/styles.css'
+import '~/styles/global.scss'
+
+import { createTheme, MantineProvider } from '@mantine/core'
 
 import type { AppProps } from 'next/app'
-import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import { lazy } from 'react'
 
 export interface SharedPageProps {
@@ -11,23 +14,33 @@ export interface SharedPageProps {
 
 const PreviewProvider = lazy(() => import('~/components/PreviewProvider'))
 
-const mono = IBM_Plex_Mono({
-  variable: '--font-family-mono',
+const regular = Poppins({
+  variable: '--font-family-regular',
   subsets: ['latin'],
-  weight: ['500', '700'],
+  weight: '400',
+})
+const medium = Poppins({
+  variable: '--font-family-medium',
+  subsets: ['latin'],
+  weight: '500',
 })
 
-const sans = Inter({
-  variable: '--font-family-sans',
+const bold = Poppins({
+  variable: '--font-family-bold',
   subsets: ['latin'],
-  weight: ['500', '700', '800'],
+  weight: '700',
 })
 
-const serif = PT_Serif({
-  variable: '--font-family-serif',
-  style: ['normal', 'italic'],
+const semiBold = Poppins({
+  variable: '--font-family-bold',
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: '600',
+})
+
+const extraBold = Poppins({
+  variable: '--font-family-bold',
+  subsets: ['latin'],
+  weight: '800',
 })
 
 export default function App({
@@ -35,14 +48,19 @@ export default function App({
   pageProps,
 }: AppProps<SharedPageProps>) {
   const { preview, token } = pageProps
+  const theme = createTheme({
+    /** Put your mantine theme override here */
+  })
   return (
-    <>
+    <MantineProvider theme={theme}>
       <style jsx global>
         {`
           :root {
-            --font-family-sans: ${sans.style.fontFamily};
-            --font-family-serif: ${serif.style.fontFamily};
-            --font-family-mono: ${mono.style.fontFamily};
+            --font-family-regular: ${regular.style.fontFamily};
+            --font-family-medium: ${medium.style.fontFamily};
+            --font-family-bold: ${bold.style.fontFamily};
+            --font-family-semi-bold: ${semiBold.style.fontFamily};
+            --font-family-extra-bold: ${extraBold.style.fontFamily};
           }
         `}
       </style>
@@ -53,6 +71,6 @@ export default function App({
       ) : (
         <Component {...pageProps} />
       )}
-    </>
+    </MantineProvider>
   )
 }

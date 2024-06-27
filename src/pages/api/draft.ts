@@ -25,7 +25,7 @@ export default async function preview(
   }
 
   const authClient = getClient({ token: readToken }).withConfig({
-    useCdn: false,
+    useCdn: true,
     token: readToken,
   })
 
