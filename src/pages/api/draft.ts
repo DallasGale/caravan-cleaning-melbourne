@@ -19,22 +19,28 @@ const client = createClient({
   token,
 })
 
-export default async function handle(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<string | void>,
 ) {
-  if (!req.url) {
-    throw new Error('Missing url')
+  // Check the secret and next parameters
+  const { secret } = req.query
+
+  if (secret !== process.env.SANITY_PREVIEW_SECRET) {
+    return res.status(401).json('Invalid token')
   }
-  const { isValid, redirectTo = '/' } = await validatePreviewUrl(
-    client,
-    req.url,
-  )
-  if (!isValid) {
-    return res.status(401).send('Invalid secret')
-  }
+
   // Enable Draft Mode by setting the cookies
   res.setDraftMode({ enable: true })
-  res.writeHead(307, { Location: redirectTo })
+
+  // Fetch the document to preview
+  const document = await client.fetch(`*[_type == "homepage"]`)
+
+  if (!document) {
+    return res.status(404).json('Document not found')
+  }
+
+  // Redirect to the path from the fetched document
+  res.writeHead(307, { Location: `""` })
   res.end()
 }
