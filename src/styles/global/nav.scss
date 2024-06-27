@@ -2,6 +2,10 @@
   width: 100%;
   max-width: $max-width-2;
   height: 63px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .nav__list {
   display: flex;
@@ -10,10 +14,13 @@
   margin: 0;
   padding: 0;
   align-items: center;
+  gap: 54px;
 }
 
 .nav__list-item {
   list-style: none;
+  position: relative;
+  height: auto;
 }
 
 .nav__link {
@@ -33,4 +40,14 @@
   display: block;
   position: relative;
   background-color: $white;
+}
+
+.nav__dropdown {
+  width: 100%;
+  height: 200px;
+  background-color: $white;
+  position: absolute;
+  top: $space-5;
+  border-radius: $space-2;
+  padding: $space-5;
 }

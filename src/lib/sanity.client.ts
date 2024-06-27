@@ -1,25 +1,19 @@
 import { createClient, type SanityClient } from 'next-sanity'
 
-import { apiVersion, dataset, projectId, useCdn } from '~/lib/sanity.api'
+import { apiVersion, dataset, projectId } from '~/lib/sanity.api'
 
-export function getClient(preview?: { token: string }): SanityClient {
+export function getClient(previewToken?: string): SanityClient {
   const client = createClient({
     projectId,
     dataset,
     apiVersion,
-    useCdn,
-    perspective: 'published',
+    useCdn: !previewToken,
+    perspective: previewToken ? 'previewDrafts' : 'published',
+    stega: {
+      enabled: previewToken ? true : false,
+      studioUrl: 'https://caravan-cleaning-melbourne.sanity.studio/',
+    },
+    token: previewToken,
   })
-  if (preview) {
-    if (!preview.token) {
-      throw new Error('You must provide a token to preview drafts')
-    }
-    return client.withConfig({
-      token: preview.token,
-      useCdn: true,
-      ignoreBrowserTokenWarning: true,
-      perspective: 'previewDrafts',
-    })
-  }
   return client
 }

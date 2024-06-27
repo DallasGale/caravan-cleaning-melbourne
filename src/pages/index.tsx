@@ -1,4 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { SanityDocument } from 'next-sanity'
 import { useLiveQuery } from 'next-sanity/preview'
 
 import Container from '~/components/Container'
@@ -8,33 +9,20 @@ import { HeroProps } from '~/components/homepage/hero/types'
 import ServiceFeature from '~/components/homepage/serviceFeature'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
+import { token } from '~/lib/sanity.token'
 import {
   HomepageContent,
   getHomepageContent,
   homepageQuery,
 } from '~/lib/sanity.queries'
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const client = getClient(preview ? { token: readToken } : undefined)
-
-  try {
-    const homepageContent = await getHomepageContent(client)
-
-    return {
-      props: {
-        preview,
-        token: preview ? readToken : '',
-        homepageContent,
-      },
-    }
-  } catch (error) {
-    console.error('Error fetching homepage content:', error)
-    return { props: { error: 'Failed to fetch data' } }
-  }
+type PageProps = {
+  homepageContent: HomepageContent
+  draftMode: boolean
+  token: string
 }
-export default function IndexPage(
-  props: InferGetStaticPropsType<typeof getStaticProps>,
-) {
+
+export default function Home(props: PageProps) {
   const [content] = useLiveQuery<HomepageContent>(
     props.homepageContent,
     homepageQuery,
@@ -64,4 +52,23 @@ export default function IndexPage(
       })}
     </Container>
   )
+}
+
+export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
+  const client = getClient(draftMode ? token : undefined)
+
+  try {
+    const homepageContent = await getHomepageContent(client)
+
+    return {
+      props: {
+        draftMode,
+        token: draftMode ? readToken : '',
+        homepageContent,
+      },
+    }
+  } catch (error) {
+    console.error('Error fetching homepage content:', error)
+    return { props: { error: 'Failed to fetch data' } }
+  }
 }

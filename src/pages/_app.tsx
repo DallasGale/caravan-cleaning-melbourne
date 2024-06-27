@@ -2,15 +2,11 @@ import '@mantine/core/styles.css'
 import '~/styles/global.scss'
 
 import { createTheme, MantineProvider } from '@mantine/core'
+import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
 
 import type { AppProps } from 'next/app'
 import { Poppins } from 'next/font/google'
-import { lazy } from 'react'
-
-export interface SharedPageProps {
-  preview: boolean
-  token: string
-}
+import { lazy, Suspense } from 'react'
 
 const PreviewProvider = lazy(() => import('~/components/PreviewProvider'))
 
@@ -43,16 +39,21 @@ const extraBold = Poppins({
   weight: '800',
 })
 
+export interface SharedPageProps {
+  draftMode: boolean
+  token: string
+}
+
 export default function App({
   Component,
   pageProps,
 }: AppProps<SharedPageProps>) {
-  const { preview, token } = pageProps
+  const { draftMode, token } = pageProps
   const theme = createTheme({
     /** Put your mantine theme override here */
   })
   return (
-    <MantineProvider theme={theme}>
+    <>
       <style jsx global>
         {`
           :root {
@@ -64,13 +65,20 @@ export default function App({
           }
         `}
       </style>
-      {preview ? (
-        <PreviewProvider token={token}>
-          <Component {...pageProps} />
-        </PreviewProvider>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </MantineProvider>
+      <MantineProvider theme={theme}>
+        <>
+          {draftMode ? (
+            <PreviewProvider token={token}>
+              <Component {...pageProps} />
+              <Suspense>
+                <VisualEditing />
+              </Suspense>
+            </PreviewProvider>
+          ) : (
+            <Component {...pageProps} />
+          )}
+        </>
+      </MantineProvider>
+    </>
   )
 }

@@ -11,8 +11,10 @@ specifiers:
   '@sanity/client': 6.12.3
   '@sanity/demo': 1.0.2
   '@sanity/image-url': ^1.0.2
+  '@sanity/preview-url-secret': ^1.6.17
   '@sanity/types': ^3.47.1
   '@sanity/vision': 3.28.0
+  '@sanity/visual-editing': ^2.1.5
   '@storybook/addon-essentials': ^8.1.10
   '@storybook/addon-interactions': ^8.1.10
   '@storybook/addon-links': ^8.1.10
@@ -58,8 +60,10 @@ dependencies:
   '@sanity/client': 6.12.3
   '@sanity/demo': 1.0.2_tailwindcss@3.4.1
   '@sanity/image-url': 1.0.2
+  '@sanity/preview-url-secret': 1.6.17_@sanity+client@6.12.3
   '@sanity/types': 3.47.1
   '@sanity/vision': 3.28.0_unymcpxz7r7pf6ojhcppboh42y
+  '@sanity/visual-editing': 2.1.5_wxpozzncc5ttfzjnfubfroyine
   '@tailwindcss/typography': 0.5.10_tailwindcss@3.4.1
   groq: 3.47.1
   next: 14.1.0_d3tqacw6xyeye43xvwfbjdi55i
@@ -3756,7 +3760,7 @@ packages:
     peerDependencies:
       '@sanity/client': ^6.19.1
     dependencies:
-      '@sanity/client': 6.12.3_debug@3.2.7
+      '@sanity/client': 6.12.3
       '@sanity/uuid': 3.0.2
     dev: false
 
@@ -3932,6 +3936,39 @@ packages:
     transitivePeerDependencies:
       - react-dom
       - react-is
+    dev: false
+
+  /@sanity/visual-editing/2.1.5_wxpozzncc5ttfzjnfubfroyine:
+    resolution: {integrity: sha512-CWwqI60Fvcsg+KbvtwKrgfumAtQ+nJUJ9NSl7SlGSkeQLlpIKnLOsTpLx0JuNxkR57/j79jU2eOh56FGVDiACg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@remix-run/react': '>= 2'
+      '@sanity/client': ^6.19.1
+      '@sveltejs/kit': '>= 2'
+      next: '>= 13 || >=14.3.0-canary.0 <14.3.0 || >=15.0.0-rc'
+      react: ^18.3 || >=19.0.0-rc
+      react-dom: ^18.3 || >=19.0.0-rc
+      svelte: '>= 4'
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@sanity/client':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      svelte:
+        optional: true
+    dependencies:
+      '@sanity/client': 6.12.3
+      '@sanity/preview-url-secret': 1.6.17_@sanity+client@6.12.3
+      '@vercel/stega': 0.1.2
+      next: 14.1.0_d3tqacw6xyeye43xvwfbjdi55i
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      scroll-into-view-if-needed: 3.1.0
+      valibot: 0.31.1
     dev: false
 
   /@sanity/webhook/3.0.1:
@@ -5442,6 +5479,10 @@ packages:
 
   /@vercel/stega/0.1.0:
     resolution: {integrity: sha512-5b0PkOJsFBX5alChuIO3qpkt5vIZBevzLPhUQ1UP8UzVjL3F1VllnZxp/thfD8R5ol7D7WHkgZHIjdUBX4tDpQ==}
+    dev: false
+
+  /@vercel/stega/0.1.2:
+    resolution: {integrity: sha512-P7mafQXjkrsoyTRppnt0N21udKS9wUmLXHRyP9saLXLHw32j/FgUJ3FscSWgvSqRs4cj7wKZtwqJEvWJ2jbGmA==}
     dev: false
 
   /@vitejs/plugin-react/4.3.1_vite@4.5.3:
@@ -13854,6 +13895,10 @@ packages:
   /uuidv7/0.4.4:
     resolution: {integrity: sha512-jjRGChg03uGp9f6wQYSO8qXkweJwRbA5WRuEQE8xLIiehIzIIi23qZSzsyvZPCPoFqkeLtZuz7Plt1LGukAInA==}
     hasBin: true
+    dev: false
+
+  /valibot/0.31.1:
+    resolution: {integrity: sha512-2YYIhPrnVSz/gfT2/iXVTrSj92HwchCt9Cga/6hX4B26iCz9zkIsGTS0HjDYTZfTi1Un0X6aRvhBi1cfqs/i0Q==}
     dev: false
 
   /validate-npm-package-license/3.0.4:

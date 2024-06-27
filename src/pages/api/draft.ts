@@ -4,7 +4,7 @@ import { isValidSecret } from 'sanity-plugin-iframe-pane/is-valid-secret'
 import { previewSecretId, readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 
-export default async function preview(
+export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse<string | void>,
 ) {
@@ -24,7 +24,7 @@ export default async function preview(
     return
   }
 
-  const authClient = getClient({ token: readToken }).withConfig({
+  const authClient = getClient(readToken).withConfig({
     useCdn: true,
     token: readToken,
   })
