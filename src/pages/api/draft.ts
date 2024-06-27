@@ -41,6 +41,6 @@ export default async function handler(
   }
 
   // Redirect to the path from the fetched document
-  res.writeHead(307, { Location: `""` })
+  res.writeHead(307, { Location: `/` })
   res.end()
 }

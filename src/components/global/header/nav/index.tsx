@@ -47,7 +47,7 @@ const Nav = () => {
           </li>
         </ul>
       </nav>
-      {hover && <div className="nav__dropdown">dropdown</div>}
+      {/* {hover && <div className="nav__dropdown">dropdown</div>} */}
     </>
   )
 }
