@@ -2,8 +2,8 @@
   "extends": ["next", "plugin:storybook/recommended"],
   "plugins": ["simple-import-sort"],
   "rules": {
-    "simple-import-sort/imports": "true",
-    "simple-import-sort/exports": "true",
+    "simple-import-sort/imports": "0",
+    "simple-import-sort/exports": "0",
     "react-hooks/exhaustive-deps": "error"
   }
 }
