@@ -38,14 +38,16 @@ const GridFeature = ({
         <PrimaryCta {...primaryCta} />
         {secondaryCta && 'todo'}
       </ContentWrapper>
-      <Image
-        className="section__background"
-        src={backgroundImage.asset.url}
-        alt={''}
-        layout="fill"
-        objectFit="cover"
-        quality={100}
-      />
+      {backgroundImage && (
+        <Image
+          className="section__background"
+          src={backgroundImage.asset.url}
+          alt={''}
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
+      )}
     </section>
   )
 }

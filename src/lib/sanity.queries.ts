@@ -23,6 +23,7 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
     _type,
     _key,
     title,
+    darkMode,
     backgroundImage {
       asset->{
         url
@@ -67,11 +68,12 @@ export type SectionTypes = {
   _key: string
   _type: 'serviceFeature' | 'gridFeature'
   title: string
+  darkMode: boolean
   subTitle: subHeadingRawTypes[]
   primaryCta: CtaProps
   secondaryCta?: CtaProps
   cards: CardTypes[]
-  backgroundImage: {
+  backgroundImage?: {
     asset: {
       url: string
     }
