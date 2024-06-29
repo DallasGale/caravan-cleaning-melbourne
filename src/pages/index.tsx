@@ -27,10 +27,8 @@ export default function Home(props: PageProps) {
     props.homepageContent,
     homepageQuery,
   )
-  console.log({ content })
   const hero: HeroProps = content?.hero
   const sections: HomepageContent['sections'] = content?.sections
-  console.log({ sections })
 
   if (!content) {
     return <div>Loading...</div>

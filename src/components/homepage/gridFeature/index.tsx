@@ -12,29 +12,67 @@ const GridFeature = ({
   title,
   subTitle,
   cards,
+  logosHeading,
+  logos,
   backgroundImage,
   primaryCta,
   secondaryCta,
 }: GridFeatureProps) => {
+  console.log({ logosHeading })
   return (
     <section className="section">
       <ContentWrapper>
         <div className="section__intro">
-          <h1 className="heading-1">{title}</h1>
-          <RichText content={subTitle} className="heading-3" />
+          <div>
+            <h1 className="heading-1">{title}</h1>
+            <RichText content={subTitle} className="heading-3" />
+          </div>
+
+          {/* Logos */}
+
+          {logos && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+              }}
+            >
+              <ul className="section__logo-grid">
+                <li className="section__logo-grid-item">
+                  {logosHeading && <p className="paragraph">{logosHeading}</p>}
+                </li>
+                {logos.map((logo) => {
+                  return (
+                    <li key={logo.imageAlt} className="section__logo-grid-item">
+                      <Image
+                        src={logo.image.asset.url}
+                        alt={logo.imageAlt}
+                        width={200}
+                        height={60}
+                      />
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )}
         </div>
+
         {/* Cards */}
-        <ul className="card-grid">
-          {cards.map((card) => {
-            return (
-              <li key={card._key} className="card-grid__item">
-                <Link href="/">
-                  <Card {...card} />
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+        {cards && (
+          <ul className="card-grid">
+            {cards.map((card) => {
+              return (
+                <li key={card._key} className="card-grid__item">
+                  <Link href="/">
+                    <Card {...card} />
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        )}
         <PrimaryCta {...primaryCta} />
         {secondaryCta && 'todo'}
       </ContentWrapper>

@@ -16,7 +16,7 @@ const ServiceFeature = ({
       <ContentWrapper>
         <div className="section__intro">
           <h1
-            className={`heading-1 ${darkMode ? 'color-white' : 'color-black'}`}
+            className={`heading-1 ${darkMode ? 'color-white' : 'color-navy'}`}
           >
             {title}
           </h1>

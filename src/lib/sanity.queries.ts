@@ -28,7 +28,16 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
       asset->{
         url
       }
-  },
+    },
+    logosHeading,
+    logos[] {
+      imageAlt,
+      image {
+        asset-> {
+          url
+        }
+      }
+    },
     subTitle,
     cards[] {
       _key,
@@ -72,12 +81,23 @@ export type SectionTypes = {
   subTitle: subHeadingRawTypes[]
   primaryCta: CtaProps
   secondaryCta?: CtaProps
-  cards: CardTypes[]
+  logosHeading?: string
+  logos?: ImageTypes[]
+  cards?: CardTypes[]
   backgroundImage?: {
     asset: {
       url: string
     }
   }
+}
+
+export type ImageTypes = {
+  image: {
+    asset: {
+      url: string
+    }
+  }
+  imageAlt: string
 }
 
 export interface HomepageContent {
