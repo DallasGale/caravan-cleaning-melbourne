@@ -35,6 +35,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
     }
   }, [])
 
+  console.log({ navItems })
   return (
     <>
       <nav className="nav" ref={navRef} onMouseLeave={handleMouseLeave}>
@@ -82,7 +83,17 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
       >
         {activeDropdown !== null && (
           <>
-            <div>{navItems[activeDropdown]?.name}</div>
+            <div>
+              {navItems[activeDropdown]?.dropdownItems?.map((item) => {
+                console.log({ item })
+                return (
+                  <div>
+                    <h3>{item.heading}</h3>
+                    {/* <Link href={item.link} /> */}
+                  </div>
+                )
+              })}
+            </div>
             <div>list</div>
           </>
         )}

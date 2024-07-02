@@ -37,6 +37,8 @@ export default function Container({
     return <div>Loading...</div>
   }
 
+  console.log({ navigation })
+
   return (
     <div className="container">
       <Header

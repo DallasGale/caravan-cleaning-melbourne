@@ -9,6 +9,14 @@ export const navigationQuery = groq`*[_type == "navigation"] {
   navItems[] {
     link,
     name,
+    dropdownItems[] {
+      item[] {
+        heading,
+        image,
+        imageAlt,
+        link,
+      }
+    }
   },
   phone,
 }`
@@ -16,6 +24,18 @@ export const navigationQuery = groq`*[_type == "navigation"] {
 export type NavItem = {
   link: string
   name: string
+  dropdownItems: DropdownItem[]
+}
+
+type Item = {
+  heading: string
+  image: string
+  imageAlt: string
+  link: string
+}
+
+type DropdownItem = {
+  item: Item[]
 }
 export interface NavigationContent {
   navItems: NavItem[]
