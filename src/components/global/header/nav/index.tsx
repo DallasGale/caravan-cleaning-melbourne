@@ -1,34 +1,58 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Logo from 'public/images/logo.svg'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import PrimaryCta from '~/components/cta/primary'
+import Dropdown from './dropdown'
+import { NavigationContent } from '~/lib/sanity.queries'
 
-const links = [
-  { label: 'What We Do', link: '' },
-  { label: 'Parts & Accessories', link: '' },
-  { label: 'About Us', link: '' },
-  { label: 'Recent Work', link: '' },
-  { label: 'Testimonials', link: '' },
-]
+const Nav = ({ navItems, phone }: NavigationContent) => {
+  const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const navRef = useRef<HTMLDivElement | null>(null)
 
-const Nav = () => {
-  const [hover, setHover] = useState(false)
+  const handleMouseEnter = (index: number) => {
+    clearTimeout(timeoutRef.current)
+    setActiveDropdown(index)
+  }
+
+  const handleMouseLeave: React.MouseEventHandler<HTMLElement> = (event) => {
+    console.log('handleMouseLeave')
+    if (navRef.current) {
+      if (event.clientY <= navRef.current?.getBoundingClientRect().bottom) {
+        timeoutRef.current = setTimeout(() => {
+          setActiveDropdown(null)
+        }, 100)
+      }
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
+
   return (
     <>
-      <nav className="nav">
+      <nav className="nav" ref={navRef} onMouseLeave={handleMouseLeave}>
         <ul className="nav__list">
           <li className="nav__list-item">
             <Image src={Logo} alt="Logo" width={150} height={45} />
           </li>
-          {links.map(({ label, link }) => (
+          {navItems.map(({ name, link }, index) => (
             <li
-              className="nav__list-item"
-              onMouseOver={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
+              className={`nav__list-item ${activeDropdown === index ? 'active' : ''}`}
+              key={index}
+              onMouseEnter={() => handleMouseEnter(index)}
             >
-              <Link className="nav__link" href={link}>
-                {label}
+              <Link
+                className={`nav__link ${activeDropdown === index ? 'active' : ''}`}
+                href={link}
+              >
+                {name}
               </Link>
             </li>
           ))}
@@ -38,8 +62,8 @@ const Nav = () => {
         </ul>
         <ul className="nav__list">
           <li className="nav__list-item">
-            <Link className="nav__link nav__link--ph" href="tel:0408811911">
-              0408 811 911
+            <Link className="nav__link nav__link--ph" href={`tel:${phone}`}>
+              {phone}
             </Link>
           </li>
           <li className="nav__list-item">
@@ -47,7 +71,22 @@ const Nav = () => {
           </li>
         </ul>
       </nav>
-      {/* {hover && <div className="nav__dropdown">dropdown</div>} */}
+      <Dropdown
+        show={activeDropdown !== null}
+        onMouseEnter={() => clearTimeout(timeoutRef.current)}
+        onMouseLeave={(event) => {
+          if (event.clientY > navRef?.current.getBoundingClientRect().bottom) {
+            setActiveDropdown(null)
+          }
+        }}
+      >
+        {activeDropdown !== null && (
+          <>
+            <div>{navItems[activeDropdown]?.name}</div>
+            <div>list</div>
+          </>
+        )}
+      </Dropdown>
     </>
   )
 }

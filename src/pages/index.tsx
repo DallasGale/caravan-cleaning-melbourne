@@ -15,6 +15,7 @@ import {
   getHomepageContent,
   homepageQuery,
 } from '~/lib/sanity.queries'
+import { draftMode } from 'next/headers'
 
 type PageProps = {
   homepageContent: HomepageContent
@@ -27,6 +28,7 @@ export default function Home(props: PageProps) {
     props.homepageContent,
     homepageQuery,
   )
+
   const hero: HeroProps = content?.hero
   const sections: HomepageContent['sections'] = content?.sections
 
@@ -35,7 +37,7 @@ export default function Home(props: PageProps) {
   }
 
   return (
-    <Container>
+    <Container draftMode={props.draftMode} token={props.token}>
       <Hero {...hero} />
       {sections.map((section) => {
         console.log({ section })

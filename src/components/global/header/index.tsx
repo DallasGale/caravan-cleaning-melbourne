@@ -1,9 +1,10 @@
+import { NavigationContent } from '~/lib/sanity.queries'
 import Nav from './nav'
 
-const Header = () => {
+const Header = ({ navItems, phone }: NavigationContent) => {
   return (
     <header className="header">
-      <Nav />
+      <Nav navItems={navItems} phone={phone} />
     </header>
   )
 }

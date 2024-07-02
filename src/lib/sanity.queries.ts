@@ -5,6 +5,32 @@ import { CtaProps } from '~/components/cta/types'
 import { HeroProps } from '~/components/homepage/hero/types'
 import { subHeadingRawTypes } from '~/components/types'
 
+export const navigationQuery = groq`*[_type == "navigation"] {
+  navItems[] {
+    link,
+    name,
+  },
+  phone,
+}`
+
+export type NavItem = {
+  link: string
+  name: string
+}
+export interface NavigationContent {
+  navItems: NavItem[]
+  phone: string
+}
+
+export async function getNavigationContent(
+  client: SanityClient,
+): Promise<HomepageContent> {
+  console.log('Executing navigation query')
+  const result = await client.fetch(navigationQuery)
+  console.log('Query result:', result)
+  return result
+}
+
 export const homepageQuery = groq`*[_type == "homepage"][0]{
   hero {
      primaryCta {
