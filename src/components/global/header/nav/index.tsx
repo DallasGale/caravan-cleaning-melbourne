@@ -4,7 +4,7 @@ import Logo from 'public/images/logo.svg'
 import { useEffect, useRef, useState } from 'react'
 import PrimaryCta from '~/components/cta/primary'
 import Dropdown from './dropdown'
-import { NavigationContent } from '~/lib/sanity.queries'
+import { DropdownItem, NavigationContent } from '~/lib/sanity.queries'
 
 const Nav = ({ navItems, phone }: NavigationContent) => {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
@@ -73,6 +73,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
         </ul>
       </nav>
       <Dropdown
+        mainLinks={navItems[activeDropdown]?.dropdownItems}
         show={activeDropdown !== null}
         onMouseEnter={() => clearTimeout(timeoutRef.current)}
         onMouseLeave={(event) => {
@@ -80,24 +81,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
             setActiveDropdown(null)
           }
         }}
-      >
-        {activeDropdown !== null && (
-          <>
-            <div>
-              {navItems[activeDropdown]?.dropdownItems?.map((item) => {
-                console.log({ item })
-                return (
-                  <div>
-                    <h3>{item.heading}</h3>
-                    {/* <Link href={item.link} /> */}
-                  </div>
-                )
-              })}
-            </div>
-            <div>list</div>
-          </>
-        )}
-      </Dropdown>
+      />
     </>
   )
 }
