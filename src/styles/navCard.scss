@@ -1,0 +1,30 @@
+.nav-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: $space-2;
+  min-height: 382px;
+  width: 100%;
+  padding: $space-5;
+  border: 4px solid transparent;
+  transition: all 0.05s ease;
+  text-decoration: none;
+  &:hover {
+    transition: all 0.25s ease;
+    transform: translateY(-8px);
+  }
+}
+
+.nav-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 0;
+  flex-direction: row;
+  list-style: none;
+}
+
+.nav-card__grid-item {
+}

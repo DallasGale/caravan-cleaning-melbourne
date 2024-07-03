@@ -28,17 +28,44 @@ export const Open: Story = {
     show: true,
     mainLinks: [
       {
-        item: {
-          _key: '123',
-          heading: 'Heading',
-          link: '/link',
-          image: {
-            asset: {
-              url: '123',
-            },
+        _key: '123',
+        heading: 'Caravan Cleaning',
+        paragraph:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        link: '/link',
+        image: {
+          asset: {
+            url: 'https://cdn.sanity.io/images/18hgnby7/production/12efa68c7ba4bfe89ca98ed339f215633c2956cb-164x91.svg',
           },
-          imageAlt: 'Image Alt Text',
         },
+        imageAlt: 'Image Alt Text',
+      },
+
+      {
+        _key: '123',
+        heading: 'Motorhome Cleaning',
+        paragraph:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        link: '/link',
+        image: {
+          asset: {
+            url: 'https://cdn.sanity.io/images/18hgnby7/production/12efa68c7ba4bfe89ca98ed339f215633c2956cb-164x91.svg',
+          },
+        },
+        imageAlt: 'Image Alt Text',
+      },
+      {
+        _key: '123',
+        heading: 'Full Pre-Sale Detail',
+        paragraph:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        link: '/link',
+        image: {
+          asset: {
+            url: 'https://cdn.sanity.io/images/18hgnby7/production/12efa68c7ba4bfe89ca98ed339f215633c2956cb-164x91.svg',
+          },
+        },
+        imageAlt: 'Image Alt Text',
       },
     ],
   },

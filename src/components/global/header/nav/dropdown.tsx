@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import Card from '~/components/card'
+import NavCard from '~/components/navCard'
 import { DropdownItem } from '~/lib/sanity.queries'
 
 interface DropdownProps {
@@ -24,26 +27,32 @@ const Dropdown = ({
     >
       <div className="nav__dropdown-inner">
         {mainLinks && (
-          <div>
-            {mainLinks.map(({ item }: DropdownItem) => {
-              return (
-                <>
-                  <h1>{item.heading}</h1>
-
-                  <Link
-                    key={item._key}
-                    className="nav__dropdown-link"
-                    href={item.link}
-                  >
-                    More Info
-                  </Link>
-                </>
-              )
-            })}
-          </div>
+          <ul className="nav-card__grid">
+            {mainLinks.map(
+              ({
+                _key,
+                heading,
+                paragraph,
+                link,
+                image,
+                imageAlt,
+              }: DropdownItem) => {
+                return (
+                  <li key={_key} className="nav-card__grid-item">
+                    <NavCard
+                      title={heading}
+                      paragraph={paragraph}
+                      image={image}
+                      imageAlt={imageAlt}
+                    />
+                  </li>
+                )
+              },
+            )}
+          </ul>
         )}
+        <div>Other section</div>
       </div>
-      <div>Other section</div>
     </div>
   )
 }

@@ -1,18 +1,21 @@
+@import './fonts.scss';
 @import './theme.scss';
 @import './sizes.scss';
-@import './fonts.scss';
 @import './layout.scss';
 @import './section.scss';
 @import './typography.scss';
 @import './cta/';
 @import './card/';
+@import './navCard/';
 @import './pages/homepage.scss';
 @import './global/header.scss';
 @import './global/nav.scss';
 
 html {
   background-color: var(--white);
-  font-family: $font-family-regular;
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
