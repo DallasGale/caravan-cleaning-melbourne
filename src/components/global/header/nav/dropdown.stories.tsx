@@ -39,6 +39,29 @@ export const Open: Story = {
           },
         },
         imageAlt: 'Image Alt Text',
+        additionalListHeading: 'Additional List Heading',
+        additionalList: [
+          {
+            _key: '123',
+            heading: 'Additional List Item',
+            link: '/link',
+          },
+          {
+            _key: '233',
+            heading: 'Additional List Item',
+            link: '/link',
+          },
+          {
+            _key: '434',
+            heading: 'Additional List Item',
+            link: '/link',
+          },
+          {
+            _key: '544',
+            heading: 'Additional List Item',
+            link: '/link',
+          },
+        ],
       },
 
       {

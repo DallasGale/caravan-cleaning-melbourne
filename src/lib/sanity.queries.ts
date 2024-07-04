@@ -19,6 +19,12 @@ export const navigationQuery = groq`*[_type == "navigation"] {
       }, 
       imageAlt,
       link,
+      additionalListHeading,
+        additionalList[] {
+        _key,
+        heading,
+        link,
+      }
     }
   },
   phone,
@@ -28,6 +34,12 @@ export type NavItem = {
   link: string
   name: string
   dropdownItems: DropdownItem[]
+}
+
+export type AdditionalListTypes = {
+  _key: string
+  heading: string
+  link: string
 }
 
 export type DropdownItem = {
@@ -41,6 +53,8 @@ export type DropdownItem = {
   }
   imageAlt: string
   link: string
+  additionalListHeading?: string
+  additionalList?: AdditionalListTypes[]
 }
 
 export interface NavigationContent {

@@ -72,9 +72,19 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
           </li>
         </ul>
       </nav>
+      {/* {navItems[activeDropdown]?.dropdownItems && ( */}
       <Dropdown
+        // additionalListHeading={
+        //   navItems[activeDropdown]?.dropdownItems
+        // }
+        // additionalListItems={
+        //   navItems[activeDropdown]?.dropdownItems[activeDropdown]
+        //     ?.additionalList || []
+        // }
         mainLinks={navItems[activeDropdown]?.dropdownItems}
-        show={activeDropdown !== null}
+        show={
+          navItems[activeDropdown]?.dropdownItems && activeDropdown !== null
+        }
         onMouseEnter={() => clearTimeout(timeoutRef.current)}
         onMouseLeave={(event) => {
           if (event.clientY > navRef?.current.getBoundingClientRect().bottom) {
@@ -82,6 +92,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
           }
         }}
       />
+      {/* )} */}
     </>
   )
 }

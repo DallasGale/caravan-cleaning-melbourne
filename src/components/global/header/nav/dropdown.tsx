@@ -2,14 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Card from '~/components/card'
 import NavCard from '~/components/navCard'
-import { DropdownItem } from '~/lib/sanity.queries'
+import { AdditionalListTypes, DropdownItem } from '~/lib/sanity.queries'
 
 interface DropdownProps {
   mainLinks: DropdownItem[]
   show: boolean
   onMouseEnter: () => void
   onMouseLeave: (event: any) => void
-  // children: React.ReactNode
 }
 
 const Dropdown = ({
@@ -32,7 +31,7 @@ const Dropdown = ({
               ({
                 _key,
                 heading,
-                paragraph,
+                // paragraph,
                 link,
                 image,
                 imageAlt,
@@ -41,7 +40,8 @@ const Dropdown = ({
                   <li key={_key} className="nav-card__grid-item">
                     <NavCard
                       title={heading}
-                      paragraph={paragraph}
+                      link={link}
+                      // paragraph={paragraph}
                       image={image}
                       imageAlt={imageAlt}
                     />
@@ -51,7 +51,29 @@ const Dropdown = ({
             )}
           </ul>
         )}
-        <div>Other section</div>
+        {mainLinks &&
+          mainLinks[0]?.additionalListHeading &&
+          mainLinks[0]?.additionalList && (
+            <div className="nav__dropdown-additional-list">
+              <h3 className="heading-5 color-navy">
+                {mainLinks[0]?.additionalListHeading}
+              </h3>
+
+              <ul>
+                {mainLinks[0]?.additionalList.map(
+                  ({ _key, heading, link }: AdditionalListTypes) => {
+                    return (
+                      <li key={_key} className="nav-card__grid-item">
+                        <Link href={link} className="display-1 color-navy">
+                          {heading}
+                        </Link>
+                      </li>
+                    )
+                  },
+                )}
+              </ul>
+            </div>
+          )}
       </div>
     </div>
   )
