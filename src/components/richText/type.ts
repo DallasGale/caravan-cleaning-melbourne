@@ -1,12 +1,14 @@
+import { subHeadingChildrenTypes, subHeadingRawTypes } from '../types'
+
 export interface BlockProps {
   block: {
-    children: any[]
+    children: subHeadingChildrenTypes[]
   }
   className: string
 }
 
 export interface RichTextProps {
-  content: any[]
+  content: subHeadingRawTypes[]
   className?: string
 }
 

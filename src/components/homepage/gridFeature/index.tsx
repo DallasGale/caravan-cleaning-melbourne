@@ -11,6 +11,7 @@ interface GridFeatureProps extends SectionTypes {}
 const GridFeature = ({
   title,
   subTitle,
+  details,
   cards,
   logosHeading,
   logos,
@@ -24,7 +25,8 @@ const GridFeature = ({
         <div className="section__intro">
           <div className="section__intro-words">
             <h1 className="heading-1">{title}</h1>
-            <RichText content={subTitle} className="heading-3" />
+            <h2 className="display-3">{subTitle}</h2>
+            <RichText content={details} className="body-1" />
           </div>
 
           {/* Logos */}

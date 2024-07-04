@@ -147,7 +147,7 @@ export type SectionTypes = {
   darkMode: boolean
   title: string
   subTitle: string
-  details: subHeadingRawTypes[]
+  details?: subHeadingRawTypes[]
   primaryCta: CtaProps
   secondaryCta?: CtaProps
   logosHeading?: string

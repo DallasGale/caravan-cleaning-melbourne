@@ -1,5 +1,6 @@
 export type subHeadingRawTypes = {
   children: subHeadingChildrenTypes[]
+  _key: string
 }
 
 export type subHeadingChildrenTypes = {
