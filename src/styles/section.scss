@@ -17,6 +17,13 @@
   align-items: flex-end;
 }
 
+.section__intro-words {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-bottom: $space-5;
+  padding-right: $space-8;
+}
 .section-content {
   max-width: $max-width-2;
 }

@@ -88,8 +88,10 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
   sections[] {
     _type,
     _key,
-    title,
     darkMode,
+    title,
+    subTitle,
+    details[],
     backgroundImage {
       asset->{
         url
@@ -104,10 +106,10 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
         }
       }
     },
-    subTitle,
     cards[] {
       _key,
       title,
+      link,
       paragraph,
       imageAlt,
       image {
@@ -142,9 +144,10 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
 export type SectionTypes = {
   _key: string
   _type: 'serviceFeature' | 'gridFeature'
-  title: string
   darkMode: boolean
-  subTitle: subHeadingRawTypes[]
+  title: string
+  subTitle: string
+  details: subHeadingRawTypes[]
   primaryCta: CtaProps
   secondaryCta?: CtaProps
   logosHeading?: string

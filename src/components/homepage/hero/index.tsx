@@ -16,7 +16,9 @@ const Hero = ({
         <div className="homepage-hero__content">
           <h1 className="heading-1 color-white">{heading}</h1>
           <RichText content={subHeading} className="heading-3 hero" />
-          <PrimaryCta {...primaryCta} />
+          <div>
+            <PrimaryCta {...primaryCta} />
+          </div>
         </div>
       </ContentWrapper>
       <Image

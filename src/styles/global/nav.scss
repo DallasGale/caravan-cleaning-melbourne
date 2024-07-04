@@ -27,8 +27,12 @@
   height: auto;
   height: 70%;
   border-radius: $space-1;
-  &.active {
+  @include trans_150;
+  @include trans_150;
+  &.active:not(.ph, .enquire),
+  &:hover:not(.ph, .enquire) {
     background-color: $white;
+    @include trans_150;
   }
 }
 
@@ -38,12 +42,18 @@
   color: $white;
   text-decoration: none;
   padding: 10px;
-  &--ph {
+  @include trans_150;
+  &.ph {
     color: $lime;
     font-size: $font-size-2;
+    &:hover {
+      color: $lime;
+    }
   }
-  &.active {
+  &.active:not(.ph, .enquire),
+  &:hover:not(.ph, .enquire) {
     color: $navy;
+    @include trans_150;
   }
 }
 
@@ -67,13 +77,16 @@
   position: absolute;
   top: $space-7;
   padding: $space-5;
-  transition: all 0.3s ease;
   &.show {
+    @include trans_350;
     opacity: 1;
+    visibility: visible;
   }
 
   &.hide {
+    @include trans_350;
     opacity: 0;
+    visibility: hidden;
   }
 }
 

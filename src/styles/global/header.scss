@@ -8,4 +8,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  @include trans_350;
+  &.scrolled {
+    background-color: rgba(12, 31, 43, 0.95);
+    @include trans_350;
+  }
 }

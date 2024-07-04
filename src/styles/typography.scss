@@ -1,7 +1,7 @@
 .heading-1 {
   font-size: $font-size-9;
   font-weight: 800;
-  line-height: 1;
+  line-height: $font-size-9;
   margin: 0;
 }
 
@@ -23,6 +23,7 @@
     }
   }
 }
+
 .heading-4 {
   font-size: $font-size-4;
   font-weight: 800;
@@ -30,9 +31,9 @@
 }
 
 .heading-5 {
-  font-size: $font-size-4;
-  font-weight: 700;
-  line-height: $line-height-5;
+  font-size: $font-size-11;
+  font-weight: 800;
+  line-height: $line-height-10;
 }
 
 .paragraph {
@@ -46,6 +47,25 @@
   font-size: $font-size-2;
   font-weight: 500;
   line-height: $line-height-2;
+  margin: 0;
+}
+.display-2 {
+  font-size: $font-size-4;
+  font-weight: 600;
+  line-height: $line-height-2;
+  margin: 0;
+}
+.display-3 {
+  font-size: $font-size-5;
+  font-weight: 500;
+  line-height: $line-height-5;
+  margin: 0;
+}
+
+.body-1 {
+  font-size: $font-size-4;
+  font-weight: 400;
+  line-height: $line-height-3;
   margin: 0;
 }
 // COLORS

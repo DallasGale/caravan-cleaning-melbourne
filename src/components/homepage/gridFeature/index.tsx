@@ -18,12 +18,11 @@ const GridFeature = ({
   primaryCta,
   secondaryCta,
 }: GridFeatureProps) => {
-  console.log({ logosHeading })
   return (
     <section className="section">
       <ContentWrapper>
         <div className="section__intro">
-          <div>
+          <div className="section__intro-words">
             <h1 className="heading-1">{title}</h1>
             <RichText content={subTitle} className="heading-3" />
           </div>
@@ -63,9 +62,10 @@ const GridFeature = ({
         {cards && (
           <ul className="card-grid">
             {cards.map((card) => {
+              console.log({ card })
               return (
                 <li key={card._key} className="card-grid__item">
-                  <Link href="/">
+                  <Link href={card.link} legacyBehavior>
                     <Card {...card} />
                   </Link>
                 </li>

@@ -8,6 +8,7 @@ interface ServiceFeatureProps extends SectionTypes {}
 const ServiceFeature = ({
   title,
   subTitle,
+  details,
   backgroundImage,
   darkMode,
 }: ServiceFeatureProps) => {
@@ -15,12 +16,22 @@ const ServiceFeature = ({
     <section className={`section ${darkMode ? 'dark' : 'light'}`}>
       <ContentWrapper>
         <div className="section__intro">
-          <h1
-            className={`heading-1 ${darkMode ? 'color-white' : 'color-navy'}`}
-          >
-            {title}
-          </h1>
-          {/* <RichText content={subTitle} className="heading-3" /> */}
+          <div className="section__intro-words">
+            <h1
+              className={`heading-5 ${darkMode ? 'color-white' : 'color-navy'}`}
+            >
+              {title}
+            </h1>
+            <h2
+              className={`display-3 ${darkMode ? 'color-white' : 'color-navy'}`}
+            >
+              {subTitle}
+            </h2>
+            <RichText
+              content={details}
+              className={`body-1 ${darkMode ? 'color-white' : 'color-navy'}`}
+            />
+          </div>
         </div>
       </ContentWrapper>
       {backgroundImage && (

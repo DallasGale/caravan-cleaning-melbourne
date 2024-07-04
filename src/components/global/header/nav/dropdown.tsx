@@ -17,7 +17,6 @@ const Dropdown = ({
   onMouseEnter,
   onMouseLeave,
 }: DropdownProps) => {
-  console.log({ mainLinks })
   return (
     <div
       onMouseEnter={onMouseEnter}
@@ -55,7 +54,7 @@ const Dropdown = ({
           mainLinks[0]?.additionalListHeading &&
           mainLinks[0]?.additionalList && (
             <div className="nav__dropdown-additional-list">
-              <h3 className="heading-5 color-navy">
+              <h3 className="display-5 color-navy">
                 {mainLinks[0]?.additionalListHeading}
               </h3>
 

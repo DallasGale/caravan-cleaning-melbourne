@@ -45,12 +45,12 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
           </li>
           {navItems.map(({ name, link }, index) => (
             <li
-              className={`nav__list-item ${activeDropdown === index ? 'active' : ''}`}
+              className={`nav__list-item ${navItems[activeDropdown]?.dropdownItems && activeDropdown === index ? 'active' : ''}`}
               key={index}
               onMouseEnter={() => handleMouseEnter(index)}
             >
               <Link
-                className={`nav__link ${activeDropdown === index ? 'active' : ''}`}
+                className={`nav__link ${navItems[activeDropdown]?.dropdownItems && activeDropdown === index ? 'active' : ''}`}
                 href={link}
               >
                 {name}
@@ -62,25 +62,17 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
           </li>
         </ul>
         <ul className="nav__list">
-          <li className="nav__list-item">
-            <Link className="nav__link nav__link--ph" href={`tel:${phone}`}>
+          <li className="nav__list-item ph">
+            <Link className="nav__link ph" href={`tel:${phone}`}>
               {phone}
             </Link>
           </li>
-          <li className="nav__list-item">
+          <li className="nav__list-item enquire">
             <PrimaryCta label="Enquire Now" link="/#enquire" />
           </li>
         </ul>
       </nav>
-      {/* {navItems[activeDropdown]?.dropdownItems && ( */}
       <Dropdown
-        // additionalListHeading={
-        //   navItems[activeDropdown]?.dropdownItems
-        // }
-        // additionalListItems={
-        //   navItems[activeDropdown]?.dropdownItems[activeDropdown]
-        //     ?.additionalList || []
-        // }
         mainLinks={navItems[activeDropdown]?.dropdownItems}
         show={
           navItems[activeDropdown]?.dropdownItems && activeDropdown !== null
