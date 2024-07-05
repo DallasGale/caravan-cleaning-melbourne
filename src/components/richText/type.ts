@@ -1,13 +1,17 @@
 import { subHeadingChildrenTypes, subHeadingRawTypes } from '../types'
 
 export interface BlockProps {
+  color: string
   block: {
+    style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+    listItem: string
     children: subHeadingChildrenTypes[]
   }
-  className: string
+  className?: string
 }
 
 export interface RichTextProps {
+  color?: string
   content: subHeadingRawTypes[]
   className?: string
 }

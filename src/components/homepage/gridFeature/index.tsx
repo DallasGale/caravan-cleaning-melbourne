@@ -5,6 +5,7 @@ import ContentWrapper from '~/components/contentWrapper'
 import PrimaryCta from '~/components/cta/primary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
+import { motion } from 'framer-motion'
 
 interface GridFeatureProps extends SectionTypes {}
 
@@ -24,9 +25,9 @@ const GridFeature = ({
       <ContentWrapper>
         <div className="section__intro">
           <div className="section__intro-words">
-            <h1 className="heading-1">{title}</h1>
-            <h2 className="display-3">{subTitle}</h2>
-            <RichText content={details} className="body-1" />
+            <h1 className="heading-2">{title}</h1>
+            {subTitle && <h2 className="display-3">{subTitle}</h2>}
+            <RichText content={details} />
           </div>
 
           {/* Logos */}
@@ -62,18 +63,22 @@ const GridFeature = ({
 
         {/* Cards */}
         {cards && (
-          <ul className="card-grid">
-            {cards.map((card) => {
-              console.log({ card })
+          <motion.ul
+            className="card-grid"
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            {cards.map((card, index) => {
               return (
                 <li key={card._key} className="card-grid__item">
                   <Link href={card.link} legacyBehavior>
-                    <Card {...card} />
+                    <Card {...card} delay={index * 0.25} />
                   </Link>
                 </li>
               )
             })}
-          </ul>
+          </motion.ul>
         )}
         <PrimaryCta {...primaryCta} />
         {secondaryCta && 'todo'}

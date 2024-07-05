@@ -1,6 +1,6 @@
 .nav {
   width: 100%;
-  max-width: $max-width-2;
+  max-width: $max-width-3;
   height: 85px;
   position: relative;
   display: flex;
@@ -91,7 +91,7 @@
 }
 
 .nav__dropdown-inner {
-  max-width: $max-width-2;
+  max-width: $max-width-3;
   width: 100%;
   display: grid;
   grid-template-columns: 70% 1fr;

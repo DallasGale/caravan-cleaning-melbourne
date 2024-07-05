@@ -3,6 +3,7 @@
 @import './theme.scss';
 @import './sizes.scss';
 @import './layout.scss';
+@import './richText.scss';
 @import './section.scss';
 @import './typography.scss';
 @import './cta/';
@@ -33,7 +34,6 @@ h4,
 h5,
 h6,
 p,
-ul,
 li {
   margin: 0;
   padding: 0;

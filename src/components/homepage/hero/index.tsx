@@ -14,8 +14,8 @@ const Hero = ({
     <section id="homepage-hero" className="section homepage-hero">
       <ContentWrapper>
         <div className="homepage-hero__content">
-          <h1 className="heading-1 color-white">{heading}</h1>
-          <RichText content={subHeading} className="heading-3 hero" />
+          <h1 className="heading-2 color-white">{heading}</h1>
+          <RichText content={subHeading} className="hero" />
           <div>
             <PrimaryCta {...primaryCta} />
           </div>

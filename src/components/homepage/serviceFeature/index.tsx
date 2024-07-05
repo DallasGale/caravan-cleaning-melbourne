@@ -18,7 +18,7 @@ const ServiceFeature = ({
         <div className="section__intro">
           <div className="section__intro-words">
             <h1
-              className={`heading-5 ${darkMode ? 'color-white' : 'color-navy'}`}
+              className={`heading-1 ${darkMode ? 'color-white' : 'color-navy'}`}
             >
               {title}
             </h1>
@@ -28,8 +28,9 @@ const ServiceFeature = ({
               {subTitle}
             </h2>
             <RichText
+              color={darkMode ? 'color-white' : 'color-navy'}
               content={details}
-              className={`body-1 ${darkMode ? 'color-white' : 'color-navy'}`}
+              // className={`body-1 ${darkMode ? 'color-white' : 'color-navy'}`}
             />
           </div>
         </div>
