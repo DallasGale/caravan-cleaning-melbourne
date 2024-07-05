@@ -8,11 +8,9 @@ const Block = ({ block, color, className }: BlockProps) => {
     ))
 
   const renderListItem = () => (
-    <ul className="rich-text-block__list">
-      <li className={`rich-text-block__list-item ${color}`}>
-        <span className={color}>{renderSpans()}</span>
-      </li>
-    </ul>
+    <li className={`rich-text-block__list-item ${color}`}>
+      <span className={color}>{renderSpans()}</span>
+    </li>
   )
 
   const renderHeading = (headingClass: string) => (

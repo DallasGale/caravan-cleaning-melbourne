@@ -30,7 +30,7 @@ const Dropdown = ({
               ({
                 _key,
                 heading,
-                // paragraph,
+                paragraph,
                 link,
                 image,
                 imageAlt,
@@ -40,7 +40,7 @@ const Dropdown = ({
                     <NavCard
                       title={heading}
                       link={link}
-                      // paragraph={paragraph}
+                      paragraph={paragraph}
                       image={image}
                       imageAlt={imageAlt}
                     />

@@ -1,0 +1,35 @@
+.footer {
+  background-color: $navy;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-5;
+}
+
+.footer__container {
+  max-width: $max-width-3;
+  width: 100%;
+}
+
+.footer__content-grid {
+  display: grid;
+  grid-template-columns: 350px 380px 1fr;
+  width: 100%;
+  gap: $space-3;
+  align-items: flex-start;
+}
+
+.footer__list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-3;
+  margin-bottom: $space-3;
+}
+
+.footer__list {
+  padding: 0;
+}
+
+.footer__list {
+  list-style: none;
+}

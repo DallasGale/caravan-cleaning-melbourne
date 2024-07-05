@@ -4,7 +4,7 @@ import Logo from 'public/images/logo.svg'
 import { useEffect, useRef, useState } from 'react'
 import PrimaryCta from '~/components/cta/primary'
 import Dropdown from './dropdown'
-import { DropdownItem, NavigationContent } from '~/lib/sanity.queries'
+import { NavigationContent } from '~/lib/sanity.queries'
 
 const Nav = ({ navItems, phone }: NavigationContent) => {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
@@ -35,7 +35,6 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
     }
   }, [])
 
-  console.log({ navItems })
   return (
     <>
       <nav className="nav" ref={navRef} onMouseLeave={handleMouseLeave}>

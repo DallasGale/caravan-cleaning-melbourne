@@ -2,17 +2,19 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  justify-content: space-around;
   border-radius: $space-2;
   width: 100%;
-  padding: 0 $space-5;
+  padding: $space-5;
   border: 4px solid transparent;
   transition: all 0.05s ease;
   text-decoration: none;
+  @include trans_150;
   &:hover {
-    transition: all 0.25s ease;
-    transform: translateY(-8px);
+    background-color: $white;
+    @include trans_350;
   }
 }
 
@@ -23,7 +25,4 @@
   padding: 0;
   flex-direction: row;
   list-style: none;
-}
-
-.nav-card__grid-item {
 }

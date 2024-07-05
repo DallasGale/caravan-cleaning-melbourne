@@ -31,7 +31,8 @@
   @include trans_150;
   &.active:not(.ph, .enquire),
   &:hover:not(.ph, .enquire) {
-    background-color: $white;
+    background-color: $teal;
+    color: $navy;
     @include trans_150;
   }
 }
@@ -73,7 +74,7 @@
   height: 400px;
   left: 0;
   right: 0;
-  background-color: $white;
+  background-color: $teal;
   position: absolute;
   top: $space-7;
   padding: $space-5;

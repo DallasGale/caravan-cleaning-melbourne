@@ -1,5 +1,12 @@
 .cta__root {
   height: $space-6;
+  border-radius: $space-2;
+  @include trans_150;
+  transform: translateY(0);
+  &:hover {
+    transform: translateY(2px);
+    @include trans_250;
+  }
 }
 
 .cta__primary {
@@ -13,7 +20,24 @@
   }
 }
 
+.cta__secondary {
+  background-color: $teal;
+  color: $navy;
+  border: 2px solid transparent;
+  &:hover {
+    background-color: $navy;
+    color: $teal;
+    border-color: $teal;
+  }
+}
+
 .cta__label {
   font-weight: 700;
   font-size: $font-size-2;
+}
+
+.cta__lockup {
+  display: flex;
+  flex-direction: row;
+  gap: $space-3;
 }

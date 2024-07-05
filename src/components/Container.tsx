@@ -5,6 +5,7 @@ import { NavigationContent, navigationQuery } from '~/lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { getClient } from '~/lib/sanity.client'
 import { useEffect, useState } from 'react'
+import Footer from './global/footer'
 
 type ContainerProps = {
   children: React.ReactNode
@@ -46,7 +47,7 @@ export default function Container({
         phone={Array.isArray(navigation) ? navigation[0]?.phone : ''}
       />
       <main>{children}</main>
-      <footer className="footer">Footer</footer>
+      <Footer />
     </div>
   )
 }

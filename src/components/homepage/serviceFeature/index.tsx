@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import ContentWrapper from '~/components/contentWrapper'
+import PrimaryCta from '~/components/cta/primary'
+import SecondaryCta from '~/components/cta/secondary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
 
@@ -10,6 +12,8 @@ const ServiceFeature = ({
   subTitle,
   details,
   backgroundImage,
+  primaryCta,
+  secondaryCta,
   darkMode,
 }: ServiceFeatureProps) => {
   return (
@@ -30,9 +34,13 @@ const ServiceFeature = ({
             <RichText
               color={darkMode ? 'color-white' : 'color-navy'}
               content={details}
-              // className={`body-1 ${darkMode ? 'color-white' : 'color-navy'}`}
             />
           </div>
+        </div>
+
+        <div className="cta__lockup">
+          {secondaryCta && <SecondaryCta {...secondaryCta} />}
+          {primaryCta && <PrimaryCta {...primaryCta} />}
         </div>
       </ContentWrapper>
       {backgroundImage && (

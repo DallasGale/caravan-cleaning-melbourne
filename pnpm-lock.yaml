@@ -24,6 +24,7 @@ specifiers:
   '@storybook/nextjs': ^8.1.10
   '@storybook/react': ^8.1.10
   '@storybook/test': ^8.1.10
+  '@tabler/icons-react': ^3.9.0
   '@tailwindcss/typography': 0.5.10
   '@types/node': ^20.14.9
   '@types/react': 18.2.55
@@ -71,6 +72,7 @@ dependencies:
   '@sanity/types': 3.47.1
   '@sanity/vision': 3.28.0_unymcpxz7r7pf6ojhcppboh42y
   '@sanity/visual-editing': 2.1.5_wxpozzncc5ttfzjnfubfroyine
+  '@tabler/icons-react': 3.9.0_react@18.2.0
   '@tailwindcss/typography': 0.5.10_tailwindcss@3.4.1
   framer-motion: 12.0.0-alpha.0_biqbaboplfbrettd7655fr4n2y
   groq: 3.47.1
@@ -4937,6 +4939,19 @@ packages:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
     dependencies:
       tslib: 2.6.3
+
+  /@tabler/icons-react/3.9.0_react@18.2.0:
+    resolution: {integrity: sha512-7Fbcrb5LYBGd9rwfkgrJsvLYGqPqO4WV3u6lfqE2wRzEVcevDQcdvo8toKp5Jcc66MPMEmMg+/tnUGwFIKQmUQ==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      '@tabler/icons': 3.9.0
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons/3.9.0:
+    resolution: {integrity: sha512-wZAwEu4iI0WmUA/bjstzNYri13D8X14f/SCRrzr2MyU+WP/6Vd+xq4YLM52dOS8V6ZVt+ujuE9IFkuJdsdSVAQ==}
+    dev: false
 
   /@tailwindcss/typography/0.5.10_tailwindcss@3.4.1:
     resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
