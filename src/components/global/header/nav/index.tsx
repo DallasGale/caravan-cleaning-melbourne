@@ -71,7 +71,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
           </li>
         </ul>
       </nav>
-      <Dropdown
+      {/* <Dropdown
         mainLinks={navItems[activeDropdown]?.dropdownItems}
         show={
           navItems[activeDropdown]?.dropdownItems && activeDropdown !== null
@@ -82,7 +82,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
             setActiveDropdown(null)
           }
         }}
-      />
+      /> */}
       {/* )} */}
     </>
   )
