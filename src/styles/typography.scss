@@ -76,7 +76,6 @@
   line-height: $line-height-2;
 }
 // COLORS
-
 .color-white {
   color: $white;
 }
@@ -93,10 +92,25 @@
 }
 
 .weight-bold {
-  font-family: 'Poppins', sans-serif;
   font-weight: 700;
+}
+
+.weight-semi {
+  font-weight: 600;
 }
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.small-print {
+  font-size: 10px;
+}
+
+.style-italic {
+  font-style: italic;
+}
+
+.text-centre {
+  text-align: center;
 }

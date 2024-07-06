@@ -1,5 +1,5 @@
 import '@mantine/core/styles.css'
-import '~/styles/global.scss'
+import '~/styles/index.scss'
 
 import { createTheme, MantineProvider } from '@mantine/core'
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'

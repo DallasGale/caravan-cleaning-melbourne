@@ -10,6 +10,7 @@ import { motion } from 'framer-motion'
 interface GridFeatureProps extends SectionTypes {}
 
 const GridFeature = ({
+  id,
   title,
   subTitle,
   details,
@@ -21,7 +22,7 @@ const GridFeature = ({
   secondaryCta,
 }: GridFeatureProps) => {
   return (
-    <section className="section">
+    <section className="section" id={id}>
       <ContentWrapper>
         <div className="section__intro">
           <div className="section__intro-words">

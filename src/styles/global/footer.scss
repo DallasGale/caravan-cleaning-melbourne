@@ -3,19 +3,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: $space-5;
+  padding: $space-5 0;
 }
 
 .footer__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   max-width: $max-width-3;
   width: 100%;
+  padding: $space-6 0;
 }
 
 .footer__content-grid {
   display: grid;
   grid-template-columns: 350px 380px 1fr;
   width: 100%;
-  gap: $space-3;
+  gap: $space-5;
   align-items: flex-start;
 }
 
@@ -32,4 +37,15 @@
 
 .footer__list {
   list-style: none;
+}
+
+.footer__seo {
+  padding: $space-3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgba(157, 218, 224, 0.2);
+  max-width: 80%;
+  width: 100%;
 }

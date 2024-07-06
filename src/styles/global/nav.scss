@@ -28,7 +28,6 @@
   height: 70%;
   border-radius: $space-1;
   @include trans_150;
-  @include trans_150;
   &.active:not(.ph, .enquire),
   &:hover:not(.ph, .enquire) {
     background-color: $teal;
@@ -43,7 +42,11 @@
   color: $white;
   text-decoration: none;
   padding: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
   @include trans_150;
+  border-radius: $space-1;
   &.ph {
     color: $lime;
     font-size: $font-size-2;
@@ -53,6 +56,7 @@
   }
   &.active:not(.ph, .enquire),
   &:hover:not(.ph, .enquire) {
+    background-color: $teal;
     color: $navy;
     @include trans_150;
   }

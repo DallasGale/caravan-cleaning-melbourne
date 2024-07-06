@@ -107,6 +107,19 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <div className="footer__seo">
+          <p className="small-print">
+            Caravan Cleaning & Polishing - Motorhome Cleaning & Polishing -
+            Camper Trailer Cleaning & Polishing - Caravan Pre-Sale Detail -
+            Motorhome Pre-Sale Detail - Camper Trailer Pre-Sale Detail - Caravan
+            Parts & Accessories - Motorhome Parts & Accessories - Camper Trailer
+            Parts & Accessories - Caravan Awning Stain Removal - Motorhome
+            Awning Stain Removal- Camper Trailer Awning Stain Removal - Caravan
+            Cleaning Products - Motorhome Cleaning Products - Camper Trailer
+            Cleaning Products - Caravan Weather Protection - Motorhome Weather
+            Protection - Camper Trailer Weather Protection
+          </p>
+        </div>
       </div>
     </footer>
   )

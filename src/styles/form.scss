@@ -1,0 +1,9 @@
+.form__fields {
+  border: none;
+  border-radius: $space-2;
+  padding: $space-4;
+}
+
+.form__fields::placeholder {
+  color: $navy;
+}

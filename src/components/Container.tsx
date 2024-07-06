@@ -1,11 +1,11 @@
-import Link from 'next/link'
 import Header from './global/header'
 import { useLiveQuery } from 'next-sanity/preview'
 import { NavigationContent, navigationQuery } from '~/lib/sanity.queries'
-import { GetStaticProps } from 'next'
 import { getClient } from '~/lib/sanity.client'
 import { useEffect, useState } from 'react'
 import Footer from './global/footer'
+import Testimonials from './global/testimonials'
+import Contact from './global/contact'
 
 type ContainerProps = {
   children: React.ReactNode
@@ -47,6 +47,8 @@ export default function Container({
         phone={Array.isArray(navigation) ? navigation[0]?.phone : ''}
       />
       <main>{children}</main>
+      <Contact />
+      <Testimonials />
       <Footer />
     </div>
   )

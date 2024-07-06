@@ -88,6 +88,7 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
   sections[] {
     _type,
     _key,
+    id,
     darkMode,
     title,
     subTitle,
@@ -144,6 +145,7 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
 export type SectionTypes = {
   _key: string
   _type: 'serviceFeature' | 'gridFeature'
+  id: string
   darkMode: boolean
   title: string
   subTitle: string

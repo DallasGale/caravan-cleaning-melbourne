@@ -1,0 +1,32 @@
+.testimonials {
+  background-color: $navy;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-5 0;
+}
+
+.testimonials__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: $max-width-3;
+  width: 100%;
+  padding: $space-6 0;
+}
+
+.testimonials__heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-3;
+}
+
+.testimonials__content-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  gap: $space-5;
+  align-items: flex-start;
+}
