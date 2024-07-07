@@ -47,8 +47,8 @@ export default function Container({
         phone={Array.isArray(navigation) ? navigation[0]?.phone : ''}
       />
       <main>{children}</main>
-      <Contact />
       <Testimonials />
+      <Contact />
       <Footer />
     </div>
   )
