@@ -12,6 +12,11 @@
     background-color: $navy;
   }
 }
+.section__minimal-grid-feature {
+  min-height: auto;
+  background-color: $navy;
+  color: $white;
+}
 
 .section__intro {
   display: grid;
@@ -55,4 +60,16 @@
 
 .section__logo-grid-item {
   list-style: none;
+}
+
+.section__minimal-grid-feature-grid {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 30px;
+  padding: $space-6 0;
+  .section__intro {
+    width: 250px;
+  }
 }

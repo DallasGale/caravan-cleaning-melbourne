@@ -16,6 +16,7 @@ import {
   homepageQuery,
 } from '~/lib/sanity.queries'
 import { draftMode } from 'next/headers'
+import MinimalGridFeature from '~/components/homepage/minimalGridFeature'
 
 type PageProps = {
   homepageContent: HomepageContent
@@ -46,6 +47,8 @@ export default function Home(props: PageProps) {
             return <ServiceFeature key={section._key} {...section} />
           case 'gridFeature':
             return <GridFeature key={section._key} {...section} />
+          case 'minimalGridFeature':
+            return <MinimalGridFeature key={section._key} {...section} />
           default:
             return null
         }

@@ -144,7 +144,7 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
 
 export type SectionTypes = {
   _key: string
-  _type: 'serviceFeature' | 'gridFeature'
+  _type: 'serviceFeature' | 'gridFeature' | 'minimalGridFeature'
   id: string
   darkMode: boolean
   title: string

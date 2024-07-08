@@ -8,4 +8,7 @@
   z-index: 1;
   margin-top: $space-8;
   margin-bottom: $space-8;
+  &.no-margin {
+    margin: 0;
+  }
 }

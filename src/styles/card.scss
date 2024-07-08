@@ -25,6 +25,15 @@
   flex-direction: row;
   margin-bottom: $space-5;
   margin-top: $space-5;
+  &--three {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    margin: 0;
+    .card {
+      min-height: auto;
+      padding: 0;
+    }
+  }
 }
 
 .card-grid__item {

@@ -6,36 +6,35 @@ import PrimaryCta from '~/components/cta/primary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
 import { motion } from 'framer-motion'
+import SmallCard from '~/components/smallCard'
 
 interface MinimalGridFeatureProps
   extends Omit<
     SectionTypes,
-    'logosHeading' | 'logo' | 'secondaryCta' | 'backgroundImage'
+    'logosHeading' | 'logo' | 'secondaryCta' | 'backgroundImage' | 'details'
   > {}
 
 const MinimalGridFeature = ({
   id,
   title,
   subTitle,
-  details,
   cards,
   primaryCta,
 }: MinimalGridFeatureProps) => {
   return (
-    <section className="section" id={id}>
-      <ContentWrapper>
-        <div className="section__intro">
-          <div className="section__intro-words">
-            <h1 className="heading-2">{title}</h1>
+    <section className="section section__minimal-grid-feature" id={id}>
+      <ContentWrapper noMargin>
+        <div className="section__minimal-grid-feature-grid">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <h1 className="heading-3">{title}</h1>
             {subTitle && <h2 className="display-3">{subTitle}</h2>}
-            <RichText content={details} />
+            <div>
+              <PrimaryCta {...primaryCta} />
+            </div>
           </div>
-        </div>
 
-        {/* Cards */}
-        {cards && (
           <motion.ul
-            className="card-grid"
+            className="card-grid card-grid--three"
             initial="offscreen"
             whileInView="onscreen"
             viewport={{ once: true, amount: 0.8 }}
@@ -44,14 +43,13 @@ const MinimalGridFeature = ({
               return (
                 <li key={card._key} className="card-grid__item">
                   <Link href={card.link} legacyBehavior>
-                    <Card {...card} delay={index * 0.25} />
+                    <SmallCard {...card} delay={index * 0.25} />
                   </Link>
                 </li>
               )
             })}
           </motion.ul>
-        )}
-        <PrimaryCta {...primaryCta} />
+        </div>
       </ContentWrapper>
     </section>
   )
