@@ -2,6 +2,7 @@ import Span from './span'
 import { BlockProps } from './type'
 
 const Block = ({ block, color, className }: BlockProps) => {
+  console.log({ block })
   const renderSpans = () =>
     block.children.map((span, index) => (
       <Span key={span._key || index} span={span} />
@@ -14,7 +15,9 @@ const Block = ({ block, color, className }: BlockProps) => {
   )
 
   const renderHeading = (headingClass: string) => (
-    <p className={`${color} ${headingClass} ${className}`}>{renderSpans()}</p>
+    <span className={`${color} ${headingClass} ${className}`}>
+      {renderSpans()}
+    </span>
   )
 
   const headingStyles = {

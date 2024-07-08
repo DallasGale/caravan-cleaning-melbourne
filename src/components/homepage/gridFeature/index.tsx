@@ -24,9 +24,11 @@ const GridFeature = ({
   return (
     <section className="section" id={id}>
       <ContentWrapper>
+        <div className="section__intro-hero">
+          <h1 className="heading-1">{title}</h1>
+        </div>
         <div className="section__intro">
           <div className="section__intro-words">
-            <h1 className="heading-2">{title}</h1>
             {subTitle && <h2 className="display-3">{subTitle}</h2>}
             <RichText content={details} />
           </div>

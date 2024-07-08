@@ -5,7 +5,8 @@ import SecondaryCta from '~/components/cta/secondary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
 
-interface ServiceFeatureProps extends SectionTypes {}
+interface ServiceFeatureProps
+  extends Omit<SectionTypes, 'logosHeading' | 'logo' | 'cards'> {}
 
 const ServiceFeature = ({
   title,
@@ -19,15 +20,17 @@ const ServiceFeature = ({
   return (
     <section className={`section ${darkMode ? 'dark' : 'light'}`}>
       <ContentWrapper>
+        <div className="section__intro-hero">
+          <h1
+            className={`heading-1 ${darkMode ? 'color-white' : 'color-navy'}`}
+          >
+            {title}
+          </h1>
+        </div>
         <div className="section__intro">
           <div className="section__intro-words">
-            <h1
-              className={`heading-1 ${darkMode ? 'color-white' : 'color-navy'}`}
-            >
-              {title}
-            </h1>
             <h2
-              className={`display-3 ${darkMode ? 'color-white' : 'color-navy'}`}
+              className={`display-2 ${darkMode ? 'color-white' : 'color-navy'}`}
             >
               {subTitle}
             </h2>
