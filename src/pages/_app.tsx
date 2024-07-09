@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css'
+
 import '~/styles/index.scss'
 
 import { createTheme, MantineProvider } from '@mantine/core'

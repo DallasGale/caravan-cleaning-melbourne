@@ -1,5 +1,4 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { SanityDocument } from 'next-sanity'
+import type { GetStaticProps } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
 
 import Container from '~/components/Container'
@@ -15,7 +14,6 @@ import {
   getHomepageContent,
   homepageQuery,
 } from '~/lib/sanity.queries'
-import { draftMode } from 'next/headers'
 import MinimalGridFeature from '~/components/homepage/minimalGridFeature'
 
 type PageProps = {
@@ -24,21 +22,12 @@ type PageProps = {
   token: string
 }
 
-export default function Home(props: PageProps) {
-  const [content] = useLiveQuery<HomepageContent>(
-    props.homepageContent,
-    homepageQuery,
-  )
-
-  const hero: HeroProps = content?.hero
-  const sections: HomepageContent['sections'] = content?.sections
-
-  if (!content) {
-    return <div>Loading...</div>
-  }
+export default function Home({ homepageContent, draftMode, token }: PageProps) {
+  const hero: HeroProps = homepageContent?.hero
+  const sections: HomepageContent['sections'] = homepageContent?.sections
 
   return (
-    <Container draftMode={props.draftMode} token={props.token}>
+    <Container draftMode={draftMode} token={token}>
       <Hero {...hero} />
       {sections.map((section) => {
         console.log({ section })
