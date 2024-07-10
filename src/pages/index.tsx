@@ -11,23 +11,35 @@ import { getClient } from '~/lib/sanity.client'
 import { token } from '~/lib/sanity.token'
 import {
   HomepageContent,
+  NavigationContent,
   getHomepageContent,
   homepageQuery,
+  navigationQuery,
 } from '~/lib/sanity.queries'
 import MinimalGridFeature from '~/components/homepage/minimalGridFeature'
 
 type PageProps = {
+  navigationContent: NavigationContent
   homepageContent: HomepageContent
   draftMode: boolean
   token: string
 }
 
-export default function Home({ homepageContent, draftMode, token }: PageProps) {
+export default function Home({
+  navigationContent,
+  homepageContent,
+  draftMode,
+  token,
+}: PageProps) {
   const hero: HeroProps = homepageContent?.hero
   const sections: HomepageContent['sections'] = homepageContent?.sections
 
   return (
-    <Container draftMode={draftMode} token={token}>
+    <Container
+      navigationContent={navigationContent}
+      draftMode={draftMode}
+      token={token}
+    >
       <Hero {...hero} />
       {sections.map((section) => {
         console.log({ section })
@@ -51,12 +63,14 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
 
   try {
     const homepageContent = await getHomepageContent(client)
+    const navigationContent = await client.fetch(navigationQuery)
 
     return {
       props: {
         draftMode,
         token: draftMode ? readToken : '',
         homepageContent,
+        navigationContent,
       },
     }
   } catch (error) {

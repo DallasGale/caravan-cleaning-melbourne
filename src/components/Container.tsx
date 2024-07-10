@@ -11,40 +11,27 @@ type ContainerProps = {
   children: React.ReactNode
   draftMode: boolean
   token: string
+  navigationContent: NavigationContent
 }
+
 export default function Container({
   children,
   draftMode,
   token,
+  navigationContent,
 }: ContainerProps) {
-  const [navigationContent, setNavigationContent] =
-    useState<NavigationContent | null>(null)
-
-  useEffect(() => {
-    const client = getClient(draftMode ? token : undefined)
-    client.fetch(navigationQuery).then(setNavigationContent)
-  }, [draftMode, token])
-
-  const [liveNavigationContent] = useLiveQuery<NavigationContent>(
-    navigationContent || { navItems: [], phone: '' },
-    navigationQuery,
-    { enabled: draftMode },
-  )
-
-  const navigation: NavigationContent =
-    liveNavigationContent || navigationContent
-
-  if (!navigationContent) {
-    return <div>Loading...</div>
-  }
-
-  console.log({ navigation })
+  console.log({ navigationContent })
+  // Ensure navigationContent is an array and has at least one item
+  const navigation =
+    Array.isArray(navigationContent) && navigationContent.length > 0
+      ? navigationContent[0]
+      : { navItems: [], phone: '' }
 
   return (
     <div className="container">
       <Header
-        navItems={Array.isArray(navigation) ? navigation[0]?.navItems : []}
-        phone={Array.isArray(navigation) ? navigation[0]?.phone : ''}
+        navItems={navigation.navItems || []}
+        phone={navigation.phone || ''}
       />
       <main>{children}</main>
       <Testimonials />
