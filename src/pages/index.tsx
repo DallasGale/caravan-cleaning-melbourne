@@ -27,12 +27,20 @@ type PageProps = {
 
 export default function Home({
   navigationContent,
-  homepageContent,
+  homepageContent: initialHomepageContent,
   draftMode,
   token,
 }: PageProps) {
-  const hero: HeroProps = homepageContent?.hero
-  const sections: HomepageContent['sections'] = homepageContent?.sections
+  const [liveHomepageContent] = useLiveQuery<HomepageContent>(
+    initialHomepageContent,
+    homepageQuery,
+    { enabled: draftMode },
+  )
+
+  const content = draftMode ? liveHomepageContent : initialHomepageContent
+
+  const hero: HeroProps = content?.hero
+  const sections: HomepageContent['sections'] = content?.sections || []
 
   return (
     <Container
@@ -40,9 +48,8 @@ export default function Home({
       draftMode={draftMode}
       token={token}
     >
-      <Hero {...hero} />
+      {hero && <Hero {...hero} />}
       {sections.map((section) => {
-        console.log({ section })
         switch (section._type) {
           case 'serviceFeature':
             return <ServiceFeature key={section._key} {...section} />

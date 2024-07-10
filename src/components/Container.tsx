@@ -18,9 +18,18 @@ export default function Container({
   children,
   draftMode,
   token,
-  navigationContent,
+  navigationContent: initialNavigationContent,
 }: ContainerProps) {
-  console.log({ navigationContent })
+  const [liveNavigationContent] = useLiveQuery<NavigationContent>(
+    initialNavigationContent,
+    navigationQuery,
+    { enabled: draftMode },
+  )
+
+  const navigationContent = draftMode
+    ? liveNavigationContent
+    : initialNavigationContent
+
   // Ensure navigationContent is an array and has at least one item
   const navigation =
     Array.isArray(navigationContent) && navigationContent.length > 0
