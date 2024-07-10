@@ -27,13 +27,25 @@
   height: auto;
   height: 70%;
   border-radius: $space-1;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    width: 0;
+    background: $teal;
+  }
   @include trans_150;
   &:not(.no-hover) {
     &.active:not(.ph, .enquire),
     &:hover:not(.ph, .enquire) {
-      background-color: $teal;
-      color: $navy;
-      @include trans_150;
+      &:after {
+        @include trans_150;
+        width: 100%;
+      }
     }
   }
 }
@@ -58,8 +70,8 @@
   }
   &.active:not(.ph, .enquire),
   &:hover:not(.ph, .enquire) {
-    background-color: $teal;
-    color: $navy;
+    // background-color: $teal;
+    // color: $navy;
     @include trans_150;
   }
 }
