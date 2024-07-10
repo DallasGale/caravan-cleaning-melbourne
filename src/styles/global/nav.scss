@@ -28,11 +28,13 @@
   height: 70%;
   border-radius: $space-1;
   @include trans_150;
-  &.active:not(.ph, .enquire),
-  &:hover:not(.ph, .enquire) {
-    background-color: $teal;
-    color: $navy;
-    @include trans_150;
+  &:not(.no-hover) {
+    &.active:not(.ph, .enquire),
+    &:hover:not(.ph, .enquire) {
+      background-color: $teal;
+      color: $navy;
+      @include trans_150;
+    }
   }
 }
 

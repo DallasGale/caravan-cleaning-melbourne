@@ -1,0 +1,13 @@
+.about-us__paragraph {
+  strong {
+    color: $white;
+  }
+}
+
+.about-us__content-wrapper {
+  max-width: 900px;
+  gap: 50px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}

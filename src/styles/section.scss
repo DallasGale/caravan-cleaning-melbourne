@@ -78,3 +78,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.section__about-us {
+  justify-content: flex-start;
+  min-height: auto;
+}

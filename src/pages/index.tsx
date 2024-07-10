@@ -27,17 +27,17 @@ type PageProps = {
 
 export default function Home({
   navigationContent,
-  homepageContent: initialHomepageContent,
+  homepageContent,
   draftMode,
   token,
 }: PageProps) {
   const [liveHomepageContent] = useLiveQuery<HomepageContent>(
-    initialHomepageContent,
+    homepageContent,
     homepageQuery,
     { enabled: draftMode },
   )
 
-  const content = draftMode ? liveHomepageContent : initialHomepageContent
+  const content = draftMode ? liveHomepageContent : homepageContent
 
   const hero: HeroProps = content?.hero
   const sections: HomepageContent['sections'] = content?.sections || []

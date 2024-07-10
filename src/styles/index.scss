@@ -10,12 +10,14 @@
 @import './form/';
 @import './card/';
 @import './navCard/';
+@import './pages/aboutUs.scss';
 @import './pages/homepage.scss';
 @import './global/footer.scss';
 @import './global/contact.scss';
 @import './global/testimonials.scss';
 @import './global/header.scss';
 @import './global/nav.scss';
+@import './slickSliderOverides.scss';
 
 html {
   background-color: var(--white);

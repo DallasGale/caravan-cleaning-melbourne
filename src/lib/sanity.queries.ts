@@ -3,7 +3,8 @@ import { type SanityClient } from 'next-sanity'
 import { CardTypes } from '~/components/card/types'
 import { CtaProps } from '~/components/cta/types'
 import { HeroProps } from '~/components/homepage/hero/types'
-import { subHeadingRawTypes } from '~/components/types'
+import { RichTextProps } from '~/components/richText/type'
+import { richTextRawTypes } from '~/components/types'
 
 export const navigationQuery = groq`*[_type == "navigation"] {
   navItems[] {
@@ -46,12 +47,7 @@ export type DropdownItem = {
   _key: string
   heading: string
   paragraph: string
-  image: {
-    asset: {
-      url: string
-    }
-  }
-  imageAlt: string
+  image: AssetType
   link: string
   additionalListHeading?: string
   additionalList?: AdditionalListTypes[]
@@ -142,6 +138,28 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
   }
 }`
 
+export const aboutPageQuery = groq`*[_type == "aboutPage"][0]{
+  title,
+  paragraph,
+  imageCarousel {
+    images[] {
+      _key,
+      asset-> {
+        url
+      },
+      imageAlt,
+    },
+  },
+}`
+
+export interface AboutPageContent {
+  title: string
+  paragraph: richTextRawTypes[]
+  imageCarousel: {
+    images: AssetType[]
+  }
+}
+
 export type SectionTypes = {
   _key: string
   _type: 'serviceFeature' | 'gridFeature' | 'minimalGridFeature'
@@ -149,7 +167,7 @@ export type SectionTypes = {
   darkMode: boolean
   title: string
   subTitle: string
-  details?: subHeadingRawTypes[]
+  details?: richTextRawTypes[]
   primaryCta: CtaProps
   secondaryCta?: CtaProps
   logosHeading?: string
@@ -161,14 +179,16 @@ export type SectionTypes = {
     }
   }
 }
-
-export type ImageTypes = {
-  image: {
-    asset: {
-      url: string
-    }
+export type AssetType = {
+  _key: string
+  asset: {
+    url: string
   }
   imageAlt: string
+}
+
+export type ImageTypes = {
+  image: AssetType
 }
 
 export interface HomepageContent {
@@ -181,6 +201,15 @@ export async function getHomepageContent(
 ): Promise<HomepageContent> {
   console.log('Executing homepage query')
   const result = await client.fetch(homepageQuery)
+  console.log('Query result:', result)
+  return result
+}
+
+export async function getAboutPageContent(
+  client: SanityClient,
+): Promise<AboutPageContent> {
+  console.log('Executing about page query')
+  const result = await client.fetch(aboutPageQuery)
   console.log('Query result:', result)
   return result
 }

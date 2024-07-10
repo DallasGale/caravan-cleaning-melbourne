@@ -1,8 +1,8 @@
 import { CardTypes } from '~/components/card/types'
-import { subHeadingRawTypes } from '~/components/types'
+import { richTextRawTypes } from '~/components/types'
 
 export interface GridFeatureProps {
   title: string
-  subTitle: subHeadingRawTypes[]
+  subTitle: richTextRawTypes[]
   cards: CardTypes[]
 }

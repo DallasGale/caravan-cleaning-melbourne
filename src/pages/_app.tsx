@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css'
-
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import '~/styles/index.scss'
 
 import { createTheme, MantineProvider } from '@mantine/core'

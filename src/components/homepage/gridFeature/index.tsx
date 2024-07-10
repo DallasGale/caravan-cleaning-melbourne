@@ -49,10 +49,13 @@ const GridFeature = ({
                 </li>
                 {logos.map((logo) => {
                   return (
-                    <li key={logo.imageAlt} className="section__logo-grid-item">
+                    <li
+                      key={logo.image._key}
+                      className="section__logo-grid-item"
+                    >
                       <Image
                         src={logo.image.asset.url}
-                        alt={logo.imageAlt}
+                        alt={logo.image.imageAlt}
                         width={200}
                         height={60}
                       />

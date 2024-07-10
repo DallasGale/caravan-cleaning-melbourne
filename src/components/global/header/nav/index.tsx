@@ -35,12 +35,15 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
     }
   }, [])
 
+  console.log({ navItems })
   return (
     <>
       <nav className="nav" ref={navRef} onMouseLeave={handleMouseLeave}>
         <ul className="nav__list">
-          <li className="nav__list-item">
-            <Image src={Logo} alt="Logo" width={150} height={45} />
+          <li className="nav__list-item no-hover">
+            <Link href="/">
+              <Image src={Logo} alt="Logo" width={150} height={45} />
+            </Link>
           </li>
           {navItems.map(({ name, link }, index) => (
             <li

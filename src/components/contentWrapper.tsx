@@ -1,16 +1,16 @@
 interface ContentWrapperProps {
   children: React.ReactNode
   noMargin?: boolean
-  withCarousel?: boolean
+  modifier?: string
 }
 const ContentWrapper = ({
   children,
   noMargin,
-  withCarousel,
+  modifier,
 }: ContentWrapperProps) => {
   return (
     <div
-      className={`content-wrapper ${noMargin ? 'no-margin' : ''} ${withCarousel ? 'carousel-content-wrapper' : ''}`}
+      className={`content-wrapper ${noMargin ? 'no-margin' : ''}${modifier}`}
     >
       {children}
     </div>

@@ -1,8 +1,8 @@
-import { subHeadingRawTypes } from '~/components/types'
+import { richTextRawTypes } from '~/components/types'
 
 export interface HeroProps {
   heading: string
-  subHeading: subHeadingRawTypes[]
+  subHeading: richTextRawTypes[]
   primaryCta: {
     label: string
     link: string

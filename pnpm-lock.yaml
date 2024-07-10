@@ -49,10 +49,12 @@ specifiers:
   prettier-plugin-tailwindcss: 0.5.11
   react: 18.2.0
   react-dom: 18.2.0
+  react-slick: ^0.30.2
   sanity: 3.28.0
   sanity-plugin-iframe-pane: 2.6.1
   sass: ^1.77.6
   sass-loader: ^14.2.1
+  slick-carousel: ^1.8.1
   storybook: ^8.1.10
   style-loader: ^4.0.0
   styled-components: 6.1.8
@@ -86,8 +88,10 @@ dependencies:
   next-sanity: 5.5.11_lhibey5mevcxy2w2flvmdgmg3a
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-slick: 0.30.2_biqbaboplfbrettd7655fr4n2y
   sanity: 3.28.0_kpnqvm5h6jjsjqrep7ufw4tuk4
   sanity-plugin-iframe-pane: 2.6.1_gvple6yfiw2qhz4nai2vngs52m
+  slick-carousel: 1.8.1
   styled-components: 6.1.8_biqbaboplfbrettd7655fr4n2y
   vite: 5.3.1_6tea7d2h5elskagnjbyikbrjaq
 
@@ -7880,6 +7884,10 @@ packages:
       tapable: 2.2.1
     dev: true
 
+  /enquire.js/2.1.6:
+    resolution: {integrity: sha512-/KujNpO+PT63F7Hlpu4h3pE3TokKRHN26JYmQpPyjkRD/N57R7bPDNojMXdi7uveAKjYB7yQnartCxZnFWr0Xw==}
+    dev: false
+
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
     dev: true
@@ -10429,7 +10437,6 @@ packages:
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-    dev: true
 
   /lodash.defaults/4.2.0:
     resolution: {integrity: sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ==}
@@ -12687,6 +12694,21 @@ packages:
       use-sync-external-store: 1.2.2_react@18.2.0
     dev: false
 
+  /react-slick/0.30.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-XvQJi7mRHuiU3b9irsqS9SGIgftIfdV5/tNcURTb5LdIokRA5kIIx3l4rlq2XYHfxcSntXapoRg/GxaVOM1yfg==}
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      classnames: 2.5.1
+      enquire.js: 2.1.6
+      json2mq: 0.2.0
+      lodash.debounce: 4.0.8
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      resize-observer-polyfill: 1.5.1
+    dev: false
+
   /react-style-proptype/3.2.2:
     resolution: {integrity: sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==}
     dependencies:
@@ -13615,6 +13637,12 @@ packages:
       immer: 10.1.1
       is-plain-object: 5.0.0
       tiny-warning: 1.0.3
+    dev: false
+
+  /slick-carousel/1.8.1:
+    resolution: {integrity: sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==}
+    peerDependencies:
+      jquery: '>=1.8.0'
     dev: false
 
   /sort-object-keys/1.1.3:

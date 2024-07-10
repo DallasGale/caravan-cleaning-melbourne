@@ -5,7 +5,7 @@ import { Variants, motion } from 'framer-motion'
 interface CardProps extends CardTypes {
   delay: number
 }
-const SmallCard = ({ title, paragraph, image, imageAlt, delay }: CardProps) => {
+const SmallCard = ({ title, paragraph, image, delay }: CardProps) => {
   const cardVariants: Variants = {
     offscreen: {
       x: -30,
@@ -25,7 +25,7 @@ const SmallCard = ({ title, paragraph, image, imageAlt, delay }: CardProps) => {
   return (
     <motion.div className="card" variants={cardVariants}>
       <div style={{ height: '120px', width: '90px', position: 'relative' }}>
-        <Image src={image.asset.url} layout="fill" alt={imageAlt} />
+        <Image src={image.asset.url} layout="fill" alt={image.imageAlt} />
       </div>
       <h2 className="display-2 color-teal">{title}</h2>
       <p className="paragraph color-white">{paragraph}</p>

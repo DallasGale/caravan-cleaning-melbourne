@@ -27,14 +27,7 @@ const Dropdown = ({
         {mainLinks && (
           <ul className="nav-card__grid">
             {mainLinks.map(
-              ({
-                _key,
-                heading,
-                paragraph,
-                link,
-                image,
-                imageAlt,
-              }: DropdownItem) => {
+              ({ _key, heading, paragraph, link, image }: DropdownItem) => {
                 return (
                   <li key={_key} className="nav-card__grid-item">
                     <NavCard
@@ -42,7 +35,6 @@ const Dropdown = ({
                       link={link}
                       paragraph={paragraph}
                       image={image}
-                      imageAlt={imageAlt}
                     />
                   </li>
                 )

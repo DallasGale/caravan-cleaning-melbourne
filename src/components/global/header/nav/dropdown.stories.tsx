@@ -34,11 +34,12 @@ export const Open: Story = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         link: '/link',
         image: {
+          _key: 'image-164x91-0',
+          imageAlt: 'Image Alt Text',
           asset: {
             url: 'https://cdn.sanity.io/images/18hgnby7/production/12efa68c7ba4bfe89ca98ed339f215633c2956cb-164x91.svg',
           },
         },
-        imageAlt: 'Image Alt Text',
         additionalListHeading: 'Additional List Heading',
         additionalList: [
           {
@@ -71,11 +72,12 @@ export const Open: Story = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         link: '/link',
         image: {
+          _key: 'image-164x91-0',
+          imageAlt: 'Image Alt Text',
           asset: {
             url: 'https://cdn.sanity.io/images/18hgnby7/production/12efa68c7ba4bfe89ca98ed339f215633c2956cb-164x91.svg',
           },
         },
-        imageAlt: 'Image Alt Text',
       },
       {
         _key: '123',
@@ -84,11 +86,12 @@ export const Open: Story = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         link: '/link',
         image: {
+          _key: 'image-164x91-0',
+          imageAlt: 'Image Alt Text',
           asset: {
             url: 'https://cdn.sanity.io/images/18hgnby7/production/12efa68c7ba4bfe89ca98ed339f215633c2956cb-164x91.svg',
           },
         },
-        imageAlt: 'Image Alt Text',
       },
     ],
   },

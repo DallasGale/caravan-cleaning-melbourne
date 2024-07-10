@@ -2,7 +2,6 @@ import Span from './span'
 import { BlockProps } from './type'
 
 const Block = ({ block, color, className }: BlockProps) => {
-  console.log({ block })
   const renderSpans = () =>
     block.children.map((span, index) => (
       <Span key={span._key || index} span={span} />

@@ -35,7 +35,7 @@ const ServiceFeature = ({
 
   return (
     <section className={`section ${darkMode ? 'dark' : 'light'}`}>
-      <ContentWrapper withCarousel>
+      <ContentWrapper>
         <div>
           <div className="section__intro-hero">
             <h1
