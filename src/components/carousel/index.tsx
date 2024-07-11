@@ -1,87 +1,93 @@
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { AssetType } from '~/lib/sanity.queries'
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import {
+  MediaPlayer,
+  MediaProvider,
+  type MediaPlayerProps,
+} from '@vidstack/react'
+import Placeholder from '/public/images/carousel-placeholder.jpg'
 
 interface CarouselProps {
+  infinite?: boolean
+  slidesToShow?: number
+  slidesToScroll?: number
   assets: {
     images?: AssetType[]
     videos?: AssetType[]
   }
 }
-const Carousel = ({ assets }: CarouselProps) => {
-  const videoRefs = useRef({})
+const Carousel = ({
+  infinite = false,
+  slidesToShow = 1,
+  slidesToScroll = 3,
+  assets,
+}: CarouselProps) => {
+  // const videoRefs = useRef({})
+  const sliderRef = useRef<Slider>(null)
+  const [assetsLoaded, setAssetsLoaded] = useState(0)
+  const totalAssets =
+    (assets?.images?.length || 0) + (assets?.videos?.length || 0)
 
-  const pauseAllVideos = useCallback(() => {
-    Object.values(videoRefs.current).forEach((videoEl: HTMLVideoElement) => {
-      if (videoEl && !videoEl.paused) {
-        videoEl.pause()
-      }
-    })
-  }, [])
-
-  const playCurrentVideo = useCallback((index: number) => {
-    const currentVideo = videoRefs.current[index] as HTMLVideoElement
-    if (currentVideo && currentVideo.paused) {
-      currentVideo.play()
+  useEffect(() => {
+    if (assetsLoaded === totalAssets && sliderRef.current) {
+      // All assets are loaded, reinitialize the slider
+      sliderRef.current.slickGoTo(0)
     }
-  }, [])
+  }, [assetsLoaded, totalAssets])
+
+  const handleAssetLoad = () => {
+    setAssetsLoaded((prev) => prev + 1)
+  }
+
   const settings = {
     className: 'center',
     centerMode: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    centerPadding: '60px',
+    infinite,
+    slidesToShow,
+    slidesToScroll,
+    centerPadding: '10%',
     swipeToSlide: true,
     speed: 350,
     dots: true,
-    variableWidth: true,
-    beforeChange: (oldIndex: number, newIndex: number) => {
-      pauseAllVideos()
-    },
-    afterChange: (currentIndex: number) => {
-      playCurrentVideo(currentIndex)
-      console.log(`Slider Changed to: ${currentIndex + 1}`)
-    },
+    variableWidth: false,
   }
 
   return (
     <div className="slider-container">
-      <Slider {...settings}>
-        {assets?.images &&
-          assets?.images.map(({ _key, asset, imageAlt, _type }) => {
-            return (
+      <Slider {...settings} ref={sliderRef}>
+        {assets?.images?.map(({ _key, asset, imageAlt, _type }, index) => {
+          return (
+            <div key={_key} className="slide-wrapper">
               <Image
-                key={_key}
                 className="slider-image"
                 src={asset.url}
                 alt={imageAlt}
+                layout="responsive"
                 width={400}
                 height={600}
+                onLoad={handleAssetLoad}
               />
-            )
-          })}
+            </div>
+          )
+        })}
 
-        {assets?.videos &&
-          assets?.videos.map(({ _key, asset, imageAlt }, index) => {
-            return (
-              <video
-                controls
-                muted
-                key={_key}
-                className="slider-image"
+        {assets?.videos?.map(({ _key, asset, imageAlt, _type }, index) => {
+          return (
+            <div key={_key} className="slide-wrapper">
+              <MediaPlayer
+                onCanPlay={handleAssetLoad}
+                className="slider-video"
                 src={asset.url}
-                width={400}
-                height={600}
-                ref={(el) => {
-                  if (el) {
-                    videoRefs.current[assets.videos.length + index] = el
-                  }
-                }}
-              />
-            )
-          })}
+                controls
+                fullscreenOrientation="portrait"
+              >
+                <MediaProvider />
+              </MediaPlayer>
+            </div>
+          )
+        })}
       </Slider>
     </div>
   )

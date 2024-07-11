@@ -71,3 +71,23 @@
 .slick-dots {
   bottom: -55px;
 }
+
+.slide-wrapper {
+  height: 600px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: $space-4;
+  overflow: hidden;
+  background-color: $navy;
+  video {
+    height: 100%;
+  }
+}
+
+.slider-image,
+.slider-video {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

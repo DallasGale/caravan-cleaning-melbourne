@@ -51,7 +51,12 @@ export default function About({
             content={content.paragraph}
             className="about-us__paragraph display-1 color-teal"
           />
-          {/* <Carousel assets={content.imageCarousel} /> */}
+          {/* <Carousel
+            assets={content.imageCarousel}
+            slidesToShow={2}
+            // infinite={true}
+            slidesToScroll={2}
+          /> */}
         </ContentWrapper>
       </section>
     </Container>

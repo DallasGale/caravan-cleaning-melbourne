@@ -29,6 +29,7 @@ specifiers:
   '@tailwindcss/typography': 0.5.10
   '@types/node': ^20.14.9
   '@types/react': 18.2.55
+  '@vidstack/react': ^1.11.27
   antd: ^5.19.1
   autoprefixer: 10.4.17
   css-loader: ^7.1.2
@@ -81,6 +82,7 @@ dependencies:
   '@sanity/visual-editing': 2.1.5_wxpozzncc5ttfzjnfubfroyine
   '@tabler/icons-react': 3.9.0_react@18.2.0
   '@tailwindcss/typography': 0.5.10_tailwindcss@3.4.1
+  '@vidstack/react': 1.11.27_eteh3so6nztr56vqc4nbg6qqla
   antd: 5.19.1_biqbaboplfbrettd7655fr4n2y
   embla-carousel-react: 7.1.0_react@18.2.0
   framer-motion: 12.0.0-alpha.0_biqbaboplfbrettd7655fr4n2y
@@ -7091,6 +7093,19 @@ packages:
     resolution: {integrity: sha512-P7mafQXjkrsoyTRppnt0N21udKS9wUmLXHRyP9saLXLHw32j/FgUJ3FscSWgvSqRs4cj7wKZtwqJEvWJ2jbGmA==}
     dev: false
 
+  /@vidstack/react/1.11.27_eteh3so6nztr56vqc4nbg6qqla:
+    resolution: {integrity: sha512-jJWGu1v12WK+ymLXNtQHD16vGclYXa5iJ/KNkX2XaPiRz5pGHXzxVbD4YJhDYORN/VXV4pWvfkuUL5LHZvLhFw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/react': ^18.0.0
+      react: ^18.0.0
+    dependencies:
+      '@floating-ui/dom': 1.6.5
+      '@types/react': 18.2.55
+      media-captions: 1.0.3
+      react: 18.2.0
+    dev: false
+
   /@vitejs/plugin-react/4.3.1_vite@4.5.3:
     resolution: {integrity: sha512-m/V2syj5CuVnaxcUJOQRel/Wr31FFXRFlnOoq1TVtkCxsY5veGMTEmpWHndrhB2U8ScHtCQB1e+4hWYExQc6Lg==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -12039,6 +12054,11 @@ packages:
 
   /mdn-data/2.0.30:
     resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
+    dev: false
+
+  /media-captions/1.0.3:
+    resolution: {integrity: sha512-y2Qi5rqjwgH97zoko1vzu5Q6nnS0KzEQSvd4NOjnFym9JqnFb5VSsUg21RNb5cQ/nhCFJ0wz/XK+2uMwFCr6TQ==}
+    engines: {node: '>=16'}
     dev: false
 
   /media-chrome/3.2.3:
