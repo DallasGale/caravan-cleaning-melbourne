@@ -30,7 +30,7 @@ const Carousel = ({ assets }: CarouselProps) => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     centerPadding: '60px',
     swipeToSlide: true,
