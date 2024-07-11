@@ -41,7 +41,7 @@ const Contact = () => {
             classNames={{ input: 'form__fields' }}
           />
 
-          <PrimaryCta link="/" label="Submit Enquiry" />
+          <PrimaryCta link="/#enquire" label="Submit Enquiry" />
         </div>
       </div>
     </section>
