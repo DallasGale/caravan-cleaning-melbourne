@@ -34,6 +34,7 @@ export const Open: Story = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         link: '/link',
         image: {
+          _type: 'image',
           _key: 'image-164x91-0',
           imageAlt: 'Image Alt Text',
           asset: {
@@ -72,6 +73,7 @@ export const Open: Story = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         link: '/link',
         image: {
+          _type: 'image',
           _key: 'image-164x91-0',
           imageAlt: 'Image Alt Text',
           asset: {
@@ -86,6 +88,7 @@ export const Open: Story = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         link: '/link',
         image: {
+          _type: 'image',
           _key: 'image-164x91-0',
           imageAlt: 'Image Alt Text',
           asset: {

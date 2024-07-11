@@ -5,8 +5,8 @@ import SecondaryCta from '~/components/cta/secondary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
 import Placeholder from '/public/images/carousel-placeholder.jpg'
-
-import { Carousel } from 'antd'
+import Carousel from '~/components/carousel'
+import VerticalCarousel from '~/components/carousel/vertical'
 
 interface ServiceFeatureProps
   extends Omit<SectionTypes, 'logosHeading' | 'logo' | 'cards'> {}
@@ -19,23 +19,12 @@ const ServiceFeature = ({
   primaryCta,
   secondaryCta,
   darkMode,
+  imageCarousel,
 }: ServiceFeatureProps) => {
-  const onChange = (currentSlide: number) => {
-    console.log(currentSlide)
-  }
-
-  const contentStyle: React.CSSProperties = {
-    margin: 0,
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-  }
-
+  console.log({ imageCarousel })
   return (
     <section className={`section ${darkMode ? 'dark' : 'light'}`}>
-      <ContentWrapper>
+      <ContentWrapper modifier="with-carousel">
         <div>
           <div className="section__intro-hero">
             <h1
@@ -64,19 +53,18 @@ const ServiceFeature = ({
           </div>
         </div>
 
-        <div className="carousel">
-          {/* <div style={{ height: 300 }}>
-            <Carousel afterChange={onChange} centerMode adaptiveHeight>
-              <Image layout="responsive" src={Placeholder} alt="placeholder" />
-
-              <Image layout="responsive" src={Placeholder} alt="placeholder" />
-
-              <Image layout="responsive" src={Placeholder} alt="placeholder" />
-              <Image layout="responsive" src={Placeholder} alt="placeholder" />
-            </Carousel>
-          </div> */}
-        </div>
+        {imageCarousel && (
+          <div className="carousel">
+            <Carousel assets={imageCarousel} />
+          </div>
+        )}
+        {/* {imageCarousel?.videos && (
+          <div className="carousel">
+            <Carousel assets={imageCarousel.videos} />
+          </div>
+        )} */}
       </ContentWrapper>
+
       {backgroundImage && (
         <Image
           className="section__background"

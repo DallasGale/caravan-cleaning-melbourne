@@ -6,13 +6,16 @@
   flex-direction: column;
   max-width: $max-width-3;
   z-index: 1;
-  margin-top: $space-8;
-  margin-bottom: $space-8;
+  padding-top: $space-8;
+  padding-bottom: $space-8;
+  position: relative;
   &.no-margin {
     margin: 0;
   }
 }
 
-.carousel-content-wrapper {
-  display: block;
+.with-carousel {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
 }

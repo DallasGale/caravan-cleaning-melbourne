@@ -28,12 +28,18 @@
 }
 
 .slider-image {
-  border-radius: 20px;
-  border: 10px solid $navy;
+  border-radius: 0;
+  // border: 10px solid $navy;
+  &.vertical {
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
+    border: none;
+  }
 }
 
 .slick-slide {
-  opacity: 0.3;
+  opacity: 0;
   @include trans_350;
 }
 
@@ -44,4 +50,20 @@
 
 .slick-arrow {
   display: none !important;
+}
+
+.slider-container {
+  width: 100%;
+  &.vertical {
+    z-index: 1;
+    height: 100vh;
+    width: 400px;
+    right: 110px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.slick-list {
+  height: 600px;
 }

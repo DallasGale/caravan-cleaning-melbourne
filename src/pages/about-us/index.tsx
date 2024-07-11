@@ -16,6 +16,7 @@ import {
 import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
 import Image from 'next/image'
+import Carousel from '~/components/carousel'
 
 type PageProps = {
   navigationContent: NavigationContent
@@ -36,22 +37,7 @@ export default function About({
     { enabled: draftMode },
   )
   const content = draftMode ? liveAboutPageContent : aboutPageContent
-  console.log({ content })
-  const settings = {
-    className: 'center',
-    centerMode: true,
-    infinite: false,
-    slidesToShow: 1,
-    swipeToSlide: true,
-    speed: 350,
-    dots: true,
-    variableWidth: true,
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      )
-    },
-  }
+
   return (
     <Container
       navigationContent={navigationContent}
@@ -65,22 +51,7 @@ export default function About({
             content={content.paragraph}
             className="about-us__paragraph display-1 color-teal"
           />
-          <div style={{ width: '100%' }}>
-            <Slider {...settings}>
-              {content.imageCarousel.images.map(({ _key, asset, imageAlt }) => {
-                return (
-                  <Image
-                    key={_key}
-                    className="slider-image"
-                    src={asset.url}
-                    alt={imageAlt}
-                    width={400}
-                    height={300}
-                  />
-                )
-              })}
-            </Slider>
-          </div>
+          {/* <Carousel assets={content.imageCarousel} /> */}
         </ContentWrapper>
       </section>
     </Container>

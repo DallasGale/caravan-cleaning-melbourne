@@ -89,6 +89,22 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
     title,
     subTitle,
     details[],
+    imageCarousel {
+      images[] {
+        _key,
+        asset-> {
+          url
+        },
+        imageAlt,
+      },
+      videos[] {
+        _key,
+        asset-> {
+          url
+        },
+        imageAlt,
+      },
+    },
     backgroundImage {
       asset->{
         url
@@ -157,6 +173,7 @@ export interface AboutPageContent {
   paragraph: richTextRawTypes[]
   imageCarousel: {
     images: AssetType[]
+    videos: AssetType[]
   }
 }
 
@@ -166,6 +183,10 @@ export type SectionTypes = {
   id: string
   darkMode: boolean
   title: string
+  imageCarousel?: {
+    images: AssetType[]
+    videos: AssetType[]
+  }
   subTitle: string
   details?: richTextRawTypes[]
   primaryCta: CtaProps
@@ -180,6 +201,7 @@ export type SectionTypes = {
   }
 }
 export type AssetType = {
+  _type: 'image' | 'file'
   _key: string
   asset: {
     url: string
