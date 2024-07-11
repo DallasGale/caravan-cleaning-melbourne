@@ -184,8 +184,8 @@ export type SectionTypes = {
   darkMode: boolean
   title: string
   imageCarousel?: {
-    images: AssetType[]
-    videos: AssetType[]
+    images?: AssetType[]
+    videos?: AssetType[]
   }
   subTitle: string
   details?: richTextRawTypes[]

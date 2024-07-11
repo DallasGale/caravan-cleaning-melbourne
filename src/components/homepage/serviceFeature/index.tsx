@@ -21,14 +21,13 @@ const ServiceFeature = ({
   darkMode,
   imageCarousel,
 }: ServiceFeatureProps) => {
-  console.log({ imageCarousel })
   return (
     <section className={`section ${darkMode ? 'dark' : 'light'}`}>
       <ContentWrapper modifier="with-carousel">
         <div>
           <div className="section__intro-hero">
             <h1
-              className={`heading-2 ${darkMode ? 'color-white' : 'color-navy'}`}
+              className={`heading-1 ${darkMode ? 'color-white' : 'color-navy'}`}
             >
               {title}
             </h1>
@@ -58,11 +57,6 @@ const ServiceFeature = ({
             <Carousel assets={imageCarousel} />
           </div>
         )}
-        {/* {imageCarousel?.videos && (
-          <div className="carousel">
-            <Carousel assets={imageCarousel.videos} />
-          </div>
-        )} */}
       </ContentWrapper>
 
       {backgroundImage && (

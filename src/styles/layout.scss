@@ -9,13 +9,13 @@
   padding-top: $space-8;
   padding-bottom: $space-8;
   position: relative;
-  &.no-margin {
-    margin: 0;
+  &__minimal {
+    padding: 0;
   }
 }
 
 .with-carousel {
   align-items: center;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 600px;
 }

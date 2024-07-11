@@ -26,7 +26,7 @@
 }
 
 .section__intro-hero {
-  max-width: 400px;
+  max-width: 500px;
   margin-bottom: $space-4;
 }
 .section__intro-words {
@@ -34,7 +34,7 @@
   flex-direction: column;
   gap: $space-4;
   margin-bottom: $space-5;
-  max-width: 400px;
+  // max-width: 400px;
 }
 .section-content {
   max-width: $max-width-3;

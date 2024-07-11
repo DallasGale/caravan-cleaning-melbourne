@@ -25,11 +25,11 @@ const GridFeature = ({
     <section className="section" id={id}>
       <ContentWrapper>
         <div className="section__intro-hero">
-          <h1 className="heading-2">{title}</h1>
+          <h1 className="heading-1">{title}</h1>
         </div>
         <div className="section__intro">
           <div className="section__intro-words">
-            {subTitle && <h2 className="display-3">{subTitle}</h2>}
+            {subTitle && <h2 className="display-2 weight-bold">{subTitle}</h2>}
             <RichText content={details} />
           </div>
 

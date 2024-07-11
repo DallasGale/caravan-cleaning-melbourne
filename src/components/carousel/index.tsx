@@ -5,7 +5,7 @@ import { useCallback, useRef } from 'react'
 
 interface CarouselProps {
   assets: {
-    images: AssetType[]
+    images?: AssetType[]
     videos?: AssetType[]
   }
 }
@@ -49,36 +49,39 @@ const Carousel = ({ assets }: CarouselProps) => {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {assets.images.map(({ _key, asset, imageAlt, _type }) => {
-          return (
-            <Image
-              key={_key}
-              className="slider-image"
-              src={asset.url}
-              alt={imageAlt}
-              width={400}
-              height={600}
-            />
-          )
-        })}
-        {assets.videos.map(({ _key, asset, imageAlt }, index) => {
-          return (
-            <video
-              controls
-              muted
-              key={_key}
-              className="slider-image"
-              src={asset.url}
-              width={400}
-              height={600}
-              ref={(el) => {
-                if (el) {
-                  videoRefs.current[assets.images.length + index] = el
-                }
-              }}
-            />
-          )
-        })}
+        {assets?.images &&
+          assets?.images.map(({ _key, asset, imageAlt, _type }) => {
+            return (
+              <Image
+                key={_key}
+                className="slider-image"
+                src={asset.url}
+                alt={imageAlt}
+                width={400}
+                height={600}
+              />
+            )
+          })}
+
+        {assets?.videos &&
+          assets?.videos.map(({ _key, asset, imageAlt }, index) => {
+            return (
+              <video
+                controls
+                muted
+                key={_key}
+                className="slider-image"
+                src={asset.url}
+                width={400}
+                height={600}
+                ref={(el) => {
+                  if (el) {
+                    videoRefs.current[assets.videos.length + index] = el
+                  }
+                }}
+              />
+            )
+          })}
       </Slider>
     </div>
   )

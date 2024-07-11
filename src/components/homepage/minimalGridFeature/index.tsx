@@ -23,7 +23,7 @@ const MinimalGridFeature = ({
 }: MinimalGridFeatureProps) => {
   return (
     <section className="section section__minimal-grid-feature" id={id}>
-      <ContentWrapper noMargin>
+      <ContentWrapper modifier="content-wrapper__minimal">
         <div className="section__minimal-grid-feature-grid">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <h1 className="heading-3">{title}</h1>
