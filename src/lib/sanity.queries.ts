@@ -3,7 +3,6 @@ import { type SanityClient } from 'next-sanity'
 import { CardTypes } from '~/components/card/types'
 import { CtaProps } from '~/components/cta/types'
 import { HeroProps } from '~/components/homepage/hero/types'
-import { RichTextProps } from '~/components/richText/type'
 import { richTextRawTypes } from '~/components/types'
 
 export const navigationQuery = groq`*[_type == "navigation"] {
@@ -30,42 +29,6 @@ export const navigationQuery = groq`*[_type == "navigation"] {
   },
   phone,
 }`
-
-export type NavItem = {
-  link: string
-  name: string
-  dropdownItems: DropdownItem[]
-}
-
-export type AdditionalListTypes = {
-  _key: string
-  heading: string
-  link: string
-}
-
-export type DropdownItem = {
-  _key: string
-  heading: string
-  paragraph: string
-  image: AssetType
-  link: string
-  additionalListHeading?: string
-  additionalList?: AdditionalListTypes[]
-}
-
-export interface NavigationContent {
-  navItems: NavItem[]
-  phone: string
-}
-
-export async function getNavigationContent(
-  client: SanityClient,
-): Promise<HomepageContent> {
-  console.log('Executing navigation query')
-  const result = await client.fetch(navigationQuery)
-  console.log('Query result:', result)
-  return result
-}
 
 export const homepageQuery = groq`*[_type == "homepage"][0]{
   hero {
@@ -167,6 +130,56 @@ export const aboutPageQuery = groq`*[_type == "aboutPage"][0]{
     },
   },
 }`
+export const recentWorkPageQuery = groq`*[_type == "recentWorkPage"][0]{
+  title,
+  paragraph,
+  comparisonCarousel[] {
+    _key,
+    category,
+    slidePairs[] {
+        _key,
+      beforeItem {
+        asset-> {
+          _type,
+          url,
+        },
+      }, 
+      afterItem{
+        asset-> {
+          _type,
+          url,
+        },
+      }, 
+    }
+  }
+}`
+
+export type NavItem = {
+  link: string
+  name: string
+  dropdownItems: DropdownItem[]
+}
+
+export type AdditionalListTypes = {
+  _key: string
+  heading: string
+  link: string
+}
+
+export type DropdownItem = {
+  _key: string
+  heading: string
+  paragraph: string
+  image: AssetType
+  link: string
+  additionalListHeading?: string
+  additionalList?: AdditionalListTypes[]
+}
+
+export interface NavigationContent {
+  navItems: NavItem[]
+  phone: string
+}
 
 export interface AboutPageContent {
   title: string
@@ -175,6 +188,22 @@ export interface AboutPageContent {
     images: AssetType[]
     videos: AssetType[]
   }
+}
+export interface RecentWorkPageContent {
+  title: string
+  paragraph: richTextRawTypes[]
+  comparisonCarousel: ComparisonCarouselTypes[]
+}
+
+export type ComparisonCarouselTypes = {
+  _key: string
+  category: string
+  slidePairs: SlidePairTypes[]
+}
+export type SlidePairTypes = {
+  _key: string
+  beforeItem: AssetType
+  afterItem: AssetType
 }
 
 export type SectionTypes = {
@@ -218,6 +247,15 @@ export interface HomepageContent {
   sections: SectionTypes[]
 }
 
+export async function getNavigationContent(
+  client: SanityClient,
+): Promise<HomepageContent> {
+  console.log('Executing navigation query')
+  const result = await client.fetch(navigationQuery)
+  console.log('Query result:', result)
+  return result
+}
+
 export async function getHomepageContent(
   client: SanityClient,
 ): Promise<HomepageContent> {
@@ -232,6 +270,15 @@ export async function getAboutPageContent(
 ): Promise<AboutPageContent> {
   console.log('Executing about page query')
   const result = await client.fetch(aboutPageQuery)
+  console.log('Query result:', result)
+  return result
+}
+
+export async function getRecentWorkContent(
+  client: SanityClient,
+): Promise<RecentWorkPageContent> {
+  console.log('Executing recent work page query')
+  const result = await client.fetch(recentWorkPageQuery)
   console.log('Query result:', result)
   return result
 }

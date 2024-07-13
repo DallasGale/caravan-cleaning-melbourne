@@ -1,0 +1,17 @@
+.recent-work__content-wrapper {
+  max-width: $max-width-3;
+  // align-items: center;
+}
+.recent-work__intro {
+  max-width: 890px;
+  width: 100%;
+}
+
+.recent-work__paragraph {
+  max-width: $max-width-2;
+  margin-bottom: $space-8;
+  margin-top: $space-5;
+  strong {
+    color: $white;
+  }
+}
