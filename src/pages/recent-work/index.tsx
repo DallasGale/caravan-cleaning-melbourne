@@ -56,12 +56,15 @@ export default function RecentWork({
               className="recent-work__paragraph display-1 color-teal"
             />
           </div>
-          {content.comparisonCarousel.map((carousel, index) => (
-            <ComparisonCarousel
-              category={carousel.category}
-              slidePairs={carousel.slidePairs}
-            />
-          ))}
+          {content.comparisonCarousel.map((carousel, index) => {
+            console.log({ carousel })
+            return (
+              <ComparisonCarousel
+                category={carousel.category}
+                slidePairs={carousel.slidePairs}
+              />
+            )
+          })}
         </ContentWrapper>
       </section>
     </Container>

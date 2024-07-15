@@ -1,13 +1,10 @@
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { AssetType } from '~/lib/sanity.queries'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import {
-  MediaPlayer,
-  MediaProvider,
-  type MediaPlayerProps,
-} from '@vidstack/react'
+import { useEffect, useRef, useState } from 'react'
+
 import Placeholder from '/public/images/carousel-placeholder.jpg'
+import LazyVideo from '../lazyVideo'
 
 interface CarouselProps {
   infinite?: boolean
@@ -24,7 +21,6 @@ const Carousel = ({
   slidesToScroll = 3,
   assets,
 }: CarouselProps) => {
-  // const videoRefs = useRef({})
   const sliderRef = useRef<Slider>(null)
   const [assetsLoaded, setAssetsLoaded] = useState(0)
   const totalAssets =
@@ -54,12 +50,22 @@ const Carousel = ({
     variableWidth: false,
   }
 
+  const [isIntersecting, setIntersecting] = useState(false)
+  const ref = useRef()
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) =>
+      setIntersecting(entry.isIntersecting),
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="slider-container">
+    <div className="slider-container" ref={ref}>
       <Slider {...settings} ref={sliderRef}>
         {assets?.images?.map(({ _key, asset, imageAlt, _type }, index) => {
           return (
-            <div key={_key} className="slide-wrapper">
+            <div key={_key} className="slide-wrapper slide-wrapper--image">
               <Image
                 className="slider-image"
                 src={asset.url}
@@ -75,16 +81,20 @@ const Carousel = ({
 
         {assets?.videos?.map(({ _key, asset, imageAlt, _type }, index) => {
           return (
-            <div key={_key} className="slide-wrapper">
-              <MediaPlayer
-                onCanPlay={handleAssetLoad}
-                className="slider-video"
-                src={asset.url}
-                controls
-                fullscreenOrientation="portrait"
-              >
-                <MediaProvider />
-              </MediaPlayer>
+            <div key={_key} className="slide-wrapper slide-wrapper--video">
+              {isIntersecting && (
+                <LazyVideo
+                  onCanPlay={handleAssetLoad}
+                  className="slider-video"
+                  src={asset.url}
+                  controls
+                  autoPlay={false}
+                  title={imageAlt}
+                  preload="metadata"
+                  typeof="video/mp4"
+                  poster={Placeholder.src}
+                />
+              )}
             </div>
           )
         })}

@@ -1,6 +1,8 @@
 .recent-work__content-wrapper {
   max-width: $max-width-3;
-  // align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
 }
 .recent-work__intro {
   max-width: 890px;
@@ -9,7 +11,6 @@
 
 .recent-work__paragraph {
   max-width: $max-width-2;
-  margin-bottom: $space-8;
   margin-top: $space-5;
   strong {
     color: $white;

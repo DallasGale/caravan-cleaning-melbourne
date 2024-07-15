@@ -137,19 +137,37 @@ export const recentWorkPageQuery = groq`*[_type == "recentWorkPage"][0]{
     _key,
     category,
     slidePairs[] {
-        _key,
+      _key,
+      caption,
       beforeItem {
-        asset-> {
-          _type,
-          url,
+        image {
+          asset-> {
+            _type,
+            url,
+          },
         },
+        file {
+          posterImage,
+          asset-> {
+            _type,
+            url,
+          },
+        }
       }, 
-      afterItem{
-        asset-> {
-          _type,
-          url,
+      afterItem {
+        image {
+          asset-> {
+            _type,
+            url,
+          },
         },
-      }, 
+        file {
+          asset-> {
+            _type,
+            url,
+          },
+        }
+      }
     }
   }
 }`
@@ -202,8 +220,15 @@ export type ComparisonCarouselTypes = {
 }
 export type SlidePairTypes = {
   _key: string
-  beforeItem: AssetType
-  afterItem: AssetType
+  caption: string
+  beforeItem: {
+    image: AssetType | null
+    file: AssetType | null
+  }
+  afterItem: {
+    image: AssetType | null
+    file: AssetType | null
+  }
 }
 
 export type SectionTypes = {
@@ -232,6 +257,7 @@ export type SectionTypes = {
 export type AssetType = {
   _type: 'image' | 'file'
   _key: string
+  posterImage?: string
   asset: {
     url: string
   }

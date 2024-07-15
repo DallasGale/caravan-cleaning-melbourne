@@ -29,6 +29,7 @@ specifiers:
   '@tailwindcss/typography': 0.5.10
   '@types/node': ^20.14.9
   '@types/react': 18.2.55
+  '@types/react-slick': ^0.23.13
   '@vidstack/react': ^1.11.27
   antd: ^5.19.1
   autoprefixer: 10.4.17
@@ -82,6 +83,7 @@ dependencies:
   '@sanity/visual-editing': 2.1.5_wxpozzncc5ttfzjnfubfroyine
   '@tabler/icons-react': 3.9.0_react@18.2.0
   '@tailwindcss/typography': 0.5.10_tailwindcss@3.4.1
+  '@types/react-slick': 0.23.13
   '@vidstack/react': 1.11.27_eteh3so6nztr56vqc4nbg6qqla
   antd: 5.19.1_biqbaboplfbrettd7655fr4n2y
   embla-carousel-react: 7.1.0_react@18.2.0
@@ -6826,6 +6828,12 @@ packages:
 
   /@types/react-is/18.3.0:
     resolution: {integrity: sha512-KZJpHUkAdzyKj/kUHJDc6N7KyidftICufJfOFpiG6haL/BDQNQt5i4n1XDUL/nDZAtGLHDSWRYpLzKTAKSvX6w==}
+    dependencies:
+      '@types/react': 18.2.55
+    dev: false
+
+  /@types/react-slick/0.23.13:
+    resolution: {integrity: sha512-bNZfDhe/L8t5OQzIyhrRhBr/61pfBcWaYJoq6UDqFtv5LMwfg4NsVDD2J8N01JqdAdxLjOt66OZEp6PX+dGs/A==}
     dependencies:
       '@types/react': 18.2.55
     dev: false
