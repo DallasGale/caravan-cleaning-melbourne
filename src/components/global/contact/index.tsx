@@ -5,6 +5,7 @@ import emailjs from 'emailjs-com'
 import Swal from 'sweetalert2'
 import { useState } from 'react'
 
+const key = process.env.NEXT_WEB3EMAIL_ACCESS_KEY
 const Contact = () => {
   // const [state, handleSubmit, reset] = useForm(process.env.NEXT_PUBLIC_FORM)
 
@@ -15,7 +16,7 @@ const Contact = () => {
     setResult('Sending....')
     const formData = new FormData(event.target)
 
-    formData.append('access_key', process.env.NEXT_WEB3EMAIL_ACCESS_KEY)
+    formData.append('access_key', key)
 
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
