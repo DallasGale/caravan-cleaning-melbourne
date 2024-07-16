@@ -25,7 +25,11 @@ const Contact = () => {
               Contact us now for a complimentary, no-obligation quote tailored
               to your specific caravan and motorhome cleaning needs.
             </p>
-            <form onSubmit={handleSubmit} className="contact__form">
+            <form
+              onSubmit={handleSubmit}
+              className="contact__form"
+              method="POST"
+            >
               <TextInput
                 name="name"
                 id="name"
