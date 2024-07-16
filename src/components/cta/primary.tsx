@@ -15,7 +15,7 @@ const PrimaryCta = ({
       type={type}
       classNames={{ root: 'cta__root cta__primary', label: 'cta__label' }}
       size="xl"
-      onClick={() => router.push(link)}
+      onClick={link ? () => router.push(link) : null}
     >
       {label}
     </Button>
