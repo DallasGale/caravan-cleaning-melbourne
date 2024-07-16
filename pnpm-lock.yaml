@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@chromatic-com/storybook': ^1.5.0
   '@fontsource/poppins': ^5.0.14
+  '@formspree/react': ^2.5.1
   '@mantine/carousel': ^7.11.1
   '@mantine/core': ^7.11.0
   '@mantine/form': ^7.11.0
@@ -67,6 +68,7 @@ specifiers:
 
 dependencies:
   '@fontsource/poppins': 5.0.14
+  '@formspree/react': 2.5.1_biqbaboplfbrettd7655fr4n2y
   '@mantine/carousel': 7.11.1_x2kemcxhnarjueahamad7il5om
   '@mantine/core': 7.11.0_kbaptu7uvm7ty7uwf2iizno5uu
   '@mantine/form': 7.11.0_react@18.2.0
@@ -3182,6 +3184,25 @@ packages:
 
   /@fontsource/poppins/5.0.14:
     resolution: {integrity: sha512-nmM1zpPo3Uh4JcGAVSQuWaZNYh2FbbwWhZ5t6hRaynmJaNTBW85d3nEh9zMmzI0HX7X5xqQVdRHeDatKpOGsnA==}
+    dev: false
+
+  /@formspree/core/3.0.1:
+    resolution: {integrity: sha512-jGNgrEtL8mx8k1kkmeNfyeoP1a+H2kci8TMG7CT3R5k3ssqr0Sl1j10SIKo74CFZVewMW4JjMYwcunWUPfutSQ==}
+    dependencies:
+      '@stripe/stripe-js': 1.54.2
+    dev: false
+
+  /@formspree/react/2.5.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Yhxyn32m3zH63i0DNpnBq55zargDlbihqC0wlK18dqU7GOUqJXKY+WywLXuTRGfqo79/hT+Qx6eFS6M0J6eh0A==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@formspree/core': 3.0.1
+      '@stripe/react-stripe-js': 1.16.5_hpa2ch2x6mnoay7rkquvvfg72y
+      '@stripe/stripe-js': 1.54.2
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.11.14:
@@ -6487,6 +6508,23 @@ packages:
       '@types/express': 4.17.21
       file-system-cache: 2.3.0
     dev: true
+
+  /@stripe/react-stripe-js/1.16.5_hpa2ch2x6mnoay7rkquvvfg72y:
+    resolution: {integrity: sha512-lVPW3IfwdacyS22pP+nBB6/GNFRRhT/4jfgAK6T2guQmtzPwJV1DogiGGaBNhiKtSY18+yS8KlHSu+PvZNclvQ==}
+    peerDependencies:
+      '@stripe/stripe-js': ^1.44.1
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@stripe/stripe-js': 1.54.2
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@stripe/stripe-js/1.54.2:
+    resolution: {integrity: sha512-R1PwtDvUfs99cAjfuQ/WpwJ3c92+DAMy9xGApjqlWQMj0FKQabUAys2swfTRNzuYAYJh7NqK2dzcYVNkKLEKUg==}
+    dev: false
 
   /@swc/helpers/0.5.2:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
