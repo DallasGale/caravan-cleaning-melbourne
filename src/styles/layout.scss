@@ -16,6 +16,11 @@
 
 .with-carousel {
   align-items: center;
-  display: grid;
-  grid-template-columns: 1fr 600px;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  @include respond-to(desktop-up) {
+    display: grid;
+    grid-template-columns: 1fr 600px;
+  }
 }

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import Placeholder from '/public/images/carousel-placeholder.jpg'
 import LazyVideo from '../lazyVideo'
+import YouTubePlayer from './youtube'
 
 interface CarouselProps {
   infinite?: boolean
@@ -12,7 +13,7 @@ interface CarouselProps {
   slidesToScroll?: number
   assets: {
     images?: AssetType[]
-    videos?: AssetType[]
+    videos?: string[]
   }
 }
 const Carousel = ({
@@ -50,54 +51,43 @@ const Carousel = ({
     variableWidth: false,
   }
 
-  const [isIntersecting, setIntersecting] = useState(false)
-  const ref = useRef()
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) =>
-      setIntersecting(entry.isIntersecting),
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
+  console.log({ assets })
 
   return (
-    <div className="slider-container" ref={ref}>
+    <div className="slider-container">
       <Slider {...settings} ref={sliderRef}>
-        {assets?.images?.map(({ _key, asset, imageAlt, _type }, index) => {
-          return (
-            <div key={_key} className="slide-wrapper slide-wrapper--image">
-              <Image
-                className="slider-image"
-                src={asset.url}
-                alt={imageAlt}
-                layout="responsive"
-                width={400}
-                height={600}
-                onLoad={handleAssetLoad}
-              />
-            </div>
-          )
-        })}
+        {assets?.images && (
+          <>
+            {assets?.images?.map(({ _key, asset, imageAlt, _type }, index) => {
+              return (
+                <div key={_key} className="slide-wrapper slide-wrapper--image">
+                  <Image
+                    className="slider-image"
+                    src={asset.url}
+                    alt={imageAlt}
+                    layout="responsive"
+                    width={400}
+                    height={600}
+                    onLoad={handleAssetLoad}
+                  />
+                </div>
+              )
+            })}
+          </>
+        )}
 
-        {assets?.videos?.map(({ _key, asset, imageAlt, _type }, index) => {
-          return (
-            <div key={_key} className="slide-wrapper slide-wrapper--video">
-              {isIntersecting && (
-                <LazyVideo
-                  onCanPlay={handleAssetLoad}
-                  className="slider-video"
-                  src={asset.url}
-                  controls
-                  autoPlay={false}
-                  title={imageAlt}
-                  preload="metadata"
-                  typeof="video/mp4"
-                  poster={Placeholder.src}
-                />
-              )}
-            </div>
-          )
-        })}
+        {assets?.videos && (
+          <>
+            {assets?.videos?.map((id, index) => {
+              console.log({ id })
+              return (
+                <div key={index} className="slide-wrapper slide-wrapper--video">
+                  <YouTubePlayer id={id} />
+                </div>
+              )
+            })}
+          </>
+        )}
       </Slider>
     </div>
   )

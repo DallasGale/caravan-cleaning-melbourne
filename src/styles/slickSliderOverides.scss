@@ -116,31 +116,40 @@
 
   .slide-wrapper {
     padding: 0;
+    gap: $space-5;
+  }
+
+  .slide {
+    width: 600px;
   }
 }
 
 .slide-label {
+  background-color: $navy;
   position: absolute;
-  bottom: 0;
+  top: 42px;
   left: 0;
   width: 100%;
-  padding: $space-3;
-  background-color: #0c1f2ba3;
+  padding-bottom: $space-3;
   color: $white;
+  // text-align: right;
 }
 
 .slide-caption {
-  position: relative;
+  position: absolute;
   left: 0;
   right: 0;
   text-align: center;
   top: 0;
-  width: 300px;
+  width: 100%;
+  text-align: center;
   z-index: 1;
   background-color: $navy;
-  padding: $space-3;
-  display: inline-flex;
+  padding: $space-3 0;
+  display: flex;
   color: $white;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .slide {

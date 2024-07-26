@@ -36,13 +36,7 @@ const GridFeature = ({
           {/* Logos */}
 
           {logos && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'flex-end',
-              }}
-            >
+            <div className="section__logos">
               <ul className="section__logo-grid">
                 <li className="section__logo-grid-item">
                   {logosHeading && <p className="paragraph">{logosHeading}</p>}

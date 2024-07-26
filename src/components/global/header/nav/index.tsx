@@ -5,6 +5,12 @@ import { useEffect, useRef, useState } from 'react'
 import PrimaryCta from '~/components/cta/primary'
 import Dropdown from './dropdown'
 import { NavigationContent } from '~/lib/sanity.queries'
+import { IconMenu2 } from '@tabler/icons-react'
+import { ActionIcon, Button } from '@mantine/core'
+import { motion, useCycle } from 'framer-motion'
+import { useDimensions } from '~/hooks/useDimensions'
+import { MenuToggle } from '../menuToggle'
+import { MobileNav } from './mobileNav'
 
 const Nav = ({ navItems, phone }: NavigationContent) => {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
@@ -34,17 +40,56 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
       }
     }
   }, [])
+  const [isOpen, toggleOpen] = useCycle(false, true)
 
-  console.log({ navItems })
+  const sidebar = {
+    open: (height = 300) => ({
+      clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
+      transition: {
+        type: 'spring',
+        stiffness: 50,
+        restDelta: 2,
+      },
+    }),
+    closed: {
+      clipPath: 'circle(20px at calc(100% - 40px) 40px)',
+      transition: {
+        delay: 0.5,
+        type: 'spring',
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+  }
+
+  const containerRef = useRef(null)
+  const { height } = useDimensions(containerRef)
+
   return (
     <>
       <nav className="nav" ref={navRef} onMouseLeave={handleMouseLeave}>
+        <Link href="/">
+          <Image src={Logo} alt="Logo" width={150} height={45} />
+        </Link>
+        <motion.nav
+          className="nav__mobile-menu"
+          initial={false}
+          animate={isOpen ? 'open' : 'closed'}
+          custom={height}
+          ref={containerRef}
+        >
+          <motion.div
+            className={`nav__mobile-menu-background ${isOpen ? 'open' : 'closed'}`}
+            variants={sidebar}
+          />
+          <MobileNav
+            navItems={navItems}
+            phone={phone}
+            onClick={() => toggleOpen()}
+          />
+          <MenuToggle toggle={() => toggleOpen()} />
+        </motion.nav>
         <ul className="nav__list">
-          <li className="nav__list-item no-hover">
-            <Link href="/">
-              <Image src={Logo} alt="Logo" width={150} height={45} />
-            </Link>
-          </li>
           {navItems.map(({ name, link }, index) => (
             <li
               className={`nav__list-item ${navItems[activeDropdown]?.dropdownItems && activeDropdown === index ? 'active' : ''}`}
@@ -62,8 +107,6 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
           <li className="nav__list-item">
             <span className="nav__divider" />
           </li>
-        </ul>
-        <ul className="nav__list">
           <li className="nav__list-item ph">
             <Link className="nav__link ph" href={`tel:${phone}`}>
               {phone}
@@ -74,6 +117,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
           </li>
         </ul>
       </nav>
+
       {/* <Dropdown
         mainLinks={navItems[activeDropdown]?.dropdownItems}
         show={

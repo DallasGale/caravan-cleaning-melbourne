@@ -17,8 +17,6 @@ import {
 } from '~/lib/sanity.queries'
 import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
-import Image from 'next/image'
-import Carousel from '~/components/carousel'
 import ComparisonCarousel from '~/components/carousel/comparison'
 
 type PageProps = {
@@ -40,7 +38,6 @@ export default function RecentWork({
     { enabled: draftMode },
   )
   const content = draftMode ? liveRecentWorkPageContent : recentWorkPageContent
-  console.log({ content })
   return (
     <Container
       navigationContent={navigationContent}
@@ -60,6 +57,7 @@ export default function RecentWork({
             console.log({ carousel })
             return (
               <ComparisonCarousel
+                key={index}
                 category={carousel.category}
                 slidePairs={carousel.slidePairs}
               />

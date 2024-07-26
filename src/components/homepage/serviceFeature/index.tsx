@@ -21,10 +21,11 @@ const ServiceFeature = ({
   darkMode,
   imageCarousel,
 }: ServiceFeatureProps) => {
+  console.log({ darkMode })
   return (
     <section className={`section ${darkMode ? 'dark' : 'light'}`}>
       <ContentWrapper modifier="with-carousel">
-        <div>
+        <div className="section__words-wrapper">
           <div className="section__intro-hero">
             <h1
               className={`heading-1 ${darkMode ? 'color-white' : 'color-navy'}`}

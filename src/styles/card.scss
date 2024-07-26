@@ -6,33 +6,86 @@
   align-items: flex-start;
   justify-content: flex-start;
   border-radius: $space-2;
-  min-height: 382px;
   padding: $space-5;
-  gap: $space-2;
+  gap: $space-6;
   border: 4px solid transparent;
   text-decoration: none;
+  @include respond-to(small-phone-up) {
+    flex-direction: row;
+  }
+  @include respond-to(tablet-up) {
+    flex-direction: column;
+    gap: $space-2;
+    min-height: 422px;
+  }
+  @include respond-to(desktop-up) {
+    min-height: 402px;
+  }
   img {
     width: 100%;
-    max-height: 150px;
+    max-height: 130px;
+  }
+}
+.card__icon {
+  min-width: 80%;
+  height: 100px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  @include respond-to(small-phone-up) {
+    min-width: 30%;
+    height: 60px;
+  }
+
+  @include respond-to(tablet-up) {
+    height: 160px;
+    width: 180px;
+    &--small {
+      height: 120px;
+      width: 90px;
+      position: relative;
+    }
   }
 }
 
+.card__words {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
 .card-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: $space-5;
   padding: 0;
   flex-direction: row;
-  margin-bottom: $space-5;
-  margin-top: $space-5;
-  &--three {
+  margin-bottom: $space-2;
+  margin-top: $space-2;
+  @include respond-to(tablet-up) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond-to(desktop-up) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: $space-5;
+    margin-top: $space-5;
+  }
+}
+
+.card-grid--three {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 0;
+  @include respond-to(tablet-up) {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
-    margin: 0;
-    .card {
-      min-height: auto;
-      padding: 0;
-    }
+  }
+  .card {
+    min-height: auto;
+    padding: 0;
   }
 }
 

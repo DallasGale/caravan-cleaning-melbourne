@@ -60,13 +60,7 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
         },
         imageAlt,
       },
-      videos[] {
-        _key,
-        asset-> {
-          url
-        },
-        imageAlt,
-      },
+      videos[]
     },
     backgroundImage {
       asset->{
@@ -146,13 +140,7 @@ export const recentWorkPageQuery = groq`*[_type == "recentWorkPage"][0]{
             url,
           },
         },
-        file {
-          posterImage,
-          asset-> {
-            _type,
-            url,
-          },
-        }
+        youTubeVideoId,
       }, 
       afterItem {
         image {
@@ -161,12 +149,7 @@ export const recentWorkPageQuery = groq`*[_type == "recentWorkPage"][0]{
             url,
           },
         },
-        file {
-          asset-> {
-            _type,
-            url,
-          },
-        }
+        youTubeVideoId,
       }
     }
   }
@@ -204,7 +187,7 @@ export interface AboutPageContent {
   paragraph: richTextRawTypes[]
   imageCarousel: {
     images: AssetType[]
-    videos: AssetType[]
+    videos: string[]
   }
 }
 export interface RecentWorkPageContent {
@@ -222,12 +205,12 @@ export type SlidePairTypes = {
   _key: string
   caption: string
   beforeItem: {
-    image: AssetType | null
-    file: AssetType | null
+    image?: AssetType | null
+    youTubeVideoId?: string | null
   }
   afterItem: {
-    image: AssetType | null
-    file: AssetType | null
+    image?: AssetType | null
+    youTubeVideoId?: string | null
   }
 }
 
@@ -239,7 +222,7 @@ export type SectionTypes = {
   title: string
   imageCarousel?: {
     images?: AssetType[]
-    videos?: AssetType[]
+    videos?: string[]
   }
   subTitle: string
   details?: richTextRawTypes[]
@@ -255,7 +238,7 @@ export type SectionTypes = {
   }
 }
 export type AssetType = {
-  _type: 'image' | 'file'
+  _type: 'image' | 'youTubeVideoId'
   _key: string
   posterImage?: string
   asset: {

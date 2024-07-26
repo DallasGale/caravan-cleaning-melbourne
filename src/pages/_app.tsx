@@ -2,7 +2,7 @@ import '@mantine/core/styles.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import '@vidstack/react/player/styles/base.css'
-
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import '~/styles/index.scss'
 
 import { createTheme, MantineProvider } from '@mantine/core'

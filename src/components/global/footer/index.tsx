@@ -10,7 +10,13 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__content-grid">
-          <Image src={Logo} alt="Logo" width={290} height={90} />
+          <Image
+            src={Logo}
+            alt="Logo"
+            width={290}
+            height={90}
+            className="footer__logo"
+          />
           <div>
             <p className="paragraph color-teal">
               Based in Melbourne’s outer east we are a family owned & operated
@@ -24,9 +30,11 @@ const Footer = () => {
               cleaning.
             </p>
             <br />
-            <p className=" paragraph color-light-blue">Suppliers of...</p>
-            <Image src={Dometic} alt="Dometic" width={200} height={50} />
-            <Image src={Therford} alt="Therford" width={200} height={50} />
+            <p className="paragraph color-light-blue">Suppliers of...</p>
+            <div className="footer__logo-grid">
+              <Image src={Dometic} alt="Dometic" width={200} height={50} />
+              <Image src={Therford} alt="Therford" width={200} height={50} />
+            </div>
           </div>
 
           <div className="footer__list-grid">

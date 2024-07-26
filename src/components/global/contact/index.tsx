@@ -53,7 +53,7 @@ const Contact = () => {
     }
   }
   return (
-    <section className="contact" id="enquire">
+    <section className="section contact" id="enquire">
       <div className="contact__container">
         {status.state === 'submitting' && (
           <p className="heading-3 color-navy weight-bold">Submitting…</p>
@@ -117,7 +117,7 @@ const Contact = () => {
                 classNames={{ input: 'form__fields' }}
               />
 
-              <Select
+              {/* <Select
                 name="service"
                 placeholder="Choose Service"
                 classNames={{ input: 'form__fields' }}
@@ -126,7 +126,7 @@ const Contact = () => {
                   { label: 'Exterior Cleaning', value: 'exterior-cleaning' },
                   { label: 'Full Cleaning', value: 'full-cleaning' },
                 ]}
-              />
+              /> */}
 
               <Textarea
                 name="message"

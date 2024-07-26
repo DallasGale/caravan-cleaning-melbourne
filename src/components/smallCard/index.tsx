@@ -24,11 +24,13 @@ const SmallCard = ({ title, paragraph, image, delay }: CardProps) => {
   }
   return (
     <motion.div className="card" variants={cardVariants}>
-      <div style={{ height: '120px', width: '90px', position: 'relative' }}>
+      <div className="card__icon card__icon--small">
         <Image src={image.asset.url} layout="fill" alt={image.imageAlt} />
       </div>
-      <h2 className="display-2 color-teal">{title}</h2>
-      <p className="paragraph color-white">{paragraph}</p>
+      <div className="card__words">
+        <h2 className="display-2 color-teal">{title}</h2>
+        <p className="paragraph color-white">{paragraph}</p>
+      </div>
     </motion.div>
   )
 }

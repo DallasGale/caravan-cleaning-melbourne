@@ -24,9 +24,13 @@
 }
 
 .testimonials__content-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
   width: 100%;
   gap: $space-5;
   align-items: flex-start;
+  @include respond-to(tablet-up) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
