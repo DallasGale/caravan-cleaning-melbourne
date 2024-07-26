@@ -40,7 +40,7 @@ const Carousel = ({
 
   const settings = {
     className: 'center',
-    centerMode: true,
+    centerMode: false,
     infinite,
     slidesToShow,
     slidesToScroll,

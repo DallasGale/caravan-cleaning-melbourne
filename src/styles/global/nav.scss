@@ -162,10 +162,11 @@
 
 .nav__mobile-menu {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: $space-1;
+  right: $space-1;
   bottom: 0;
-  width: 100%;
+  width: 30px;
+  background-color: transparent;
   z-index: 1000;
   @include respond-to(tablet-up) {
     display: none;
@@ -180,6 +181,13 @@
   width: 100vw;
   height: 100vh;
   background-color: $blue;
+  &.closed {
+    z-index: -1;
+  }
+}
+.nav__mobile-menu-drawer {
+  background-color: $navy;
+  z-index: 2;
 }
 
 .nav__menu-toggle {

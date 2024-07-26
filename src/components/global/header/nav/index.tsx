@@ -6,7 +6,7 @@ import PrimaryCta from '~/components/cta/primary'
 import Dropdown from './dropdown'
 import { NavigationContent } from '~/lib/sanity.queries'
 import { IconMenu2 } from '@tabler/icons-react'
-import { ActionIcon, Button } from '@mantine/core'
+import { ActionIcon, Button, Drawer } from '@mantine/core'
 import { motion, useCycle } from 'framer-motion'
 import { useDimensions } from '~/hooks/useDimensions'
 import { MenuToggle } from '../menuToggle'
@@ -40,55 +40,57 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
       }
     }
   }, [])
-  const [isOpen, toggleOpen] = useCycle(false, true)
+  // const [isOpen, toggleOpen] = useCycle(false, true)
 
-  const sidebar = {
-    open: (height = 300) => ({
-      clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
-      transition: {
-        type: 'spring',
-        stiffness: 50,
-        restDelta: 2,
-      },
-    }),
-    closed: {
-      clipPath: 'circle(20px at calc(100% - 40px) 40px)',
-      transition: {
-        delay: 0.5,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-  }
+  // const sidebar = {
+  //   open: (height = 300) => ({
+  //     clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
+  //     transition: {
+  //       type: 'spring',
+  //       stiffness: 50,
+  //       restDelta: 2,
+  //     },
+  //   }),
+  //   closed: {
+  //     clipPath: 'circle(20px at calc(100% - 40px) 40px)',
+  //     transition: {
+  //       delay: 0.5,
+  //       type: 'spring',
+  //       stiffness: 400,
+  //       damping: 40,
+  //     },
+  //   },
+  // }
 
-  const containerRef = useRef(null)
-  const { height } = useDimensions(containerRef)
+  // const containerRef = useRef(null)
+  // const { height } = useDimensions(containerRef)
 
+  const [toggleMenu, setToggleMenu] = useState(false)
   return (
     <>
       <nav className="nav" ref={navRef} onMouseLeave={handleMouseLeave}>
         <Link href="/">
           <Image src={Logo} alt="Logo" width={150} height={45} />
         </Link>
-        <motion.nav
+        <ActionIcon
+          onClick={() => setToggleMenu(!toggleMenu)}
           className="nav__mobile-menu"
-          initial={false}
-          animate={isOpen ? 'open' : 'closed'}
-          custom={height}
-          ref={containerRef}
         >
-          <motion.div
-            className={`nav__mobile-menu-background ${isOpen ? 'open' : 'closed'}`}
-            variants={sidebar}
-          />
+          <IconMenu2 />
+        </ActionIcon>
+        <Drawer
+          withCloseButton={false}
+          classNames={{ content: 'nav__mobile-menu-drawer' }}
+          opened={toggleMenu}
+          onClose={() => setToggleMenu(false)}
+        >
           <MobileNav
             navItems={navItems}
             phone={phone}
-            onClick={() => toggleOpen()}
+            onClick={() => setToggleMenu(!toggleMenu)}
           />
-          <MenuToggle toggle={() => toggleOpen()} />
-        </motion.nav>
+        </Drawer>
+
         <ul className="nav__list">
           {navItems.map(({ name, link }, index) => (
             <li
