@@ -1,6 +1,10 @@
 import Image from 'next/image'
 import Slider from 'react-slick'
-import { AssetType } from '~/lib/sanity.queries'
+import {
+  AssetType,
+  SlideOptionTypes,
+  SlidePairTypes,
+} from '~/lib/sanity.queries'
 import { useEffect, useRef, useState } from 'react'
 
 import Placeholder from '/public/images/carousel-placeholder.jpg'
@@ -12,32 +16,15 @@ interface CarouselProps {
   slidesToShow?: number
   slidesToScroll?: number
   assets: {
-    images?: AssetType[]
-    videos?: string[]
+    slideOptions: SlideOptionTypes[]
   }
 }
 const Carousel = ({
   infinite = false,
   slidesToShow = 1,
-  slidesToScroll = 3,
+  slidesToScroll = 1,
   assets,
 }: CarouselProps) => {
-  const sliderRef = useRef<Slider>(null)
-  const [assetsLoaded, setAssetsLoaded] = useState(0)
-  const totalAssets =
-    (assets?.images?.length || 0) + (assets?.videos?.length || 0)
-
-  useEffect(() => {
-    if (assetsLoaded === totalAssets && sliderRef.current) {
-      // All assets are loaded, reinitialize the slider
-      sliderRef.current.slickGoTo(0)
-    }
-  }, [assetsLoaded, totalAssets])
-
-  const handleAssetLoad = () => {
-    setAssetsLoaded((prev) => prev + 1)
-  }
-
   const settings = {
     className: 'center',
     centerMode: false,
@@ -51,43 +38,26 @@ const Carousel = ({
     variableWidth: false,
   }
 
-  console.log({ assets })
-
   return (
     <div className="slider-container">
-      <Slider {...settings} ref={sliderRef}>
-        {assets?.images && (
-          <>
-            {assets?.images?.map(({ _key, asset, imageAlt, _type }, index) => {
-              return (
-                <div key={_key} className="slide-wrapper slide-wrapper--image">
-                  <Image
-                    className="slider-image"
-                    src={asset.url}
-                    alt={imageAlt}
-                    layout="responsive"
-                    width={400}
-                    height={600}
-                    onLoad={handleAssetLoad}
-                  />
-                </div>
-              )
-            })}
-          </>
-        )}
-
-        {assets?.videos && (
-          <>
-            {assets?.videos?.map((id, index) => {
-              console.log({ id })
-              return (
-                <div key={index} className="slide-wrapper slide-wrapper--video">
-                  <YouTubePlayer id={id} />
-                </div>
-              )
-            })}
-          </>
-        )}
+      <Slider {...settings}>
+        {assets?.slideOptions?.map(({ youTubeId, image, _key }) => {
+          return (
+            <div key={_key} className="slide-wrapper slide-wrapper--image">
+              {image && (
+                <Image
+                  className="slider-image"
+                  src={image.asset.url}
+                  alt={image.imageAlt}
+                  layout="responsive"
+                  width={400}
+                  height={600}
+                />
+              )}
+              {youTubeId && <YouTubePlayer id={youTubeId} />}
+            </div>
+          )
+        })}
       </Slider>
     </div>
   )

@@ -13,19 +13,19 @@ const ComparisonCarousel = ({
   category,
   slidePairs,
 }: ComparisonCarouselProps) => {
-  const sliderRef = useRef<Slider>(null)
-  const [assetsLoaded, setAssetsLoaded] = useState(0)
-  const totalAssets = slidePairs?.length || 0
+  // const sliderRef = useRef<Slider>(null)
+  // const [assetsLoaded, setAssetsLoaded] = useState(0)
+  // const totalAssets = slidePairs?.length || 0
 
-  useEffect(() => {
-    if (assetsLoaded === totalAssets && sliderRef.current) {
-      sliderRef.current.slickGoTo(0)
-    }
-  }, [assetsLoaded, totalAssets])
+  // useEffect(() => {
+  //   if (assetsLoaded === totalAssets && sliderRef.current) {
+  //     sliderRef.current.slickGoTo(0)
+  //   }
+  // }, [assetsLoaded, totalAssets])
 
-  const handleAssetLoad = () => {
-    setAssetsLoaded((prev) => prev + 1)
-  }
+  // const handleAssetLoad = () => {
+  //   setAssetsLoaded((prev) => prev + 1)
+  // }
 
   const settings = {
     slidesToShow: 1,
@@ -40,7 +40,7 @@ const ComparisonCarousel = ({
   return (
     <div className="slider-container">
       <h3 className="heading-3 color-white">{category}</h3>
-      <Slider {...settings} lazyLoad="ondemand" ref={sliderRef}>
+      <Slider {...settings} lazyLoad="ondemand">
         {slidePairs.map(({ caption, beforeItem, afterItem, _key }, index) => {
           return (
             <div key={_key} className="slide-wrapper">
@@ -49,14 +49,14 @@ const ComparisonCarousel = ({
                 item={beforeItem}
                 caption={caption}
                 label="Before"
-                onLoad={handleAssetLoad}
+                // onLoad={handleAssetLoad}
               />
               {/* After slide */}
               <SlideContent
                 item={afterItem}
                 caption={caption}
                 label="After"
-                onLoad={handleAssetLoad}
+                // onLoad={handleAssetLoad}
               />
             </div>
           )

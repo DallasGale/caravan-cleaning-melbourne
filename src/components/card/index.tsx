@@ -1,17 +1,21 @@
 import Image from 'next/image'
 import { CardTypes } from './types'
-import { Variants, motion } from 'framer-motion'
+import { Variants, motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 interface CardProps extends CardTypes {
   delay: number
 }
 const Card = ({ title, paragraph, image, delay }: CardProps) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+
   const cardVariants: Variants = {
-    offscreen: {
+    hidden: {
       x: -30,
       opacity: 0,
     },
-    onscreen: {
+    visible: {
       x: 0,
       opacity: 1,
       transition: {
@@ -23,9 +27,15 @@ const Card = ({ title, paragraph, image, delay }: CardProps) => {
     },
   }
   return (
-    <motion.div className="card" variants={cardVariants}>
+    <motion.div
+      ref={ref}
+      className="card"
+      initial="hidden"
+      animate={isInView ? 'visible' : 'hidden'}
+      variants={cardVariants}
+    >
       <div className="card__icon">
-        <Image src={image.asset.url} layout="fill" alt={image.imageAlt} />
+        <Image src={image.asset.url} alt={image.imageAlt} layout="fill" />
       </div>
       <div className="card__words">
         <h2 className="display-2 color-teal">{title}</h2>

@@ -52,15 +52,17 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
     title,
     subTitle,
     details[],
-    imageCarousel {
-      images[] {
-        _key,
-        asset-> {
-          url
+    mediaCarousel {
+      slideOptions[] {
+        image {
+          _key,
+          asset-> {
+            url
+          },
+          imageAlt,
         },
-        imageAlt,
+        youTubeId
       },
-      videos[]
     },
     backgroundImage {
       asset->{
@@ -140,7 +142,7 @@ export const recentWorkPageQuery = groq`*[_type == "recentWorkPage"][0]{
             url,
           },
         },
-        youTubeVideoId,
+        youTubeId,
       }, 
       afterItem {
         image {
@@ -149,7 +151,7 @@ export const recentWorkPageQuery = groq`*[_type == "recentWorkPage"][0]{
             url,
           },
         },
-        youTubeVideoId,
+        youTubeId,
       }
     }
   }
@@ -187,7 +189,7 @@ export interface AboutPageContent {
   paragraph: richTextRawTypes[]
   imageCarousel: {
     images: AssetType[]
-    videos: string[]
+    youTubeId: string[]
   }
 }
 export interface RecentWorkPageContent {
@@ -206,12 +208,18 @@ export type SlidePairTypes = {
   caption: string
   beforeItem: {
     image?: AssetType | null
-    youTubeVideoId?: string | null
+    youTubeId?: string | null
   }
   afterItem: {
     image?: AssetType | null
-    youTubeVideoId?: string | null
+    youTubeId?: string | null
   }
+}
+
+export type SlideOptionTypes = {
+  _key: string
+  image: AssetType | null
+  youTubeId: string | null
 }
 
 export type SectionTypes = {
@@ -220,9 +228,8 @@ export type SectionTypes = {
   id: string
   darkMode: boolean
   title: string
-  imageCarousel?: {
-    images?: AssetType[]
-    videos?: string[]
+  mediaCarousel?: {
+    slideOptions: SlideOptionTypes[]
   }
   subTitle: string
   details?: richTextRawTypes[]
@@ -238,7 +245,7 @@ export type SectionTypes = {
   }
 }
 export type AssetType = {
-  _type: 'image' | 'youTubeVideoId'
+  _type: 'image' | 'youTubeId'
   _key: string
   posterImage?: string
   asset: {

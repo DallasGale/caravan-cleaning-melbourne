@@ -19,7 +19,7 @@ const ServiceFeature = ({
   primaryCta,
   secondaryCta,
   darkMode,
-  imageCarousel,
+  mediaCarousel,
 }: ServiceFeatureProps) => {
   console.log({ darkMode })
   return (
@@ -53,9 +53,9 @@ const ServiceFeature = ({
           </div>
         </div>
 
-        {imageCarousel && (
+        {mediaCarousel && (
           <div className="carousel">
-            <Carousel assets={imageCarousel} />
+            <Carousel assets={mediaCarousel} />
           </div>
         )}
       </ContentWrapper>
