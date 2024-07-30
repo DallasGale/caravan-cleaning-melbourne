@@ -12,3 +12,14 @@
     justify-content: center;
   }
 }
+
+.carousel__title-before {
+  position: absolute;
+  left: 0;
+  bottom: -35px;
+}
+.carousel__title-after {
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+}
