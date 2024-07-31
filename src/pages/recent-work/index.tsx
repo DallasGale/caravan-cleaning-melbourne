@@ -7,11 +7,9 @@ import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { token } from '~/lib/sanity.token'
 import {
-  AboutPageContent,
   NavigationContent,
   RecentWorkPageContent,
   aboutPageQuery,
-  getAboutPageContent,
   getRecentWorkContent,
   navigationQuery,
 } from '~/lib/sanity.queries'

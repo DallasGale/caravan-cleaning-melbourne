@@ -1,13 +1,11 @@
-import Image from 'next/image'
 import ContentWrapper from '~/components/contentWrapper'
 import PrimaryCta from '~/components/cta/primary'
 import SecondaryCta from '~/components/cta/secondary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
-import Placeholder from '/public/images/carousel-placeholder.jpg'
 import Carousel from '~/components/carousel'
-import VerticalCarousel from '~/components/carousel/vertical'
 import { useIsMobile } from '~/hooks/useIsMobile'
+import handleBackgroundImage from '~/utils/handleBackgroundImage'
 
 interface ServiceFeatureProps
   extends Omit<SectionTypes, 'logosHeading' | 'logo' | 'cards'> {}
@@ -25,16 +23,16 @@ const ServiceFeature = ({
 }: ServiceFeatureProps) => {
   const isMobile = useIsMobile()
 
-  const handleBackgroundImage = () => {
-    if (backgroundImage) return `url(${backgroundImage.asset.url})`
-    else if (isMobile && mobileBackgroundImage)
-      return `url(${mobileBackgroundImage.asset.url})`
-    else return 'none'
-  }
   return (
     <section
       className={`section ${darkMode ? 'dark' : 'light'}`}
-      style={{ backgroundImage: handleBackgroundImage() }}
+      style={{
+        backgroundImage: handleBackgroundImage(
+          isMobile,
+          backgroundImage,
+          mobileBackgroundImage,
+        ),
+      }}
     >
       <ContentWrapper modifier="with-carousel">
         <div className="section__words-wrapper">
@@ -70,6 +68,7 @@ const ServiceFeature = ({
             <Carousel assets={mediaCarousel} />
           </div>
         )}
+        {/* <MantineCarousel data={mediaCarousel} /> */}
       </ContentWrapper>
     </section>
   )

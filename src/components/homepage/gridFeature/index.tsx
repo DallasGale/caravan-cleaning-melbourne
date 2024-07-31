@@ -7,6 +7,7 @@ import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '~/hooks/useIsMobile'
+import handleBackgroundImage from '~/utils/handleBackgroundImage'
 
 interface GridFeatureProps extends SectionTypes {}
 
@@ -25,18 +26,18 @@ const GridFeature = ({
 }: GridFeatureProps) => {
   const isMobile = useIsMobile()
 
-  const handleBackgroundImage = () => {
-    if (backgroundImage) return `url(${backgroundImage.asset.url})`
-    else if (isMobile && mobileBackgroundImage)
-      return `url(${mobileBackgroundImage.asset.url})`
-    else return 'none'
-  }
   return (
     <section
       className="section"
       id={id}
       suppressHydrationWarning={true}
-      style={{ backgroundImage: handleBackgroundImage() }}
+      style={{
+        backgroundImage: handleBackgroundImage(
+          isMobile,
+          backgroundImage,
+          mobileBackgroundImage,
+        ),
+      }}
     >
       <ContentWrapper>
         <div className="section__intro-hero">
