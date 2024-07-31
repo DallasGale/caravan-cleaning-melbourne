@@ -8,11 +8,14 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-
-  background-size: cover;
+  background-size: 150vh;
   background-repeat: no-repeat;
   background-position: top center;
   background-attachment: fixed;
+
+  @include respond-to(desktop-up) {
+    background-size: cover;
+  }
   &.dark {
     background-color: $navy;
   }
