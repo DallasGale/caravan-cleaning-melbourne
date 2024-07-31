@@ -8,6 +8,11 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
   &.dark {
     background-color: $navy;
   }
@@ -41,20 +46,6 @@
 }
 .section-content {
   max-width: $max-width-3;
-}
-.section__background {
-  display: none;
-  @include respond-to(desktop-up) {
-    display: block;
-    z-index: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-    filter: blur(4px);
-    transform: scale(1.1);
-  }
 }
 .section__logos {
   display: flex;

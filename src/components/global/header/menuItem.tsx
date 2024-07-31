@@ -27,6 +27,7 @@ interface MenuItemProps {
 export const MenuItem = ({ name, link, onClick }: MenuItemProps) => {
   return (
     <motion.li
+      suppressHydrationWarning={true}
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}

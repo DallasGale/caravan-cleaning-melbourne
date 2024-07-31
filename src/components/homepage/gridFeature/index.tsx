@@ -6,6 +6,7 @@ import PrimaryCta from '~/components/cta/primary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
 import { motion } from 'framer-motion'
+import { useIsMobile } from '~/hooks/useIsMobile'
 
 interface GridFeatureProps extends SectionTypes {}
 
@@ -18,11 +19,25 @@ const GridFeature = ({
   logosHeading,
   logos,
   backgroundImage,
+  mobileBackgroundImage,
   primaryCta,
   secondaryCta,
 }: GridFeatureProps) => {
+  const isMobile = useIsMobile()
+
+  const handleBackgroundImage = () => {
+    if (backgroundImage) return `url(${backgroundImage.asset.url})`
+    else if (isMobile && mobileBackgroundImage)
+      return `url(${mobileBackgroundImage.asset.url})`
+    else return 'none'
+  }
   return (
-    <section className="section" id={id}>
+    <section
+      className="section"
+      id={id}
+      suppressHydrationWarning={true}
+      style={{ backgroundImage: handleBackgroundImage() }}
+    >
       <ContentWrapper>
         <div className="section__intro-hero">
           <h1 className="heading-1">{title}</h1>
@@ -83,16 +98,6 @@ const GridFeature = ({
         <PrimaryCta {...primaryCta} />
         {secondaryCta && 'todo'}
       </ContentWrapper>
-      {backgroundImage && (
-        <Image
-          className="section__background"
-          src={backgroundImage.asset.url}
-          alt={''}
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-      )}
     </section>
   )
 }

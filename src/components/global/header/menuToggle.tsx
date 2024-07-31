@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 
 const Path = (props) => (
   <motion.path
+    suppressHydrationWarning={true}
     fill="transparent"
     strokeWidth="3"
     stroke="hsl(0, 0%, 18%)"

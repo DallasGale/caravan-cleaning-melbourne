@@ -23,7 +23,11 @@ const SmallCard = ({ title, paragraph, image, delay }: CardProps) => {
     },
   }
   return (
-    <motion.div className="card" variants={cardVariants}>
+    <motion.div
+      className="card"
+      variants={cardVariants}
+      suppressHydrationWarning={true}
+    >
       <div className="card__icon card__icon--small">
         <Image src={image.asset.url} layout="fill" alt={image.imageAlt} />
       </div>

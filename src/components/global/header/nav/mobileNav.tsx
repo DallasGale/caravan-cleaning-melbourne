@@ -17,7 +17,11 @@ interface MobileNavProps extends NavigationContent {
 }
 
 export const MobileNav = ({ navItems, phone, onClick }: MobileNavProps) => (
-  <motion.ul variants={variants} className="mobile-nav__ul">
+  <motion.ul
+    variants={variants}
+    className="mobile-nav__ul"
+    suppressHydrationWarning={true}
+  >
     {navItems.map(({ name, link }) => (
       <MenuItem key={name} name={name} link={link} onClick={onClick} />
     ))}

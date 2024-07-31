@@ -42,6 +42,7 @@ export default function Home({
   const hero: HeroProps = content?.hero
   const sections: HomepageContent['sections'] = content?.sections || []
 
+  console.log({ hero })
   return (
     <Container
       navigationContent={navigationContent}

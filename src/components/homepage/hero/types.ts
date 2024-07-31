@@ -12,4 +12,9 @@ export interface HeroProps {
       url: string
     }
   }
+  mobileBackgroundImage: {
+    asset: {
+      url: string
+    }
+  }
 }

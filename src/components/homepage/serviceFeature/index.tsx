@@ -7,6 +7,7 @@ import { SectionTypes } from '~/lib/sanity.queries'
 import Placeholder from '/public/images/carousel-placeholder.jpg'
 import Carousel from '~/components/carousel'
 import VerticalCarousel from '~/components/carousel/vertical'
+import { useIsMobile } from '~/hooks/useIsMobile'
 
 interface ServiceFeatureProps
   extends Omit<SectionTypes, 'logosHeading' | 'logo' | 'cards'> {}
@@ -16,14 +17,25 @@ const ServiceFeature = ({
   subTitle,
   details,
   backgroundImage,
+  mobileBackgroundImage,
   primaryCta,
   secondaryCta,
   darkMode,
   mediaCarousel,
 }: ServiceFeatureProps) => {
-  console.log({ darkMode })
+  const isMobile = useIsMobile()
+
+  const handleBackgroundImage = () => {
+    if (backgroundImage) return `url(${backgroundImage.asset.url})`
+    else if (isMobile && mobileBackgroundImage)
+      return `url(${mobileBackgroundImage.asset.url})`
+    else return 'none'
+  }
   return (
-    <section className={`section ${darkMode ? 'dark' : 'light'}`}>
+    <section
+      className={`section ${darkMode ? 'dark' : 'light'}`}
+      style={{ backgroundImage: handleBackgroundImage() }}
+    >
       <ContentWrapper modifier="with-carousel">
         <div className="section__words-wrapper">
           <div className="section__intro-hero">
@@ -59,17 +71,6 @@ const ServiceFeature = ({
           </div>
         )}
       </ContentWrapper>
-
-      {backgroundImage && (
-        <Image
-          className="section__background"
-          src={backgroundImage.asset.url}
-          alt={''}
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-      )}
     </section>
   )
 }

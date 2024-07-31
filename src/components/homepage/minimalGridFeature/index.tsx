@@ -22,7 +22,11 @@ const MinimalGridFeature = ({
   primaryCta,
 }: MinimalGridFeatureProps) => {
   return (
-    <section className="section section__minimal-grid-feature" id={id}>
+    <section
+      className="section section__minimal-grid-feature"
+      id={id}
+      suppressHydrationWarning={true}
+    >
       <ContentWrapper modifier="content-wrapper__minimal">
         <div className="section__minimal-grid-feature-content">
           <div className="section__minimal-grid-feature-cta">

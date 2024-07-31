@@ -42,7 +42,12 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
       asset->{
         url
       }
-    }
+    },
+    mobileBackgroundImage {
+      asset->{
+        url
+      }
+    },
   },
   sections[] {
     _type,
@@ -65,6 +70,11 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
       },
     },
     backgroundImage {
+      asset->{
+        url
+      }
+    },
+    mobileBackgroundImage {
       asset->{
         url
       }
@@ -239,6 +249,11 @@ export type SectionTypes = {
   logos?: ImageTypes[]
   cards?: CardTypes[]
   backgroundImage?: {
+    asset: {
+      url: string
+    }
+  }
+  mobileBackgroundImage?: {
     asset: {
       url: string
     }
