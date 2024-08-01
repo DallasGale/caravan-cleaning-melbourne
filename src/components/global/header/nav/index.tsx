@@ -12,9 +12,10 @@ import { useDimensions } from '~/hooks/useDimensions'
 import { MenuToggle } from '../menuToggle'
 import { MobileNav } from './mobileNav'
 import { useIsMobile } from '~/hooks/useIsMobile'
+import { useIsTablet } from '~/hooks/useIsTablet'
 
 const Nav = ({ navItems, phone }: NavigationContent) => {
-  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const navRef = useRef<HTMLDivElement | null>(null)
@@ -50,7 +51,7 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
         <Link href="/">
           <Image src={Logo} alt="Logo" width={150} height={45} />
         </Link>
-        {isMobile && (
+        {isTablet ? (
           <>
             <ActionIcon
               onClick={() => setToggleMenu(!toggleMenu)}
@@ -73,35 +74,35 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
               />
             </Drawer>
           </>
-        )}
-
-        <ul className="nav__list">
-          {navItems.map(({ name, link }, index) => (
-            <li
-              className={`nav__list-item ${navItems[activeDropdown]?.dropdownItems && activeDropdown === index ? 'active' : ''}`}
-              key={index}
-              onMouseEnter={() => handleMouseEnter(index)}
-            >
-              <Link
-                className={`nav__link ${navItems[activeDropdown]?.dropdownItems && activeDropdown === index ? 'active' : ''}`}
-                href={link}
+        ) : (
+          <ul className="nav__list">
+            {navItems.map(({ name, link }, index) => (
+              <li
+                className={`nav__list-item ${navItems[activeDropdown]?.dropdownItems && activeDropdown === index ? 'active' : ''}`}
+                key={index}
+                onMouseEnter={() => handleMouseEnter(index)}
               >
-                {name}
+                <Link
+                  className={`nav__link ${navItems[activeDropdown]?.dropdownItems && activeDropdown === index ? 'active' : ''}`}
+                  href={link}
+                >
+                  {name}
+                </Link>
+              </li>
+            ))}
+            <li className="nav__list-item">
+              <span className="nav__divider" />
+            </li>
+            <li className="nav__list-item ph">
+              <Link className="nav__link ph" href={`tel:${phone}`}>
+                {phone}
               </Link>
             </li>
-          ))}
-          <li className="nav__list-item">
-            <span className="nav__divider" />
-          </li>
-          <li className="nav__list-item ph">
-            <Link className="nav__link ph" href={`tel:${phone}`}>
-              {phone}
-            </Link>
-          </li>
-          <li className="nav__list-item enquire">
-            <PrimaryCta label="Enquire Now" link="/#enquire" />
-          </li>
-        </ul>
+            <li className="nav__list-item enquire">
+              <PrimaryCta label="Enquire Now" link="/#enquire" />
+            </li>
+          </ul>
+        )}
       </nav>
 
       {/* <Dropdown

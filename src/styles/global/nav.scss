@@ -13,16 +13,13 @@
   }
 }
 .nav__list {
-  display: none;
-  @include respond-to(tablet-up) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    gap: 10px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 10px;
 
   @include respond-to(desktop-up) {
     gap: 40px;
@@ -63,7 +60,7 @@
 }
 
 .nav__link {
-  font-size: $font-size-4;
+  font-size: $font-size-2;
   font-weight: 600;
   color: $white;
   text-decoration: none;
@@ -74,6 +71,11 @@
   border-radius: $space-1;
   @include trans_150;
   @include respond-to(tablet-up) {
+    font-size: $font-size-2;
+    line-height: $font-size-2;
+  }
+
+  @include respond-to(desktop-up) {
     font-size: $font-size-0;
     line-height: $font-size-1;
   }

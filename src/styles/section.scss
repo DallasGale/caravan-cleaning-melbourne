@@ -66,6 +66,11 @@
   gap: 20px;
   align-items: center;
   width: 100%;
+
+  @include respond-to(tablet-up) {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
   @include respond-to(desktop-up) {
     flex-direction: row;
     width: auto;
@@ -83,7 +88,7 @@
   justify-content: flex-start;
   gap: 30px;
   padding: $space-6 0;
-  @include respond-to(tablet-up) {
+  @include respond-to(desktop-up) {
     display: grid;
     grid-template-columns: 400px 1fr;
     // flex-direction: row;
@@ -101,6 +106,17 @@
 .section__about-us {
   justify-content: flex-start;
   min-height: auto;
+  padding-top: $space-8;
+  @include respond-to(desktop-up) {
+    padding-top: $space-6;
+  }
+}
+
+.section__recent-work {
+  padding-top: $space-8;
+  @include respond-to(desktop-up) {
+    padding-top: $space-6;
+  }
 }
 
 .section__words-wrapper {

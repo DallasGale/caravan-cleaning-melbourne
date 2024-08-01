@@ -3,8 +3,8 @@
 *******************************************/
 
 $small-phone-end: '330px';
-$phone-end: '700px';
-$tablet-start: '980px';
+$phone-end: '412px';
+$tablet-start: '819px';
 $tablet-end: '1024px';
 $desktop-start: '1250px';
 $desktop-end: '1750px';
@@ -41,12 +41,6 @@ $tablet-pro-end: '1025px';
   // ? Tablet Pro >
   @if $media == above-tablet-pro {
     @media only screen and (min-width: $tablet-pro-end) {
-      @content;
-    }
-  }
-  // ? Tablet Pro <
-  @if $media == above-tablet-pro {
-    @media only screen and (max-width: $tablet-pro-end) {
       @content;
     }
   }
