@@ -3,7 +3,7 @@
 *******************************************/
 
 $small-phone-end: '330px';
-$phone-end: '600px';
+$phone-end: '700px';
 $tablet-start: '980px';
 $tablet-end: '1024px';
 $desktop-start: '1250px';
@@ -16,6 +16,11 @@ $tablet-pro-end: '1025px';
 // * Based on mobile first approach.
 @mixin respond-to($media) {
   @if $media == small-phone-up {
+    @media only screen and (min-width: $small-phone-end) {
+      @content;
+    }
+  }
+  @if $media == phone-up {
     @media only screen and (min-width: $small-phone-end) {
       @content;
     }

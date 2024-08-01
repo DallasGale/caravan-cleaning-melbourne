@@ -1,10 +1,10 @@
 const handleBackgroundImage = (
-  isMobile,
+  isTablet,
   backgroundImage,
   mobileBackgroundImage,
 ) => {
-  if (backgroundImage) return `url(${backgroundImage.asset.url})`
-  else if (isMobile && mobileBackgroundImage)
+  if (!isTablet && backgroundImage) return `url(${backgroundImage.asset.url})`
+  else if (isTablet && mobileBackgroundImage)
     return `url(${mobileBackgroundImage.asset.url})`
   else return 'none'
 }

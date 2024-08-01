@@ -17,7 +17,7 @@ interface SlideContentProps {
 const SlideContent: React.FC<SlideContentProps> = ({ item }) => {
   return (
     <div className="slide">
-      {item.image && (
+      {item.image ? (
         <Image
           className="slider-image"
           src={item.image.asset.url}
@@ -26,8 +26,9 @@ const SlideContent: React.FC<SlideContentProps> = ({ item }) => {
           width={400}
           height={600}
         />
+      ) : (
+        <YouTubePlayer id={item.youTubeId} />
       )}
-      {item.youTubeId && <YouTubePlayer id={item.youTubeId} />}
     </div>
   )
 }

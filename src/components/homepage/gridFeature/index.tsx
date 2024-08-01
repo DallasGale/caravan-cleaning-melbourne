@@ -6,8 +6,8 @@ import PrimaryCta from '~/components/cta/primary'
 import RichText from '~/components/richText'
 import { SectionTypes } from '~/lib/sanity.queries'
 import { motion } from 'framer-motion'
-import { useIsMobile } from '~/hooks/useIsMobile'
 import handleBackgroundImage from '~/utils/handleBackgroundImage'
+import { useIsTablet } from '~/hooks/useIsTablet'
 
 interface GridFeatureProps extends SectionTypes {}
 
@@ -24,7 +24,7 @@ const GridFeature = ({
   primaryCta,
   secondaryCta,
 }: GridFeatureProps) => {
-  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
 
   return (
     <section
@@ -32,11 +32,7 @@ const GridFeature = ({
       id={id}
       suppressHydrationWarning={true}
       style={{
-        backgroundImage: handleBackgroundImage(
-          isMobile,
-          backgroundImage,
-          mobileBackgroundImage,
-        ),
+        backgroundImage: handleBackgroundImage(isTablet, backgroundImage, null),
       }}
     >
       <ContentWrapper>

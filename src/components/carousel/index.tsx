@@ -1,19 +1,13 @@
 import Image from 'next/image'
 import Slider from 'react-slick'
-import {
-  AssetType,
-  SlideOptionTypes,
-  SlidePairTypes,
-} from '~/lib/sanity.queries'
-import { useEffect, useRef, useState } from 'react'
+import { SlideOptionTypes } from '~/lib/sanity.queries'
 
-import Placeholder from '/public/images/carousel-placeholder.jpg'
-import LazyVideo from '../lazyVideo'
 import YouTubePlayer from './youtube'
+import { useIsTablet } from '~/hooks/useIsTablet'
+import { useIsMobile } from '~/hooks/useIsMobile'
 
 interface CarouselProps {
   infinite?: boolean
-  slidesToShow?: number
   slidesToScroll?: number
   assets: {
     slideOptions: SlideOptionTypes[]
@@ -21,15 +15,24 @@ interface CarouselProps {
 }
 const Carousel = ({
   infinite = false,
-  slidesToShow = 1,
   slidesToScroll = 1,
   assets,
 }: CarouselProps) => {
+  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
+
+  const handleSlidesToShow = () => {
+    if (isMobile) {
+      return 1
+    } else if (isTablet) {
+      return 2
+    } else return 1
+  }
   const settings = {
     className: 'center',
     centerMode: false,
     infinite,
-    slidesToShow,
+    slidesToShow: handleSlidesToShow(),
     slidesToScroll,
     centerPadding: '10%',
     swipeToSlide: true,

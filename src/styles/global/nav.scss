@@ -168,9 +168,6 @@
   width: 30px;
   background-color: transparent;
   z-index: 1000;
-  @include respond-to(tablet-up) {
-    display: none;
-  }
 }
 
 .nav__mobile-menu-background {
@@ -186,7 +183,7 @@
   }
 }
 .nav__mobile-menu-drawer {
-  background-color: $navy;
+  background-color: $dark-navy;
   z-index: 2;
 }
 

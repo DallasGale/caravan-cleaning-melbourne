@@ -11,7 +11,7 @@ const YouTubePlayer = ({ id }: YouTubePlayerProps) => {
       className="youtube-player"
       muted
       width={600}
-      height={600}
+      height="100%"
     />
   )
 }

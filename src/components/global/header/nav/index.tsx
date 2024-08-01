@@ -11,8 +11,10 @@ import { motion, useCycle } from 'framer-motion'
 import { useDimensions } from '~/hooks/useDimensions'
 import { MenuToggle } from '../menuToggle'
 import { MobileNav } from './mobileNav'
+import { useIsMobile } from '~/hooks/useIsMobile'
 
 const Nav = ({ navItems, phone }: NavigationContent) => {
+  const isMobile = useIsMobile()
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const navRef = useRef<HTMLDivElement | null>(null)
@@ -40,30 +42,6 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
       }
     }
   }, [])
-  // const [isOpen, toggleOpen] = useCycle(false, true)
-
-  // const sidebar = {
-  //   open: (height = 300) => ({
-  //     clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
-  //     transition: {
-  //       type: 'spring',
-  //       stiffness: 50,
-  //       restDelta: 2,
-  //     },
-  //   }),
-  //   closed: {
-  //     clipPath: 'circle(20px at calc(100% - 40px) 40px)',
-  //     transition: {
-  //       delay: 0.5,
-  //       type: 'spring',
-  //       stiffness: 400,
-  //       damping: 40,
-  //     },
-  //   },
-  // }
-
-  // const containerRef = useRef(null)
-  // const { height } = useDimensions(containerRef)
 
   const [toggleMenu, setToggleMenu] = useState(false)
   return (
@@ -72,24 +50,30 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
         <Link href="/">
           <Image src={Logo} alt="Logo" width={150} height={45} />
         </Link>
-        <ActionIcon
-          onClick={() => setToggleMenu(!toggleMenu)}
-          className="nav__mobile-menu"
-        >
-          <IconMenu2 />
-        </ActionIcon>
-        <Drawer
-          withCloseButton={false}
-          classNames={{ content: 'nav__mobile-menu-drawer' }}
-          opened={toggleMenu}
-          onClose={() => setToggleMenu(false)}
-        >
-          <MobileNav
-            navItems={navItems}
-            phone={phone}
-            onClick={() => setToggleMenu(!toggleMenu)}
-          />
-        </Drawer>
+        {isMobile && (
+          <>
+            <ActionIcon
+              onClick={() => setToggleMenu(!toggleMenu)}
+              className="nav__mobile-menu"
+            >
+              <IconMenu2 />
+            </ActionIcon>
+            <Drawer
+              withOverlay={false}
+              size="calc(100vw - 40px)"
+              withCloseButton={false}
+              classNames={{ content: 'nav__mobile-menu-drawer' }}
+              opened={toggleMenu}
+              onClose={() => setToggleMenu(false)}
+            >
+              <MobileNav
+                navItems={navItems}
+                phone={phone}
+                onClick={() => setToggleMenu(!toggleMenu)}
+              />
+            </Drawer>
+          </>
+        )}
 
         <ul className="nav__list">
           {navItems.map(({ name, link }, index) => (

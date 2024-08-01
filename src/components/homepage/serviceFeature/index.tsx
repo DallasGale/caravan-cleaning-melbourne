@@ -6,6 +6,7 @@ import { SectionTypes } from '~/lib/sanity.queries'
 import Carousel from '~/components/carousel'
 import { useIsMobile } from '~/hooks/useIsMobile'
 import handleBackgroundImage from '~/utils/handleBackgroundImage'
+import { useIsTablet } from '~/hooks/useIsTablet'
 
 interface ServiceFeatureProps
   extends Omit<SectionTypes, 'logosHeading' | 'logo' | 'cards'> {}
@@ -21,17 +22,13 @@ const ServiceFeature = ({
   darkMode,
   mediaCarousel,
 }: ServiceFeatureProps) => {
-  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
 
   return (
     <section
       className={`section ${darkMode ? 'dark' : 'light'}`}
       style={{
-        backgroundImage: handleBackgroundImage(
-          isMobile,
-          backgroundImage,
-          mobileBackgroundImage,
-        ),
+        backgroundImage: handleBackgroundImage(isTablet, backgroundImage, null),
       }}
     >
       <ContentWrapper modifier="with-carousel">
