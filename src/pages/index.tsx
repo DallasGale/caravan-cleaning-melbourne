@@ -17,6 +17,7 @@ import {
   navigationQuery,
 } from '~/lib/sanity.queries'
 import MinimalGridFeature from '~/components/homepage/minimalGridFeature'
+import Testimonials from '~/components/global/testimonials'
 
 type PageProps = {
   navigationContent: NavigationContent
@@ -58,6 +59,8 @@ export default function Home({
             return <GridFeature key={section._key} {...section} />
           case 'minimalGridFeature':
             return <MinimalGridFeature key={section._key} {...section} />
+          case 'testimonialFeature':
+            return <Testimonials key={section._key} {...section} />
           default:
             return null
         }

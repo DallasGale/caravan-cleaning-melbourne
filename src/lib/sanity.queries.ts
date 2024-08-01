@@ -57,6 +57,11 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
     title,
     subTitle,
     details[],
+    testimonials[] {
+      _key,
+      writtenBy,
+      quote
+    },
     mediaCarousel {
       slideOptions[] {
         image {
@@ -232,9 +237,19 @@ export type SlideOptionTypes = {
   youTubeId: string | null
 }
 
+export type TestimonialTypes = {
+  _key: string
+  quote: string
+  writtenBy: string
+}
+
 export type SectionTypes = {
   _key: string
-  _type: 'serviceFeature' | 'gridFeature' | 'minimalGridFeature'
+  _type:
+    | 'serviceFeature'
+    | 'gridFeature'
+    | 'minimalGridFeature'
+    | 'testimonialFeature'
   id: string
   darkMode: boolean
   title: string
@@ -248,6 +263,7 @@ export type SectionTypes = {
   logosHeading?: string
   logos?: ImageTypes[]
   cards?: CardTypes[]
+  testimonials: TestimonialTypes[]
   backgroundImage?: {
     asset: {
       url: string

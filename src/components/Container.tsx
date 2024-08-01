@@ -4,7 +4,6 @@ import { NavigationContent, navigationQuery } from '~/lib/sanity.queries'
 import { getClient } from '~/lib/sanity.client'
 import { useEffect, useState } from 'react'
 import Footer from './global/footer'
-import Testimonials from './global/testimonials'
 import Contact from './global/contact'
 
 type ContainerProps = {
@@ -43,7 +42,6 @@ export default function Container({
         phone={navigation.phone || ''}
       />
       <main>{children}</main>
-      <Testimonials />
       <Contact />
       <Footer />
     </div>
