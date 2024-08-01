@@ -11,11 +11,14 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
+  padding-top: 100px;
 
   @include respond-to(desktop-up) {
+    padding-top: 0;
     background-attachment: fixed;
     background-size: cover;
   }
+
   &.dark {
     background-color: $navy;
   }

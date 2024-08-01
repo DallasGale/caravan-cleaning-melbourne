@@ -2,7 +2,7 @@ import Image from 'next/image'
 import SpeechBubble from '/public/images/speech-bubble.svg'
 const Testimonials = () => {
   return (
-    <section className="testimonials" id="testimonials">
+    <section className="section testimonials" id="testimonials">
       <div className="testimonials__container">
         <h1 className="heading-3 color-white testimonials__heading">
           <Image
