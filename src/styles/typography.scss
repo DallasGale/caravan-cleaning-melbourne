@@ -81,9 +81,18 @@
 // Display
 
 .display-1 {
-  font-size: $font-size-5;
+  font-size: $font-size-3;
+  line-height: $line-height-3;
   font-weight: 500;
-  line-height: $line-height-5;
+
+  @include respond-to(tablet-up) {
+    font-size: $font-size-4;
+    line-height: $line-height-4;
+  }
+  @include respond-to(desktop-up) {
+    font-size: $font-size-5;
+    line-height: $line-height-5;
+  }
 }
 .display-2 {
   font-size: $font-size-4;
