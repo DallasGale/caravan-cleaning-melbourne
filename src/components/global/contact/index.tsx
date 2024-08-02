@@ -5,6 +5,8 @@ import emailjs from 'emailjs-com'
 import Swal from 'sweetalert2'
 import { useState } from 'react'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
+import { ContactFormContent } from '~/lib/sanity.queries'
+import RichText from '~/components/richText'
 
 const key = '46a988fc-dce8-4ee9-976e-e529d6752059'
 type SubmitTypes = {
@@ -13,7 +15,8 @@ type SubmitTypes = {
 }
 
 type StateTypes = 'initial' | 'submitting' | 'succeeded' | 'error'
-const Contact = () => {
+
+const Contact = ({ title, paragraph }: ContactFormContent) => {
   const { register, handleSubmit, setValue } = useForm()
   const [isHuman, setIsHuman] = useState(false)
   const [status, setStatus] = useState<SubmitTypes>({
@@ -68,13 +71,8 @@ const Contact = () => {
 
         {status.state === 'initial' && (
           <>
-            <h2 className="heading-2 color-navy weight-bold">
-              Contact us today for a FREE QUOTE.
-            </h2>
-            <p className="body-1 weight-semi">
-              Contact us now for a complimentary, no-obligation quote tailored
-              to your specific caravan and motorhome cleaning needs.
-            </p>
+            <h2 className="heading-2 color-navy weight-bold">{title}</h2>
+            <p className="body-1 weight-semi">{paragraph}</p>
             <form onSubmit={onSubmit} className="contact__form">
               <input type="hidden" name="subject" value="New Website Enquiry" />
               <input

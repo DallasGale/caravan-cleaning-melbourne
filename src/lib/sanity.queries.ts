@@ -5,6 +5,11 @@ import { CtaProps } from '~/components/cta/types'
 import { HeroProps } from '~/components/homepage/hero/types'
 import { richTextRawTypes } from '~/components/types'
 
+export const contactFormQuery = groq`*[_type == "contactForm"][0] {
+  title,
+  paragraph,
+}`
+
 export const footerQuery = groq`*[_type == "footer"][0] {
   services[] {
     label,
@@ -287,6 +292,11 @@ export type FooterContent = {
   }
 }
 
+export type ContactFormContent = {
+  title: string
+  paragraph: string
+}
+
 export type SectionTypes = {
   _key: string
   _type:
@@ -360,6 +370,15 @@ export async function getFooterContent(
 ): Promise<FooterContent> {
   console.log('Executing footer query')
   const result = await client.fetch(footerQuery)
+  console.log('Query result:', result)
+  return result
+}
+
+export async function getContactFormrContent(
+  client: SanityClient,
+): Promise<FooterContent> {
+  console.log('Executing contact form query')
+  const result = await client.fetch(contactFormQuery)
   console.log('Query result:', result)
   return result
 }

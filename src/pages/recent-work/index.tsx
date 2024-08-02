@@ -7,10 +7,12 @@ import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { token } from '~/lib/sanity.token'
 import {
+  ContactFormContent,
   FooterContent,
   NavigationContent,
   RecentWorkPageContent,
   aboutPageQuery,
+  contactFormQuery,
   footerQuery,
   getRecentWorkContent,
   navigationQuery,
@@ -23,6 +25,7 @@ type PageProps = {
   navigationContent: NavigationContent
   footerContent: FooterContent
   recentWorkPageContent: RecentWorkPageContent
+  contactFormContent: ContactFormContent
   draftMode: boolean
   token: string
 }
@@ -31,6 +34,7 @@ export default function RecentWork({
   navigationContent,
   footerContent,
   recentWorkPageContent,
+  contactFormContent,
   draftMode,
   token,
 }: PageProps) {
@@ -42,6 +46,7 @@ export default function RecentWork({
   const content = draftMode ? liveRecentWorkPageContent : recentWorkPageContent
   return (
     <Container
+      contactFormContent={contactFormContent}
       footerContent={footerContent}
       navigationContent={navigationContent}
       draftMode={draftMode}
@@ -79,6 +84,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
     const recentWorkPageContent = await getRecentWorkContent(client)
     const navigationContent = await client.fetch(navigationQuery)
     const footerContent = await client.fetch(footerQuery)
+    const contactFormContent = await client.fetch(contactFormQuery)
 
     return {
       props: {
@@ -86,6 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
         token: draftMode ? readToken : '',
         recentWorkPageContent,
         navigationContent,
+        contactFormContent,
         footerContent,
       },
     }

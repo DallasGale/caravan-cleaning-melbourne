@@ -10,9 +10,11 @@ import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { token } from '~/lib/sanity.token'
 import {
+  ContactFormContent,
   FooterContent,
   HomepageContent,
   NavigationContent,
+  contactFormQuery,
   footerQuery,
   getHomepageContent,
   homepageQuery,
@@ -25,6 +27,7 @@ type PageProps = {
   navigationContent: NavigationContent
   homepageContent: HomepageContent
   footerContent: FooterContent
+  contactFormContent: ContactFormContent
   draftMode: boolean
   token: string
 }
@@ -32,6 +35,7 @@ type PageProps = {
 export default function Home({
   navigationContent,
   homepageContent,
+  contactFormContent,
   footerContent,
   draftMode,
   token,
@@ -43,12 +47,12 @@ export default function Home({
   )
 
   const content = draftMode ? liveHomepageContent : homepageContent
-
   const hero: HeroProps = content?.hero
   const sections: HomepageContent['sections'] = content?.sections || []
 
   return (
     <Container
+      contactFormContent={contactFormContent}
       footerContent={footerContent}
       navigationContent={navigationContent}
       draftMode={draftMode}
@@ -80,6 +84,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
     const homepageContent = await getHomepageContent(client)
     const navigationContent = await client.fetch(navigationQuery)
     const footerContent = await client.fetch(footerQuery)
+    const contactFormContent = await client.fetch(contactFormQuery)
 
     return {
       props: {
@@ -88,6 +93,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
         homepageContent,
         navigationContent,
         footerContent,
+        contactFormContent,
       },
     }
   } catch (error) {

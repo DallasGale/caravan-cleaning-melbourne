@@ -1,6 +1,8 @@
 import Header from './global/header'
 import { useLiveQuery } from 'next-sanity/preview'
 import {
+  ContactFormContent,
+  contactFormQuery,
   FooterContent,
   footerQuery,
   NavigationContent,
@@ -17,12 +19,14 @@ type ContainerProps = {
   token: string
   navigationContent: NavigationContent
   footerContent: FooterContent
+  contactFormContent: ContactFormContent
 }
 
 export default function Container({
   children,
   draftMode,
   token,
+  contactFormContent: initialContactFormContent,
   navigationContent: initialNavigationContent,
   footerContent: initialFooterContent = null,
 }: ContainerProps) {
@@ -50,7 +54,15 @@ export default function Container({
 
   const footerContent = draftMode ? liveFooterContent : initialFooterContent
 
-  // console.log({ footerContent })
+  const [liveContactFormContent] = useLiveQuery<ContactFormContent>(
+    initialContactFormContent ?? null,
+    contactFormQuery,
+    { enabled: draftMode },
+  )
+
+  const contactFormContent = draftMode
+    ? liveContactFormContent
+    : initialContactFormContent
 
   return (
     <div className="container">
@@ -59,7 +71,7 @@ export default function Container({
         phone={navigation.phone || ''}
       />
       <main>{children}</main>
-      <Contact />
+      <Contact {...contactFormContent} />
       <Footer {...footerContent} />
     </div>
   )
