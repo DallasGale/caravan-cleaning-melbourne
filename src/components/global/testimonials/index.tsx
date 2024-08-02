@@ -7,7 +7,7 @@ interface TestimonialsProps {
 }
 const Testimonials = ({ testimonials }: TestimonialsProps) => {
   return (
-    <section className="section testimonials" id="testimonials">
+    <section className="testimonials" id="testimonials">
       <div className="testimonials__container">
         <h1 className="heading-3 color-white testimonials__heading">
           <Image
