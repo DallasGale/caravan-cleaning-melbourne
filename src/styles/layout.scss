@@ -10,9 +10,6 @@
   padding-bottom: $space-1;
   position: relative;
   margin-bottom: $space-6;
-  &__minimal {
-    padding: 0;
-  }
 
   @include respond-to(tablet-up) {
     padding-top: $space-4;
@@ -23,6 +20,9 @@
     margin-bottom: 0;
     padding-top: $space-8;
     padding-bottom: $space-6;
+  }
+  &__minimal {
+    padding: 0;
   }
 }
 
