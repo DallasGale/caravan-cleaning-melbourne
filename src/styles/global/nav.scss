@@ -21,6 +21,9 @@
   align-items: center;
   gap: 10px;
 
+  @include respond-to(tablet-up) {
+    gap: 20px;
+  }
   @include respond-to(desktop-up) {
     gap: 40px;
   }
@@ -71,8 +74,8 @@
   border-radius: $space-1;
   @include trans_150;
   @include respond-to(tablet-up) {
-    font-size: $font-size-2;
-    line-height: $font-size-2;
+    font-size: $font-size-1;
+    line-height: $font-size-1;
   }
 
   @include respond-to(desktop-up) {

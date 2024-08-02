@@ -4,6 +4,10 @@
   align-items: center;
   justify-content: center;
   padding: $space-5 0;
+  padding-top: $space-7;
+  @include respond-to(desktop-up) {
+    padding-top: $space-5;
+  }
 }
 
 .testimonials__container {
