@@ -8,7 +8,7 @@ import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { ContactFormContent } from '~/lib/sanity.queries'
 import RichText from '~/components/richText'
 
-const key = '46a988fc-dce8-4ee9-976e-e529d6752059'
+const key = '64212f20-f84f-4265-806d-3bfd83e98a1a'
 type SubmitTypes = {
   state: StateTypes
   message: string
