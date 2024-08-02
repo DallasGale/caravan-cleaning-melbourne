@@ -8,8 +8,10 @@ import { getClient } from '~/lib/sanity.client'
 import { token } from '~/lib/sanity.token'
 import {
   AboutPageContent,
+  FooterContent,
   NavigationContent,
   aboutPageQuery,
+  footerQuery,
   getAboutPageContent,
   navigationQuery,
 } from '~/lib/sanity.queries'
@@ -20,6 +22,7 @@ import Carousel from '~/components/carousel'
 
 type PageProps = {
   navigationContent: NavigationContent
+  footerContent: FooterContent
   aboutPageContent: AboutPageContent
   draftMode: boolean
   token: string
@@ -27,6 +30,7 @@ type PageProps = {
 
 export default function About({
   navigationContent,
+  footerContent,
   aboutPageContent,
   draftMode,
   token,
@@ -40,6 +44,7 @@ export default function About({
 
   return (
     <Container
+      footerContent={footerContent}
       navigationContent={navigationContent}
       draftMode={draftMode}
       token={token}
@@ -69,6 +74,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
   try {
     const aboutPageContent = await getAboutPageContent(client)
     const navigationContent = await client.fetch(navigationQuery)
+    const footerContent = await client.fetch(footerQuery)
 
     return {
       props: {
@@ -76,6 +82,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
         token: draftMode ? readToken : '',
         aboutPageContent,
         navigationContent,
+        footerContent,
       },
     }
   } catch (error) {

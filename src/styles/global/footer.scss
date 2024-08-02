@@ -89,3 +89,16 @@
     max-width: 80%;
   }
 }
+
+.footer-info {
+  color: $white;
+  strong {
+    color: $teal;
+  }
+}
+
+.footer-link {
+  color: $light-blue;
+  font-size: $font-size-0;
+  text-decoration: none;
+}

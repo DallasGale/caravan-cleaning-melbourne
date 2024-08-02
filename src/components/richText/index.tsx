@@ -2,7 +2,6 @@ import Block from './block'
 import { RichTextProps } from './type'
 
 const RichText = ({ content, className, color }: RichTextProps) => {
-  console.log({ content, className, color })
   const renderContent = () => {
     const result = []
     let currentList: JSX.Element[] = []

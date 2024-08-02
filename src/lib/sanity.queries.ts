@@ -5,6 +5,26 @@ import { CtaProps } from '~/components/cta/types'
 import { HeroProps } from '~/components/homepage/hero/types'
 import { richTextRawTypes } from '~/components/types'
 
+export const footerQuery = groq`*[_type == "footer"][0] {
+  services[] {
+    label,
+    link,
+  },
+  infoText[],
+  company[],
+  seoKeywords,
+  showLogos,
+  contact {
+    email,
+    instagram,
+    facebook,
+    phoneNumbers[] {
+      number,
+      name,
+    },
+  },
+}`
+
 export const navigationQuery = groq`*[_type == "navigation"] {
   navItems[] {
     link,
@@ -243,6 +263,30 @@ export type TestimonialTypes = {
   writtenBy: string
 }
 
+export type LinkType = {
+  label: string
+  link: string
+}
+
+export type PhoneNumberType = {
+  _key: string
+  name: string
+  number: string
+}
+export type FooterContent = {
+  services: LinkType[]
+  company: LinkType[]
+  infoText: richTextRawTypes[]
+  showLogos: boolean
+  seoKeywords: string
+  contact: {
+    email: string
+    instagram: string
+    facebook: string
+    phoneNumbers: PhoneNumberType[]
+  }
+}
+
 export type SectionTypes = {
   _key: string
   _type:
@@ -293,7 +337,6 @@ export interface HomepageContent {
   hero: HeroProps
   sections: SectionTypes[]
 }
-
 export async function getNavigationContent(
   client: SanityClient,
 ): Promise<HomepageContent> {
@@ -308,6 +351,15 @@ export async function getHomepageContent(
 ): Promise<HomepageContent> {
   console.log('Executing homepage query')
   const result = await client.fetch(homepageQuery)
+  console.log('Query result:', result)
+  return result
+}
+
+export async function getFooterContent(
+  client: SanityClient,
+): Promise<FooterContent> {
+  console.log('Executing footer query')
+  const result = await client.fetch(footerQuery)
   console.log('Query result:', result)
   return result
 }

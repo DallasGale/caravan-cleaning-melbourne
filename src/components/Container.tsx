@@ -1,6 +1,11 @@
 import Header from './global/header'
 import { useLiveQuery } from 'next-sanity/preview'
-import { NavigationContent, navigationQuery } from '~/lib/sanity.queries'
+import {
+  FooterContent,
+  footerQuery,
+  NavigationContent,
+  navigationQuery,
+} from '~/lib/sanity.queries'
 import { getClient } from '~/lib/sanity.client'
 import { useEffect, useState } from 'react'
 import Footer from './global/footer'
@@ -11,6 +16,7 @@ type ContainerProps = {
   draftMode: boolean
   token: string
   navigationContent: NavigationContent
+  footerContent: FooterContent
 }
 
 export default function Container({
@@ -18,6 +24,7 @@ export default function Container({
   draftMode,
   token,
   navigationContent: initialNavigationContent,
+  footerContent: initialFooterContent = null,
 }: ContainerProps) {
   const [liveNavigationContent] = useLiveQuery<NavigationContent>(
     initialNavigationContent,
@@ -35,6 +42,16 @@ export default function Container({
       ? navigationContent[0]
       : { navItems: [], phone: '' }
 
+  const [liveFooterContent] = useLiveQuery<FooterContent>(
+    initialFooterContent ?? null,
+    footerQuery,
+    { enabled: draftMode },
+  )
+
+  const footerContent = draftMode ? liveFooterContent : initialFooterContent
+
+  // console.log({ footerContent })
+
   return (
     <div className="container">
       <Header
@@ -43,7 +60,7 @@ export default function Container({
       />
       <main>{children}</main>
       <Contact />
-      <Footer />
+      <Footer {...footerContent} />
     </div>
   )
 }

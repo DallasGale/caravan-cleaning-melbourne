@@ -16,16 +16,17 @@ const ServiceFeature = ({
   subTitle,
   details,
   backgroundImage,
-  mobileBackgroundImage,
+  id,
   primaryCta,
   secondaryCta,
   darkMode,
   mediaCarousel,
 }: ServiceFeatureProps) => {
   const isTablet = useIsTablet()
-
+  console.log({ id })
   return (
     <section
+      id={id}
       className={`section ${darkMode ? 'dark' : 'light'}`}
       style={{
         backgroundImage: handleBackgroundImage(isTablet, backgroundImage, null),

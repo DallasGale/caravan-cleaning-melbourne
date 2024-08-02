@@ -4,8 +4,21 @@ import Instagram from 'public/images/instagram.svg'
 import Facebook from 'public/images/facebook.svg'
 import Therford from 'public/images/thetford-white.svg'
 import Dometic from 'public/images/dometic-white.svg'
+import { FooterContent } from '~/lib/sanity.queries'
+import RichText from '~/components/richText'
+import Link from 'next/link'
+import { ActionIcon } from '@mantine/core'
+import { useRouter } from 'next/navigation'
 
-const Footer = () => {
+const Footer = ({
+  infoText,
+  showLogos,
+  company,
+  services,
+  contact,
+  seoKeywords,
+}: FooterContent) => {
+  const router = useRouter()
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -18,23 +31,25 @@ const Footer = () => {
             className="footer__logo"
           />
           <div>
-            <p className="paragraph color-teal">
-              Based in Melbourne’s outer east we are a family owned & operated
-              business offering{' '}
-              <strong className="color-white">Full Pre-Sale Detail</strong>,{' '}
-              <strong className="color-white">Parts & Accessories</strong> and
-              specialise in{' '}
-              <strong className="color-white">
-                Caravan, Motorhome & Camper Trailer
-              </strong>{' '}
-              cleaning.
-            </p>
+            {/* <p className="paragraph color-teal"> */}
+            <RichText content={infoText} className="paragraph footer-info" />
+
+            {/* </p> */}
             <br />
-            <p className="paragraph color-light-blue">Suppliers of...</p>
-            <div className="footer__logo-grid">
-              <Image src={Dometic} alt="Dometic" width={200} height={50} />
-              <Image src={Therford} alt="Therford" width={200} height={50} />
-            </div>
+            {showLogos && (
+              <>
+                <p className="paragraph color-light-blue">Suppliers of...</p>
+                <div className="footer__logo-grid">
+                  <Image src={Dometic} alt="Dometic" width={200} height={50} />
+                  <Image
+                    src={Therford}
+                    alt="Therford"
+                    width={200}
+                    height={50}
+                  />
+                </div>
+              </>
+            )}
           </div>
 
           <div className="footer__list-grid">
@@ -42,91 +57,102 @@ const Footer = () => {
             <div>
               <h2 className="display-4 uppercase color-white">Services</h2>
               <ul className="footer__list">
-                <li className="footer__list paragraph color-light-blue">
-                  Caravan Cleaning
-                </li>
-                <li className="footer__list paragraph color-light-blue">
-                  Motorhome Cleaning
-                </li>
-                <li className="footer__list paragraph color-light-blue">
-                  Pre-Sale Detail
-                </li>
-                <li className="footer__list paragraph color-light-blue">
-                  Parts & Accessories
-                </li>
+                {services.map((service) => (
+                  <li className="footer__list paragraph color-light-blue">
+                    <Link href={service.link} className="footer-link">
+                      {service.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
               <h2 className="display-4 uppercase color-white">Company</h2>
               <ul className="footer__list">
-                <li className="footer__list paragraph color-light-blue">
-                  About Us
-                </li>
-                <li className="footer__list paragraph color-light-blue">
-                  Testimonials
-                </li>
-                <li className="footer__list paragraph color-light-blue">
-                  Recent Work
-                </li>
+                {company.map((service) => (
+                  <li className="footer__list paragraph color-light-blue">
+                    <Link href={service.link} className="footer-link">
+                      {service.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             {/* Col 2 */}
             <div>
               <h2 className="display-4 uppercase color-white">Contact</h2>
-              <div className="footer__list-grid">
-                <div>
-                  <p className="paragraph color-light-blue">Natalie</p>
-                  <p className="paragraph color-white">0408 811 910</p>
-                </div>
-                <div>
-                  <p className="paragraph color-light-blue">Gavin</p>
-                  <p className="paragraph color-white">0408 811 910</p>
-                </div>
-              </div>
+              <ul className="footer__list">
+                <li className="footer__list">
+                  <div className="footer__list-grid">
+                    {contact.phoneNumbers.map(({ name, number, _key }) => (
+                      <div key={_key}>
+                        <p className="paragraph color-light-blue">{name}</p>
+                        <Link
+                          href={`tel:${number}`}
+                          className="footer-link color-white"
+                        >
+                          {number}
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </li>
+              </ul>
 
               <div className="footer__list-grid">
                 <div>
                   <p className="paragraph color-light-blue">Email</p>
-                  <p className="paragraph color-white">
-                    sales@caravancleaningmelbourne.com.au
-                  </p>
+                  <Link
+                    href={`mailto:${contact.email}`}
+                    className="footer-link paragraph color-white"
+                  >
+                    {contact.email}
+                  </Link>
                 </div>
               </div>
 
               <div className="footer__list-grid">
                 <div>
                   <p className="paragraph color-light-blue">Connect</p>
-                  <div
-                    style={{ display: 'flex', flexDirection: 'row', gap: 10 }}
-                  >
-                    <Image
-                      src={Facebook}
-                      alt="Facebook"
-                      width={22}
-                      height={22}
-                    />
-                    <Image
-                      src={Instagram}
-                      alt="Instagram"
-                      width={22}
-                      height={22}
-                    />
-                  </div>
+                  <ul className="footer__list">
+                    <li className="footer__list">
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          gap: 10,
+                        }}
+                      >
+                        <ActionIcon
+                          style={{ backgroundColor: 'transparent' }}
+                          onClick={() => router.push(`${contact.facebook}`)}
+                        >
+                          <Image
+                            src={Facebook}
+                            alt="Facebook"
+                            width={22}
+                            height={22}
+                          />
+                        </ActionIcon>
+                        <ActionIcon
+                          style={{ backgroundColor: 'transparent' }}
+                          onClick={() => router.push(`${contact.instagram}`)}
+                        >
+                          <Image
+                            src={Instagram}
+                            alt="Instagram"
+                            width={22}
+                            height={22}
+                          />
+                        </ActionIcon>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="footer__seo">
-          <p className="small-print">
-            Caravan Cleaning & Polishing - Motorhome Cleaning & Polishing -
-            Camper Trailer Cleaning & Polishing - Caravan Pre-Sale Detail -
-            Motorhome Pre-Sale Detail - Camper Trailer Pre-Sale Detail - Caravan
-            Parts & Accessories - Motorhome Parts & Accessories - Camper Trailer
-            Parts & Accessories - Caravan Awning Stain Removal - Motorhome
-            Awning Stain Removal- Camper Trailer Awning Stain Removal - Caravan
-            Cleaning Products - Motorhome Cleaning Products - Camper Trailer
-            Cleaning Products - Caravan Weather Protection - Motorhome Weather
-            Protection - Camper Trailer Weather Protection
-          </p>
+          <p className="small-print">{seoKeywords}</p>
         </div>
       </div>
     </footer>

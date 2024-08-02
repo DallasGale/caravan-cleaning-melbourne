@@ -7,9 +7,11 @@ import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { token } from '~/lib/sanity.token'
 import {
+  FooterContent,
   NavigationContent,
   RecentWorkPageContent,
   aboutPageQuery,
+  footerQuery,
   getRecentWorkContent,
   navigationQuery,
 } from '~/lib/sanity.queries'
@@ -19,6 +21,7 @@ import ComparisonCarousel from '~/components/carousel/comparison'
 
 type PageProps = {
   navigationContent: NavigationContent
+  footerContent: FooterContent
   recentWorkPageContent: RecentWorkPageContent
   draftMode: boolean
   token: string
@@ -26,6 +29,7 @@ type PageProps = {
 
 export default function RecentWork({
   navigationContent,
+  footerContent,
   recentWorkPageContent,
   draftMode,
   token,
@@ -38,6 +42,7 @@ export default function RecentWork({
   const content = draftMode ? liveRecentWorkPageContent : recentWorkPageContent
   return (
     <Container
+      footerContent={footerContent}
       navigationContent={navigationContent}
       draftMode={draftMode}
       token={token}
@@ -73,6 +78,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
   try {
     const recentWorkPageContent = await getRecentWorkContent(client)
     const navigationContent = await client.fetch(navigationQuery)
+    const footerContent = await client.fetch(footerQuery)
 
     return {
       props: {
@@ -80,6 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
         token: draftMode ? readToken : '',
         recentWorkPageContent,
         navigationContent,
+        footerContent,
       },
     }
   } catch (error) {
