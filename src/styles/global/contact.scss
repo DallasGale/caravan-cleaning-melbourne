@@ -6,6 +6,9 @@
   @include respond-to(tablet-up) {
     padding: $space-5 0;
   }
+  @include respond-to(desktop-up) {
+    padding: $space-7 0;
+  }
 }
 
 .contact__container {
