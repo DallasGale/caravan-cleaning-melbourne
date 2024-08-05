@@ -16,15 +16,22 @@ interface MobileNavProps extends NavigationContent {
   onClick: () => void
 }
 
-export const MobileNav = ({ navItems, phone, onClick }: MobileNavProps) => (
-  <motion.ul
-    variants={variants}
-    className="mobile-nav__ul"
-    suppressHydrationWarning={true}
-  >
-    {navItems.map(({ name, link }) => (
-      <MenuItem key={name} name={name} link={link} onClick={onClick} />
-    ))}
-    <MenuItem name={phone} link={`tel:${phone}`} onClick={onClick} />
-  </motion.ul>
-)
+export const MobileNav = ({ navItems, phone, onClick }: MobileNavProps) => {
+  console.log('phone', phone, phone.replace(/\s+/g, ''))
+  return (
+    <motion.ul
+      variants={variants}
+      className="mobile-nav__ul"
+      suppressHydrationWarning={true}
+    >
+      {navItems.map(({ name, link }) => (
+        <MenuItem key={name} name={name} link={link} onClick={onClick} />
+      ))}
+      <MenuItem
+        name={phone}
+        link={`tel:${phone.replace(/\s+/g, '')}`}
+        onClick={onClick}
+      />
+    </motion.ul>
+  )
+}

@@ -94,7 +94,10 @@ const Nav = ({ navItems, phone }: NavigationContent) => {
               <span className="nav__divider" />
             </li>
             <li className="nav__list-item ph">
-              <Link className="nav__link ph" href={`tel:${phone}`}>
+              <Link
+                className="nav__link ph"
+                href={`tel:${phone.replace(/\s+/g, '')}`}
+              >
                 {phone}
               </Link>
             </li>
