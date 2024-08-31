@@ -122,7 +122,6 @@ export const homepageQuery = groq`*[_type == "homepage"][0]{
     cards[] {
       _key,
       title,
-      link,
       paragraph,
       imageAlt,
       image {

@@ -84,9 +84,9 @@ const GridFeature = ({
             {cards.map((card, index) => {
               return (
                 <li key={card._key} className="card-grid__item">
-                  <Link href={card.link} legacyBehavior>
-                    <Card {...card} delay={index * 0.25} />
-                  </Link>
+                  {/* <Link href={card.link} legacyBehavior> */}
+                  <Card {...card} delay={index * 0.25} />
+                  {/* </Link> */}
                 </li>
               )
             })}
