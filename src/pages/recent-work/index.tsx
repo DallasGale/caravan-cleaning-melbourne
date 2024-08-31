@@ -11,11 +11,11 @@ import {
   FooterContent,
   NavigationContent,
   RecentWorkPageContent,
-  aboutPageQuery,
   contactFormQuery,
   footerQuery,
   getRecentWorkContent,
   navigationQuery,
+  recentWorkPageQuery,
 } from '~/lib/sanity.queries'
 import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
@@ -40,7 +40,7 @@ export default function RecentWork({
 }: PageProps) {
   const [liveRecentWorkPageContent] = useLiveQuery<RecentWorkPageContent>(
     recentWorkPageContent,
-    aboutPageQuery,
+    recentWorkPageQuery,
     { enabled: draftMode },
   )
   const content = draftMode ? liveRecentWorkPageContent : recentWorkPageContent

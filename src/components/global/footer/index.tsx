@@ -19,6 +19,8 @@ const Footer = ({
   seoKeywords,
 }: FooterContent) => {
   const router = useRouter()
+
+  console.log({ services, company, contact, seoKeywords })
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -31,10 +33,8 @@ const Footer = ({
             className="footer__logo"
           />
           <div>
-            {/* <p className="paragraph color-teal"> */}
             <RichText content={infoText} className="paragraph footer-info" />
 
-            {/* </p> */}
             <br />
             {showLogos && (
               <>
@@ -57,20 +57,26 @@ const Footer = ({
             <div>
               <h2 className="display-4 uppercase color-white">Services</h2>
               <ul className="footer__list">
-                {services.map((service) => (
-                  <li className="footer__list paragraph color-light-blue">
-                    <Link href={service.link} className="footer-link">
-                      {service.label}
+                {services.map((ser, _key) => (
+                  <li
+                    key={_key}
+                    className="footer__list paragraph color-light-blue"
+                  >
+                    <Link href={ser.link} className="footer-link">
+                      {ser.label}
                     </Link>
                   </li>
                 ))}
               </ul>
               <h2 className="display-4 uppercase color-white">Company</h2>
               <ul className="footer__list">
-                {company.map((service) => (
-                  <li className="footer__list paragraph color-light-blue">
-                    <Link href={service.link} className="footer-link">
-                      {service.label}
+                {company.map((com, _key) => (
+                  <li
+                    key={_key}
+                    className="footer__list paragraph color-light-blue"
+                  >
+                    <Link href={com.link} className="footer-link">
+                      {com.label}
                     </Link>
                   </li>
                 ))}

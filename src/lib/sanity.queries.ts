@@ -12,6 +12,7 @@ export const contactFormQuery = groq`*[_type == "contactForm"][0] {
 
 export const footerQuery = groq`*[_type == "footer"][0] {
   services[] {
+    _key,
     label,
     link,
   },
@@ -269,6 +270,7 @@ export type TestimonialTypes = {
 }
 
 export type LinkType = {
+  _key: string
   label: string
   link: string
 }
