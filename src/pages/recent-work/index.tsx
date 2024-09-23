@@ -1,4 +1,4 @@
-import type { GetStaticProps } from 'next'
+import type { GetStaticProps, Metadata } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
 
 import Container from '~/components/Container'
@@ -28,6 +28,13 @@ type PageProps = {
   recentWorkPageContent: RecentWorkPageContent
   draftMode: boolean
   token: string
+}
+
+export const metadata: Metadata = {
+  title: 'Caravan Cleaning Melbourne - Free Quotes - Recent Work',
+  description:
+    'Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing.',
+  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 }
 
 export default function RecentWork({

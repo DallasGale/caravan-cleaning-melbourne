@@ -4,7 +4,7 @@ const SchemaMarkup = () => {
   const schemaData = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Caravan Cleaning Melbourne',
+    name: 'Caravan Cleaning Melbourne - Free Quotes',
     description:
       'Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing.',
     url: 'https://www.https://caravan-cleaning-melbourne.vercel.app/',
@@ -26,7 +26,7 @@ const SchemaMarkup = () => {
       'https://www.instagram.com/caravancleaningmelb',
     ],
     image:
-      'https://www.https://caravan-cleaning-melbourne.vercel.app/images/schema-logo.jpg',
+      'https://caravan-cleaning-melbourne.vercel.app/images/schema-logo.jpg',
     areaServed: {
       '@type': 'GeoCircle',
       geoMidpoint: {
@@ -76,9 +76,33 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <ColorSchemeScript defaultColorScheme="auto" />
-        <title>Caravan Cleaning Melbourne</title>
-        <meta name="description" content="Caravan Cleaning Melbourne" />
+        <title>Caravan Cleaning Melbourne - Free Quotes</title>
+        <meta
+          name="description"
+          content="Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing."
+        />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta
+          property="og:title"
+          content="Caravan Cleaning Melbourne - Free Quotes"
+        />
+        <meta
+          property="og:description"
+          content="Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing."
+        />
+        <meta
+          property="og:image"
+          content="https://www.caravan-cleaning-melbourne.vercel.app/images/og-image.jpg"
+        />
+        <meta
+          property="og:logo"
+          content="https://www.caravan-cleaning-melbourne.vercel.app/images/schema-logo.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://www.caravan-cleaning-melbourne.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"

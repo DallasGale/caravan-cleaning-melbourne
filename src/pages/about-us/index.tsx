@@ -1,7 +1,6 @@
 import type { GetStaticProps } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
-import Slider from 'react-slick'
-
+import { Metadata } from 'next'
 import Container from '~/components/Container'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
@@ -19,8 +18,6 @@ import {
 } from '~/lib/sanity.queries'
 import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
-import Image from 'next/image'
-import Carousel from '~/components/carousel'
 import CanonicalTag from '~/components/canonicalTag'
 
 type PageProps = {
@@ -32,6 +29,12 @@ type PageProps = {
   token: string
 }
 
+export const metadata: Metadata = {
+  title: 'Caravan Cleaning Melbourne - Free Quotes - About Us',
+  description:
+    'Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing.',
+  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+}
 export default function About({
   navigationContent,
   footerContent,
