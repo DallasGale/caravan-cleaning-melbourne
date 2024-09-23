@@ -21,6 +21,7 @@ import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
 import Image from 'next/image'
 import Carousel from '~/components/carousel'
+import CanonicalTag from '~/components/canonicalTag'
 
 type PageProps = {
   navigationContent: NavigationContent
@@ -47,29 +48,26 @@ export default function About({
   const content = draftMode ? liveAboutPageContent : aboutPageContent
 
   return (
-    <Container
-      contactFormContent={contactFormContent}
-      footerContent={footerContent}
-      navigationContent={navigationContent}
-      draftMode={draftMode}
-      token={token}
-    >
-      <section className="section section__about-us  dark" id="about-us">
-        <ContentWrapper modifier="about-us__content-wrapper">
-          <h1 className="heading-2 color-white">{content.title}</h1>
-          <RichText
-            content={content.paragraph}
-            className="about-us__paragraph display-1 color-teal"
-          />
-          {/* <Carousel
-            assets={content.imageCarousel}
-            slidesToShow={2}
-            // infinite={true}
-            slidesToScroll={2}
-          /> */}
-        </ContentWrapper>
-      </section>
-    </Container>
+    <>
+      <CanonicalTag path="/about-us" />
+      <Container
+        contactFormContent={contactFormContent}
+        footerContent={footerContent}
+        navigationContent={navigationContent}
+        draftMode={draftMode}
+        token={token}
+      >
+        <section className="section section__about-us  dark" id="about-us">
+          <ContentWrapper modifier="about-us__content-wrapper">
+            <h1 className="heading-2 color-white">{content.title}</h1>
+            <RichText
+              content={content.paragraph}
+              className="about-us__paragraph display-1 color-teal"
+            />
+          </ContentWrapper>
+        </section>
+      </Container>{' '}
+    </>
   )
 }
 

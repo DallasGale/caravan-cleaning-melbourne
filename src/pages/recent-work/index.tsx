@@ -1,6 +1,5 @@
 import type { GetStaticProps } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
-import Slider from 'react-slick'
 
 import Container from '~/components/Container'
 import { readToken } from '~/lib/sanity.api'
@@ -20,6 +19,7 @@ import {
 import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
 import ComparisonCarousel from '~/components/carousel/comparison'
+import CanonicalTag from '~/components/canonicalTag'
 
 type PageProps = {
   navigationContent: NavigationContent
@@ -45,36 +45,42 @@ export default function RecentWork({
   )
   const content = draftMode ? liveRecentWorkPageContent : recentWorkPageContent
   return (
-    <Container
-      footerContent={footerContent}
-      navigationContent={navigationContent}
-      contactFormContent={contactFormContent}
-      draftMode={draftMode}
-      token={token}
-    >
-      <section className="section section__recent-work  dark" id="recent-work">
-        <ContentWrapper modifier="recent-work__content-wrapper">
-          <div className="recent-work__intro">
-            <h1 className="heading-2 color-white">{content.title}</h1>
-            <RichText
-              content={content.paragraph}
-              className="recent-work__paragraph display-1 color-teal"
-            />
-          </div>
-
-          {content.comparisonCarousel.map((carousel, index) => {
-            console.log({ carousel })
-            return (
-              <ComparisonCarousel
-                key={index}
-                category={carousel.category}
-                slidePairs={carousel.slidePairs}
+    <>
+      <CanonicalTag path="/recent-work" />
+      <Container
+        footerContent={footerContent}
+        navigationContent={navigationContent}
+        contactFormContent={contactFormContent}
+        draftMode={draftMode}
+        token={token}
+      >
+        <section
+          className="section section__recent-work  dark"
+          id="recent-work"
+        >
+          <ContentWrapper modifier="recent-work__content-wrapper">
+            <div className="recent-work__intro">
+              <h1 className="heading-2 color-white">{content.title}</h1>
+              <RichText
+                content={content.paragraph}
+                className="recent-work__paragraph display-1 color-teal"
               />
-            )
-          })}
-        </ContentWrapper>
-      </section>
-    </Container>
+            </div>
+
+            {content.comparisonCarousel.map((carousel, index) => {
+              console.log({ carousel })
+              return (
+                <ComparisonCarousel
+                  key={index}
+                  category={carousel.category}
+                  slidePairs={carousel.slidePairs}
+                />
+              )
+            })}
+          </ContentWrapper>
+        </section>
+      </Container>
+    </>
   )
 }
 

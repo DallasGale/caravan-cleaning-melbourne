@@ -36,11 +36,6 @@ const SchemaMarkup = () => {
       },
       geoRadius: '100000',
     },
-    serviceType: [
-      'Mobile Caravan Cleaning',
-      'On-Site RV Cleaning',
-      'Mobile Detailing',
-    ],
     serviceArea: {
       '@type': 'GeoCircle',
       geoMidpoint: {
@@ -74,7 +69,6 @@ const SchemaMarkup = () => {
       'Camper Trailer Weather Protection',
     ],
   }
-  return schemaData
 }
 
 export default function Document() {
