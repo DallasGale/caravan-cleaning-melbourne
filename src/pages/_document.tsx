@@ -103,6 +103,34 @@ export default function Document() {
           content="https://www.caravan-cleaning-melbourne.vercel.app/"
         />
         <meta property="og:type" content="website" />
+        <meta
+          name="keywords"
+          content="
+          Caravan Cleaning,
+            RV Cleaning,  
+            Mobile Detailing,
+            Caravan Cleaning & Polishing,
+            Motorhome Cleaning & Polishing,
+            Camper Trailer Cleaning & Polishing,
+            Caravan Pre-Sale Detail,
+            Motorhome Pre-Sale Detail,
+            Camper Trailer Pre-Sale Detail,
+            Caravan Parts & Accessories,
+            Motorhome Parts & Accessories,
+            Camper Trailer Parts & Accessories,
+            Caravan Awning Stain Removal,
+            Motorhome Awning Stain Removal,
+            Camper Trailer Awning Stain Removal,
+            Caravan Cleaning Products,
+            Motorhome Cleaning Products,
+            Camper Trailer Cleaning Products,
+            Caravan Weather Protection,
+            Motorhome Weather Protection,
+            Camper Trailer Weather Protection"
+        />
+        <meta name="author" content="Caravan Cleaning Melbourne" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
         <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
