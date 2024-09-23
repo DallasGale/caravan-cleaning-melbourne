@@ -22,6 +22,7 @@ import {
 } from '~/lib/sanity.queries'
 import MinimalGridFeature from '~/components/homepage/minimalGridFeature'
 import Testimonials from '~/components/global/testimonials'
+import CanonicalTag from '~/components/canonicalTag'
 
 type PageProps = {
   navigationContent: NavigationContent
@@ -51,29 +52,32 @@ export default function Home({
   const sections: HomepageContent['sections'] = content?.sections || []
 
   return (
-    <Container
-      contactFormContent={contactFormContent}
-      footerContent={footerContent}
-      navigationContent={navigationContent}
-      draftMode={draftMode}
-      token={token}
-    >
-      {hero && <Hero {...hero} />}
-      {sections.map((section) => {
-        switch (section._type) {
-          case 'serviceFeature':
-            return <ServiceFeature key={section._key} {...section} />
-          case 'gridFeature':
-            return <GridFeature key={section._key} {...section} />
-          case 'minimalGridFeature':
-            return <MinimalGridFeature key={section._key} {...section} />
-          case 'testimonialFeature':
-            return <Testimonials key={section._key} {...section} />
-          default:
-            return null
-        }
-      })}
-    </Container>
+    <>
+      <CanonicalTag path="/" />
+      <Container
+        contactFormContent={contactFormContent}
+        footerContent={footerContent}
+        navigationContent={navigationContent}
+        draftMode={draftMode}
+        token={token}
+      >
+        {hero && <Hero {...hero} />}
+        {sections.map((section) => {
+          switch (section._type) {
+            case 'serviceFeature':
+              return <ServiceFeature key={section._key} {...section} />
+            case 'gridFeature':
+              return <GridFeature key={section._key} {...section} />
+            case 'minimalGridFeature':
+              return <MinimalGridFeature key={section._key} {...section} />
+            case 'testimonialFeature':
+              return <Testimonials key={section._key} {...section} />
+            default:
+              return null
+          }
+        })}
+      </Container>
+    </>
   )
 }
 

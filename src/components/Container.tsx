@@ -8,8 +8,6 @@ import {
   NavigationContent,
   navigationQuery,
 } from '~/lib/sanity.queries'
-import { getClient } from '~/lib/sanity.client'
-import { useEffect, useState } from 'react'
 import Footer from './global/footer'
 import Contact from './global/contact'
 

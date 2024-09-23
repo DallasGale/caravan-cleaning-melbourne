@@ -6,7 +6,6 @@ import '~/styles/index.scss'
 
 import { createTheme, MantineProvider } from '@mantine/core'
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
-import SchemaMarkup from '~/components/SchemaMarkup'
 
 import type { AppProps } from 'next/app'
 import { lazy, Suspense } from 'react'
@@ -29,7 +28,6 @@ export default function App({
   return (
     <MantineProvider theme={theme}>
       <>
-        <SchemaMarkup />
         {draftMode ? (
           <PreviewProvider token={token}>
             <Component {...pageProps} />

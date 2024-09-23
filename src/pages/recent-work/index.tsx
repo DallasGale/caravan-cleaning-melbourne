@@ -11,11 +11,11 @@ import {
   FooterContent,
   NavigationContent,
   RecentWorkPageContent,
+  aboutPageQuery,
   contactFormQuery,
   footerQuery,
   getRecentWorkContent,
   navigationQuery,
-  recentWorkPageQuery,
 } from '~/lib/sanity.queries'
 import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
@@ -24,8 +24,8 @@ import ComparisonCarousel from '~/components/carousel/comparison'
 type PageProps = {
   navigationContent: NavigationContent
   footerContent: FooterContent
-  recentWorkPageContent: RecentWorkPageContent
   contactFormContent: ContactFormContent
+  recentWorkPageContent: RecentWorkPageContent
   draftMode: boolean
   token: string
 }
@@ -33,22 +33,22 @@ type PageProps = {
 export default function RecentWork({
   navigationContent,
   footerContent,
-  recentWorkPageContent,
   contactFormContent,
+  recentWorkPageContent,
   draftMode,
   token,
 }: PageProps) {
   const [liveRecentWorkPageContent] = useLiveQuery<RecentWorkPageContent>(
     recentWorkPageContent,
-    recentWorkPageQuery,
+    aboutPageQuery,
     { enabled: draftMode },
   )
   const content = draftMode ? liveRecentWorkPageContent : recentWorkPageContent
   return (
     <Container
-      contactFormContent={contactFormContent}
       footerContent={footerContent}
       navigationContent={navigationContent}
+      contactFormContent={contactFormContent}
       draftMode={draftMode}
       token={token}
     >
@@ -61,6 +61,7 @@ export default function RecentWork({
               className="recent-work__paragraph display-1 color-teal"
             />
           </div>
+
           {content.comparisonCarousel.map((carousel, index) => {
             console.log({ carousel })
             return (
