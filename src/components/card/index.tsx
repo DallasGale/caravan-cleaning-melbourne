@@ -28,7 +28,6 @@ const Card = ({ title, paragraph, image, delay }: CardProps) => {
   }
   return (
     <motion.div
-      suppressHydrationWarning={true}
       ref={ref}
       className="card"
       initial="hidden"

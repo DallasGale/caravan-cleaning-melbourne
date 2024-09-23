@@ -20,7 +20,6 @@ const GridFeature = ({
   logosHeading,
   logos,
   backgroundImage,
-  mobileBackgroundImage,
   primaryCta,
   secondaryCta,
 }: GridFeatureProps) => {
@@ -30,7 +29,6 @@ const GridFeature = ({
     <section
       className="section"
       id={id}
-      suppressHydrationWarning={true}
       style={{
         backgroundImage: handleBackgroundImage(isTablet, backgroundImage, null),
       }}
@@ -84,9 +82,7 @@ const GridFeature = ({
             {cards.map((card, index) => {
               return (
                 <li key={card._key} className="card-grid__item">
-                  {/* <Link href={card.link} legacyBehavior> */}
-                  <Card {...card} delay={index * 0.25} />
-                  {/* </Link> */}
+                  <Card {...card} delay={index * 0.05} />
                 </li>
               )
             })}

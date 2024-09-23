@@ -22,11 +22,7 @@ const MinimalGridFeature = ({
   primaryCta,
 }: MinimalGridFeatureProps) => {
   return (
-    <section
-      className="section section__minimal-grid-feature"
-      id={id}
-      suppressHydrationWarning={true}
-    >
+    <section className="section section__minimal-grid-feature" id={id}>
       <ContentWrapper modifier="content-wrapper__minimal">
         <div className="section__minimal-grid-feature-content">
           <div className="section__minimal-grid-feature-cta">
@@ -46,9 +42,7 @@ const MinimalGridFeature = ({
             {cards.map((card, index) => {
               return (
                 <li key={card._key} className="card-grid__item">
-                  {/* <Link href={card.link} legacyBehavior> */}
                   <SmallCard {...card} delay={index * 0.25} />
-                  {/* </Link> */}
                 </li>
               )
             })}

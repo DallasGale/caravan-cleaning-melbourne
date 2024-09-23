@@ -1,5 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document'
 import { ColorSchemeScript } from '@mantine/core'
+import Script from 'next/script'
 
 export default function Document() {
   return (
