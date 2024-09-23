@@ -81,7 +81,12 @@ export default function Document() {
           name="description"
           content="Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing."
         />
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+        <meta
+          property="og:url"
+          content="https://caravan-cleaning-melbourne.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
         <meta
           property="og:title"
           content="Caravan Cleaning Melbourne - Free Quotes"
@@ -92,17 +97,31 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://www.caravan-cleaning-melbourne.vercel.app/images/og-image.jpg"
+          content="https://opengraph.b-cdn.net/production/images/b612bf11-a192-43fd-aeff-a30fdd114e85.jpg?token=vtm24yKxzDrBi7XOdpQ1oDMhoRSQAh_YDANrdKb3iSA&height=630&width=1200&expires=33263061277"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:domain"
+          content="caravan-cleaning-melbourne.vercel.app"
         />
         <meta
-          property="og:logo"
-          content="https://www.caravan-cleaning-melbourne.vercel.app/images/schema-logo.jpg"
+          property="twitter:url"
+          content="https://caravan-cleaning-melbourne.vercel.app/"
         />
         <meta
-          property="og:url"
-          content="https://www.caravan-cleaning-melbourne.vercel.app/"
+          name="twitter:title"
+          content="Caravan Cleaning Melbourne - Free Quotes"
         />
-        <meta property="og:type" content="website" />
+        <meta
+          name="twitter:description"
+          content="Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing."
+        />
+        <meta
+          name="twitter:image"
+          content="https://opengraph.b-cdn.net/production/images/b612bf11-a192-43fd-aeff-a30fdd114e85.jpg?token=vtm24yKxzDrBi7XOdpQ1oDMhoRSQAh_YDANrdKb3iSA&height=630&width=1200&expires=33263061277"
+        />
+
         <meta
           name="keywords"
           content="
