@@ -8,12 +8,12 @@
   justify-content: flex-start;
   border-radius: $space-2;
   padding: $space-5;
-  gap: $space-6;
+  gap: $space-3;
   border: 4px solid transparent;
   text-decoration: none;
-  @include respond-to(small-phone-up) {
-    flex-direction: row;
-  }
+  // @include respond-to(small-phone-up) {
+  //   flex-direction: row;
+  // }
   @include respond-to(tablet-up) {
     flex-direction: column;
     gap: $space-2;
