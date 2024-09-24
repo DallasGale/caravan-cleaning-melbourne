@@ -7,7 +7,7 @@ const SchemaMarkup = () => {
     name: 'Caravan Cleaning Melbourne - Free Quotes',
     description:
       'Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing.',
-    url: 'https://www.https://caravan-cleaning-melbourne.vercel.app/',
+    url: 'https://www.https://caravancleaningmelbourne.com.au/',
     telephone: '+61408 855 031',
     address: {
       '@type': 'PostalAddress',
@@ -25,8 +25,7 @@ const SchemaMarkup = () => {
       'https://www.facebook.com/caravancleaningmelbourne',
       'https://www.instagram.com/caravancleaningmelb',
     ],
-    image:
-      'https://caravan-cleaning-melbourne.vercel.app/images/schema-logo.jpg',
+    image: 'https://caravancleaningmelbourne.com.au/images/schema-logo.jpg',
     areaServed: {
       '@type': 'GeoCircle',
       geoMidpoint: {
@@ -84,7 +83,7 @@ export default function Document() {
 
         <meta
           property="og:url"
-          content="https://caravan-cleaning-melbourne.vercel.app/"
+          content="https://www.caravancleaningmelbourne.com.au"
         />
         <meta property="og:type" content="website" />
         <meta
@@ -103,11 +102,11 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:domain"
-          content="caravan-cleaning-melbourne.vercel.app"
+          content="https://www.caravancleaningmelbourne.com.au"
         />
         <meta
           property="twitter:url"
-          content="https://caravan-cleaning-melbourne.vercel.app/"
+          content="https://www.caravancleaningmelbourne.com.au/"
         />
         <meta
           name="twitter:title"
