@@ -8,7 +8,7 @@ interface CardProps extends CardTypes {
 }
 const Card = ({ title, paragraph, image, delay }: CardProps) => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const cardVariants: Variants = {
     hidden: {
