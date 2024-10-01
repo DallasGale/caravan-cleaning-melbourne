@@ -1,5 +1,6 @@
 import type { GetStaticProps, Metadata } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
+import Head from 'next/head'
 
 import Container from '~/components/Container'
 import GridFeature from '~/components/homepage/gridFeature'
@@ -33,12 +34,12 @@ type PageProps = {
   token: string
 }
 
-export const metadata: Metadata = {
-  title: 'Caravan Cleaning Melbourne - Free Quotes',
-  description:
-    'Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
-}
+// export const metadata: Metadata = {
+//   title: 'Caravan Cleaning Melbourne - Free Quotes',
+//   description:
+//     'Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing.',
+//   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+// }
 
 export default function Home({
   navigationContent,
@@ -60,6 +61,9 @@ export default function Home({
 
   return (
     <>
+      <Head>
+        <title>Caravan Cleaning Melbourne - Free Quotes</title>
+      </Head>
       <CanonicalTag path="/" />
       <Container
         contactFormContent={contactFormContent}

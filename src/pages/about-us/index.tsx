@@ -19,6 +19,7 @@ import {
 import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
 import CanonicalTag from '~/components/canonicalTag'
+import Head from 'next/head'
 
 type PageProps = {
   navigationContent: NavigationContent
@@ -52,6 +53,9 @@ export default function About({
 
   return (
     <>
+      <Head>
+        <title>Caravan Cleaning Melbourne - Free Quotes - About Us</title>
+      </Head>
       <CanonicalTag path="/about-us" />
       <Container
         contactFormContent={contactFormContent}
@@ -69,7 +73,7 @@ export default function About({
             />
           </ContentWrapper>
         </section>
-      </Container>{' '}
+      </Container>
     </>
   )
 }

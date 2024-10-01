@@ -75,7 +75,8 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <ColorSchemeScript defaultColorScheme="auto" />
-        <title>Caravan Cleaning Melbourne - Free Quotes</title>
+        <meta name="title" content="Caravan Cleaning Melbourne - Free Quotes" />
+        {/* <title>Caravan Cleaning Melbourne - Free Quotes</title> */}
         <meta
           name="description"
           content="Get a free quote from Caravan Cleaning Melbourne for top-notch cleaning of caravans, motor homes, solar panels, and pre-sale detailing."

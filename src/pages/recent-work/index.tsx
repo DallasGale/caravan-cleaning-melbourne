@@ -20,6 +20,7 @@ import ContentWrapper from '~/components/contentWrapper'
 import RichText from '~/components/richText'
 import ComparisonCarousel from '~/components/carousel/comparison'
 import CanonicalTag from '~/components/canonicalTag'
+import Head from 'next/head'
 
 type PageProps = {
   navigationContent: NavigationContent
@@ -53,6 +54,9 @@ export default function RecentWork({
   const content = draftMode ? liveRecentWorkPageContent : recentWorkPageContent
   return (
     <>
+      <Head>
+        <title>Caravan Cleaning Melbourne - Free Quotes - Recent Work</title>
+      </Head>
       <CanonicalTag path="/recent-work" />
       <Container
         footerContent={footerContent}
