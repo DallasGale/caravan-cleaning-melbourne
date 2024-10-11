@@ -104,6 +104,7 @@ const Contact = ({ title, paragraph }: ContactFormContent) => {
               <TextInput
                 name="email"
                 id="email"
+                required
                 placeholder="Email"
                 classNames={{ input: 'form__fields' }}
               />
@@ -111,6 +112,7 @@ const Contact = ({ title, paragraph }: ContactFormContent) => {
               <TextInput
                 name="phone"
                 id="phone"
+                required
                 placeholder="Phone"
                 classNames={{ input: 'form__fields' }}
               />
@@ -127,6 +129,7 @@ const Contact = ({ title, paragraph }: ContactFormContent) => {
               /> */}
 
               <Textarea
+                required
                 name="message"
                 placeholder="Leave a message"
                 rows={8}
