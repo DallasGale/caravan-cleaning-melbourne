@@ -27,6 +27,9 @@ export const MobileNav = ({ navItems, phone, onClick }: MobileNavProps) => {
       {navItems.map(({ name, link }) => (
         <MenuItem key={name} name={name} link={link} onClick={onClick} />
       ))}
+      <li className="nav__list-item enquire">
+        <MenuItem name="Enquire Now" link="/#enquire" onClick={onClick} />
+      </li>
       <MenuItem
         name={phone}
         link={`tel:${phone.replace(/\s+/g, '')}`}

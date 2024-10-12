@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 const TABLET_BREAKPOINT = 1025 // You can adjust this value as needed
 
 export function useIsTablet(): boolean {
-  const [isTablet, setIsTablet] = useState<boolean>(false)
+  const [isTablet, setIsTablet] = useState<boolean>(true)
 
   useEffect(() => {
     const checkIsTablet = () => {
